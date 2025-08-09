@@ -1,0 +1,86 @@
+body {
+    color:aliceblue;
+    background-color: rgb(240, 221, 221);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    background-color: #f43c3c;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    padding: 16px;
+}
+
+a{
+    color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #e33434; /* tom próximo mais escuro */
+}
+.topo {
+    position: relative;
+    background-image: url('img/doacao.png');
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+.topo::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.521); /* filtro escuro */
+    z-index: 1;
+  }
+  
+  .topo > * {
+    position: relative;
+    z-index: 2; /* joga o conteúdo acima do filtro */
+  }
+.logo {
+    width: 250px; /* tamanho da logo */
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid #f43c3c;
+}
+    
+.center{
+    text-align: center;
+}
+
+h1{
+    color: #f43c3c;
+    text-align: center;
+}
+
+h2{
+    color: #ffffff;
+    text-align: center;
+}
+.a1{
+    text-align: left;
+    color: #f43c3c;
+    background-color: #f43c3c; /* cor do fundo (quadrado) */
+    color: white;              /* cor do texto */
+    padding: 20px;             /* espaço interno */
+    width: 200px;              /* largura fixa */
+    text-align: center;        /* centraliza o texto */
+}
+
+
