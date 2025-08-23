@@ -1,72 +1,87 @@
-function onChangeEmail() {
-    toggleButtonsDisable();
-    toggleEmailErrors();
-}
+// Importa Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { 
+  getAuth, 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
+  signInWithPopup, 
+  GoogleAuthProvider,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-function onChangePassword() {
-    toggleButtonsDisable();
-    togglePasswordErrors();
-}
+// 🔥 SUA CONFIGURAÇÃO DO FIREBASE (pegar no console.firebase.google.com)
+const firebaseConfig = {
+  apiKey: "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA",
+  authDomain: "caridade-6464e.firebaseapp.com",
+  projectId: "caridade-6464e",
+  storageBucket: "caridade-6464e.firebasestorage.app",
+  messagingSenderId: "916897058334",
+  appId: "1:916897058334:web:906d1343b3523b3a9ca80f"
+};
 
-function login() {
-    firebase.auth().signInWithEmailAndPassword(
-        form.email().value, form.password().value
-    ).then(response => {
-        window.location.href = "pages/home/home.html";
-    }).catch(error => {
-        alert(getErrorMessage(error));
-    });
-}
+// Inicializa Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
-function getErrorMessage(error) {
-    if (error.code == "auth/user-not-found") {
-        return "Usuário nao encontrado";
+// ===== LOGIN COM EMAIL/SENHA =====
+const loginForm = document.getElementById("loginForm");
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    alert("✅ Login realizado com sucesso!");
+    window.location.href = "home.html"; // redireciona após login
+  } catch (error) {
+    alert("❌ Erro no login: " + error.message);
+  }
+});
+
+// ===== CADASTRO =====
+const linkCadastro = document.getElementById("linkCadastro");
+linkCadastro.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const email = prompt("Digite seu email:");
+  const password = prompt("Digite sua senha:");
+
+  if (email && password) {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("✅ Cadastro realizado com sucesso!");
+    } catch (error) {
+      alert("❌ Erro no cadastro: " + error.message);
     }
-    return error.message;
-}
+  }
+});
 
-function register() {
-    window.location.href = "pages/register/register.html";
-}
+// ===== LOGIN COM GOOGLE =====
+const googleLogin = document.getElementById("googleLogin");
+googleLogin.addEventListener("click", async (e) => {
+  e.preventDefault();
+  try {
+    await signInWithPopup(auth, provider);
+    alert("✅ Login com Google realizado!");
+    window.location.href = "home.html";
+  } catch (error) {
+    alert("❌ Erro: " + error.message);
+  }
+});
 
-function toggleEmailErrors() {
-    const email = form.email().value;
-    form.emailRequiredError().style.display = email ? "none" : "block";
-    
-    form.emailInvalidError().style.display = validateEmail(email) ? "none" : "block";
-}
-
-function togglePasswordErrors() {
-    const password = form.password().value;
-    form.passwordRequiredError().style.display = password ? "none" : "block";
-}
-
-function toggleButtonsDisable() {
-    const emailValid = isEmailValid();
-    form.recoverPasswordButton().disabled = !emailValid;
-
-    const passwordValid = isPasswordValid();
-    form.loginButton().disabled = !emailValid || !passwordValid;
-}
-
-function isEmailValid() {
-    const email = form.email().value;
-    if (!email) {
-        return false;
+// ===== RESET DE SENHA =====
+const resetPassword = document.getElementById("resetPassword");
+resetPassword.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const email = prompt("Digite seu email para redefinir a senha:");
+  if (email) {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("📩 Email de redefinição enviado!");
+    } catch (error) {
+      alert("❌ Erro: " + error.message);
     }
-    return validateEmail(email);
-}
-
-function isPasswordValid() {
-    return form.password().value ? true : false;
-}
-
-const form = {
-    email: () => document.getElementById("email"),
-    emailInvalidError: () => document.getElementById("email-invalid-error"),
-    emailRequiredError: () => document.getElementById("email-required-error"),
-    loginButton: () => document.getElementById("login-button"),
-    password: () => document.getElementById("password"),
-    passwordRequiredError: () => document.getElementById("password-required-error"),
-    recoverPasswordButton: () => document.getElementById("recover-password-button"),
-} 
+  }
+});

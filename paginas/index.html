@@ -1,53 +1,59 @@
-<!doctype html>
-
-<html>
-
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <title>Controle de gastos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Login</title>
+  <link rel="stylesheet" href="index.css">
+  <!-- Ícones do FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Firebase SDK -->
+  <script type="module" src="index.js" defer></script>
 </head>
-
 <body>
-    <form>
-        <div class="form-field">
-            <div><label>Email</label></div>
-            <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()"/>
-            <div class="error" id="email-required-error">Email é obrigatório</div>
-            <div class="error" id="email-invalid-error">Email é inválido</div>
+
+  <div class="container">
+    <!-- Lado esquerdo -->
+    <div class="left-side">
+      <div class="overlay">
+        <h2>Your Logo</h2>
+        <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+      </div>
+    </div>
+
+    <!-- Lado direito -->
+    <div class="right-side">
+      <div class="login-box">
+        <h2>MINHA LOGO</h2>
+        <h3>Login</h3>
+        <p>Se você não tiver cadastro pode <a href="#" id="linkCadastro">Cadastrar aqui!</a></p>
+
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="email"><i class="fa-solid fa-envelope"></i></label>
+            <input type="email" id="email" placeholder="Insira seu email" required>
+          </div>
+
+          <div class="input-group">
+            <label for="password"><i class="fa-solid fa-lock"></i></label>
+            <input type="password" id="password" placeholder="Insira sua senha" required>
+          </div>
+
+          <div class="options">
+            <label><input type="checkbox"> Lembrar</label>
+            <a href="#" id="resetPassword">Esqueceu sua senha?</a>
+          </div>
+
+          <button type="submit" class="btn-login">Login</button>
+        </form>
+
+        <p class="social-text">ou entre com</p>
+        <div class="social-icons">
+          <a href="#" id="googleLogin"><i class="fa-brands fa-google"></i></a>
         </div>
-        <div class="form-field">
-            <div><label>Senha</label></div>
-            <input type="password" name="password" id="password" placeholder="Senha" onchange="onChangePassword()"/>
-            <div class="error" id="password-required-error">Senha é obrigatória</div>
-        </div>
-        <div>
-            <button type="button" class="clear" id="recover-password-button" disabled="true">Recuperar senha</button>
-        </div>
-        <div>
-            <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
-        </div>
-        <div>
-            <button type="button" class="outline" onclick="register()">Registrar</button>
-        </div>
-    </form>
+      </div>
+    </div>
+  </div>
+
 </body>
-
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="global.css">
-
-<script src="index.js"></script>
-<script src="validations.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA",
-  authDomain: "caridade-6464e.firebaseapp.com",
-  projectId: "caridade-6464e",
-  storageBucket: "caridade-6464e.firebasestorage.app",
-  messagingSenderId: "916897058334",
-  appId: "1:916897058334:web:906d1343b3523b3a9ca80f",
-    };
-    firebase.initializeApp(firebaseConfig);
-</script>
-
 </html>
