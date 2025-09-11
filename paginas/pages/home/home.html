@@ -2,11 +2,45 @@
 <html>
 
 <head>
-    <title>Home - Controle de gastos</title>
+    <title>Home</title>
 </head>
 
 <body>
-    Home
+    <header>
+        <nav>
+                <a class="logo" href="">Caridade</a>
+                <div class="mobile-menu">
+                  <div class="line1"></div>
+                  <div class="line2"></div>
+                  <div class="line3"></div>
+                </div>
+                <ul class="nav-list">
+                  <li><a href="../home/home.html">Home</a></li>
+                  <li><a href="../expenses/expenses.html">Eventos</a></li>
+                  <li><a href="../incomes/incomes.html">Sobre</a></li>
+                  <li><a href="../reports/reports.html">Doações</a></li>
+                  </ul>
+        </nav>
+        botao de sair 
+        <button type="button" class="clear" onclick="logout()">
+            Sair
+        </button>
+    </header>
+    <main></main>
+    <script src="mobile-navbar.js"></script>
 </body>
+
+
+
+
+
+<link rel="stylesheet" href="../../global.css">
+<link rel="stylesheet" href="home.css">
+
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script src="../../firebase-init.js"></script>
+<script src="../../auth-guard.js"></script>
+<script src="home.js"></script>
 
 </html>

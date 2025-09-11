@@ -1,3 +1,34 @@
+body {
+    margin: 0;
+    background: rgb(45, 211, 111);
+}
+
+.centralize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-field {
+    margin-bottom: 10px;
+}
+
+input,
+button {
+   padding: 10px;
+   width: -webkit-fill-available;
+}
+
+.loading {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+.loading label {
+    font-size: 24px;
+}
+
 button {
     cursor: pointer;
 }
@@ -6,6 +37,24 @@ button:active {
 }
 button[disabled] {
     opacity: 0.8;
+}
+
+button.fab {
+    width: 54px;
+    height: 54px;
+    border-radius: 50px;
+    border: none;
+    font-size: 24px;
+    box-shadow: 2px 2px 2px gray;
+}
+button.fab.fixed {
+    position: fixed;
+}
+button.fab.bottom {
+    bottom: 32px;
+}
+button.fab.right {
+    right: 32px;
 }
 
 .clear {
