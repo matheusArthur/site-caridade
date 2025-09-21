@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    background: rgb(45, 211, 111);
+    /*background: rgb(45, 211, 111);*/
+    background: #e1515133;
 }
 
 .centralize {

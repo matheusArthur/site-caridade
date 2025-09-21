@@ -109,3 +109,101 @@ main {
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
 }
+/*TUDO O QUE ESTA ACIMA É O MANU ANIMADO / NOTA: CRIAR UM CSS A PARTE PARA NAO FICAR TUDO JUNTO*/
+.section {
+  display: flex;              
+  align-items: center;        
+  justify-content: space-between;
+  padding: 40px;              /* espaço interno */
+  max-width: 1200px;          /* largura máxima do conteúdo */
+  margin: 0 auto;             /* centraliza e cria espaço em branco nas laterais */
+}
+
+.text {
+  width: 50%;                 
+  padding-right: 150px;
+}
+
+.text h2 {
+  color: #e74c3c;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.text p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.text button {
+  background-color: #e74c3c;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.text button:hover {
+  background-color: #c0392b;
+}
+
+.image {
+  width: 60%;                 
+}
+
+.image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/*TUDO O QUE ESTA ACIMA É O MANU ANIMADO / NOTA: CRIAR UM CSS A PARTE PARA NAO FICAR TUDO JUNTO*/
+.section1 {
+  display: flex;              
+  align-items: center;        
+  justify-content: space-between;
+  padding: 40px;              /* espaço interno */
+  max-width: 1200px;          /* largura máxima do conteúdo */
+  margin: 0 auto;             /* centraliza e cria espaço em branco nas laterais */
+  gap: 40px;
+}
+
+.text1 {
+  width: 50%;                 
+  padding-right: 150px;
+}
+
+.text1 h2 {
+  color: #e74c3c;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.text1 p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.text1 button {
+  background-color: #e74c3c;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.text1 button:hover {
+  background-color: #c0392b;
+}
+
+.image1 {
+  width: 60%;                 
+}
+
+.image1 img {
+  width: 100%;
+  border-radius: 10px;
+}
