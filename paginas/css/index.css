@@ -1,0 +1,70 @@
+/* Geral */
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* --- */
+
+/* Formulário e elementos internos */
+form {
+  width: 100%;
+  max-width: 300px; /* limita a largura do formulário */
+}
+
+input {
+  border: none;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* --- */
+
+/* Container principal e seus lados */
+.container {
+  display: flex;
+  height: 100vh; /* ocupa toda a altura da tela */
+}
+
+.left-side {
+  flex: 1.5; /* ocupa ~65% da tela */
+}
+
+.left-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cobre a área sem distorcer */
+}
+
+.right-side {
+  flex: 0.35; /* ocupa ~35% da tela */
+  background: #e74c3c; /* cor de fundo */
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center; /* centraliza verticalmente */
+  flex-direction: column; /* mantém os elementos em coluna */
+  
+  /* Estilos para posicionamento e padding */
+  position: relative; /* torna o lado direito o ponto de referência */
+  padding: 50px; /* espaçamento interno */
+}
+
+/* --- */
+
+/* Posicionamento da logo */
+.logo-form {
+  position: absolute; /* posiciona a imagem em relação ao .right-side */
+  top: 20px;       /* distância do topo */
+  left: 20px;      /* distância da esquerda */
+  width: 80px;     /* tamanho da logo */
+  height: auto;
+}

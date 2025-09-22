@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
-        window.location.href = "../home/home.html";
+        window.location.href = "../html/home.html";
     }
 })
 
@@ -37,7 +37,7 @@ function register() {
         email, password
     ).then(() => {
         hideLoading();
-        window.location.href = "../../pages/home/home.html";
+        window.location.href = "../html/home.html";
     }).catch(error => {
         hideLoading();
         alert(getErrorMessage(error));
