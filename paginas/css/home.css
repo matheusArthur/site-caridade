@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +20,7 @@ a:hover {
   letter-spacing: 4px;
 }
 
+/* NAVBAR */
 nav {
   display: flex;
   justify-content: space-around;
@@ -57,6 +59,7 @@ main {
   transition: 0.3s;
 }
 
+/* MOBILE NAV */
 @media (max-width: 999px) {
   body {
     overflow-x: hidden;
@@ -87,6 +90,7 @@ main {
   transform: translateX(0);
 }
 
+/* ANIMAÇÕES DO MENU */
 @keyframes navLinkFade {
   from {
     opacity: 0;
@@ -109,18 +113,99 @@ main {
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
 }
-/*TUDO O QUE ESTA ACIMA É O MANU ANIMADO / NOTA: CRIAR UM CSS A PARTE PARA NAO FICAR TUDO JUNTO*/
+
+/* ================================
+   HERO COM IMAGEM + FILTRO
+   ================================ */
+
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+  background: url('../img/i1.jpg') center/cover no-repeat;
+  overflow: hidden;
+}
+
+/* filtro */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(150, 50, 50, 0.45);
+  z-index: 0;
+}
+
+/* texto */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+}
+
+.hero-content p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+}
+
+/* botão */
+.hero-content button {
+  padding: 12px 26px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff6f6f;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.hero-content button:hover {
+  background-color: #ff4b4b;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+    padding: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    width: 90%;
+  }
+}
+
+/* ================================
+   SEÇÃO 1 (QUEM SOMOS)
+   ================================ */
+
 .section {
-  display: flex;              
-  align-items: center;        
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 40px;              /* espaço interno */
-  max-width: 1200px;          /* largura máxima do conteúdo */
-  margin: 0 auto;             /* centraliza e cria espaço em branco nas laterais */
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .text {
-  width: 50%;                 
+  width: 50%;
   padding-right: 150px;
 }
 
@@ -150,7 +235,7 @@ main {
 }
 
 .image {
-  width: 60%;                 
+  width: 60%;
 }
 
 .image img {
@@ -158,19 +243,22 @@ main {
   border-radius: 10px;
 }
 
-/*TUDO O QUE ESTA ACIMA É O MANU ANIMADO / NOTA: CRIAR UM CSS A PARTE PARA NAO FICAR TUDO JUNTO*/
+/* ================================
+   SEÇÃO 2 (COMO DOAR)
+   ================================ */
+
 .section1 {
-  display: flex;              
-  align-items: center;        
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 40px;              /* espaço interno */
-  max-width: 1200px;          /* largura máxima do conteúdo */
-  margin: 0 auto;             /* centraliza e cria espaço em branco nas laterais */
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
   gap: 40px;
 }
 
 .text1 {
-  width: 50%;                 
+  width: 50%;
   padding-right: 150px;
 }
 
@@ -200,7 +288,7 @@ main {
 }
 
 .image1 {
-  width: 60%;                 
+  width: 60%;
 }
 
 .image1 img {

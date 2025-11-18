@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 16px;
+}
+
+/* CIDADE */
+.cidade {
+    padding: 40px 60px;
+}
+
+.cidade h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* GRID */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.event-card {
+    position: relative;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.event-card:hover {
+    transform: scale(1.03);
+}
+
+.event-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+/* TEXTO DO CARD */
+.event-info {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    z-index: 2;
+}
+
+.event-info h3 {
+    font-size: 17px;
+    margin: 0 0 5px 0;
+}
+
+.event-info span {
+    font-size: 14px;
+    opacity: .9;
+}
