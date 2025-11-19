@@ -8,77 +8,64 @@
 <body>
     <header>
         <nav>
-            <a class="logo" href="">Caridade</a>
-            <div class="mobile-menu">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-            <ul class="nav-list">
-                <li><a href="../html/home.html">Home</a></li>
-                <li><a href="eventos.html">Eventos</a></li>
-                <li><a href="">Sobre</a></li>
-                <li><a href="">Doações</a></li>
-                <li><a type="button" onclick="logout()">Logout</a></li>
-            </ul>
-        </nav>
+                <a class="logo" href="">Caridade</a>
+                <div class="mobile-menu">
+                  <div class="line1"></div>
+                  <div class="line2"></div>
+                  <div class="line3"></div>
+                </div>
+                <ul class="nav-list">
+                  <li><a href="../html/home.html">Home</a></li>
+                  <li><a href="">Eventos</a></li>
+                  <li><a href="">Sobre</a></li>
+                  <li><a href="">Doações</a></li>
+                  <li><a type="button" onclick="logout()">Logout</a></li>
+                </ul>
+        </nav> 
     </header>
-
-    <!-- 🔥 NOVA SEÇÃO HERO COM IMAGEM E FILTRO -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Título da loja</h1>
-            <p>Subtítulo com a descrição do seu site de compras</p>
-            <button>Botão</button>
-        </div>
-    </section>
-
-    <!-- SUA SEÇÃO ORIGINAL -->
+  
     <div class="section">
-        <div class="text">
-            <h2>QUEM SOMOS</h2>
-            <p>
-                Somos uma iniciativa movida pela empatia e pelo desejo de transformar vidas.
-                Acreditamos que pequenos gestos podem gerar grandes mudanças.
-                Nossa missão é conectar quem pode ajudar com quem precisa,
-                promovendo solidariedade, inclusão e esperança.
-            </p>
-            <button>Botão</button>
-        </div>
+  <div class="text">
+    <h2>QUEM SOMOS</h2>
+    <p>
+      Somos uma iniciativa movida pela empatia e pelo desejo de transformar vidas. 
+      Acreditamos que pequenos gestos podem gerar grandes mudanças. 
+      Nossa missão é conectar quem pode ajudar com quem precisa, 
+      promovendo solidariedade, inclusão e esperança.
+    </p>
+    <button>Botão</button>
+  </div>
+  
+  <div class="image">
+    <img src="../img/i2.png" alt="Mãos segurando coração">
+  </div>
+</div>
 
-        <div class="image">
-            <img src="../img/i2.png" alt="Mãos segurando coração">
-        </div>
-    </div>
-
-    <div class="section1">
-        <div class="image1">
-            <img src="../img/i3.gif" alt="Mãos segurando coração">
-        </div>
+<div class="section1">
+    <div class="image1">
+        <img src="../img/i3.gif" alt="Mãos segurando coração">
+  </div>
 
         <div class="text1">
             <h2>Descubra como DOAR</h2>
-            <p>
-                De forma rápida e fácil, você pode fazer a diferença na vida de alguém.
-                Clique no botão abaixo para saber mais sobre como doar e contribuir para nossa causa.
-            </p>
-            <button>Botão</button>
-        </div>
+        <p>
+            De forma rapida e facil, voce pode fazer a diferenca na vida de alguem. 
+            Clique no botao abaixo para saber mais sobre como doar e contribuir para nossa causa.
+        </p>
+    <button>Botão</button>
+  </div>
 
-    </div>
-
+</div>
     <main> </main>
-
-    <script src="../js/mobile-navbar.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
-    <script src="../js/firebase-init.js"></script>
-    <script src="../js/auth-guard.js"></script>
-    <script src="../js/home.js"></script>
-
+    <script src="../js/mobile-navbar.js"></script>        
 </body>
 
 <link rel="stylesheet" href="../css/global.css">
 <link rel="stylesheet" href="../css/home.css">
 
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script src="../js/firebase-init.js"></script>
+<script src="../js/auth-guard.js"></script>
+<script src="../js/home.js"></script>
 </html>
