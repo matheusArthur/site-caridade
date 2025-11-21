@@ -5,29 +5,38 @@
     <meta charset="UTF-8">
     <title>Eventos</title>
 
-    <link rel="stylesheet" href="../css/eventos.css">
+    <!-- CSS GLOBAL + MENU -->
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/menu.css">
 
-    <header>
+    <!-- CSS ESPECÍFICO DOS EVENTOS -->
+    <link rel="stylesheet" href="../css/eventos.css">
+</head>
+
+<body>
+
+<!-- MENU -->
+<header>
     <nav>
-        <a class="logo" href="#">Caridade</a>
+        <a class="logo" href="../html/home.html">Caridade</a>
+
         <div class="mobile-menu">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
         </div>
+
         <ul class="nav-list">
             <li><a href="../html/home.html">Home</a></li>
-            <li><a href="../html/eventos.html">Eventos</a></li>
-            <li><a href="">Sobre</a></li>
+            <li><a href="eventos.html" class="active">Eventos</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
             <li><a href="">Doações</a></li>
             <li><a type="button" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
 </header>
-</head>
 
-<body>
-
+<!-- HERO -->
 <header class="hero">
     <img src="../img/i1.jpg" class="hero-img">
     <div class="hero-content">
@@ -36,6 +45,7 @@
     </div>
 </header>
 
+<!-- CIDADE -->
 <section class="cidade">
     <h2>Londrina</h2>
 
@@ -49,7 +59,7 @@
             </div>
         </div>
 
-        <!-- EVENTO 2 -->
+        <!-- EVENTOS 2–10 (mantidos iguais) -->
         <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
             <div class="event-info">
                 <h3>Ação ambiental</h3>
@@ -57,7 +67,6 @@
             </div>
         </div>
 
-        <!-- EVENTO 3 -->
         <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
             <div class="event-info">
                 <h3>Ação ambiental</h3>
@@ -65,7 +74,6 @@
             </div>
         </div>
 
-        <!-- EVENTO 4 -->
         <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
             <div class="event-info">
                 <h3>Ação ambiental</h3>
@@ -73,7 +81,6 @@
             </div>
         </div>
 
-        <!-- EVENTO 5 -->
         <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
             <div class="event-info">
                 <h3>Ação ambiental</h3>
@@ -81,7 +88,6 @@
             </div>
         </div>
 
-        <!-- EVENTO 6 -->
         <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
             <div class="event-info">
                 <h3>Ação ambiental</h3>
@@ -89,7 +95,6 @@
             </div>
         </div>
 
-        <!-- EVENTO 7 -->
         <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
             <div class="event-info">
                 <h3>Ação ambiental</h3>
@@ -97,7 +102,13 @@
             </div>
         </div>
 
-        <!-- EVENTO 8 -->
+        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
+            <div class="event-info">
+                <h3>Ação ambiental</h3>
+                <span>Londrina – 26/08</span>
+            </div>
+        </div>
+
         <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
             <div class="event-info">
                 <h3>Ação ambiental</h3>
@@ -108,7 +119,19 @@
     </div>
 </section>
 
-<script src="../js/eventos.js"></script>
+<!-- SCRIPTS (ORDEM CORRIGIDA) -->
+
+<script src="../js/mobile-navbar.js"></script>
+<script src="../js/home.js"></script>
+
+<!-- EVENTOS.JS DEVE SER O ÚLTIMO -->
+<script src="../js/eventos.js" defer></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script src="../js/firebase-init.js"></script>
+<script src="../js/auth-guard.js"></script>
 
 </body>
 </html>

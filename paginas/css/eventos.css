@@ -1,9 +1,15 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+/*RESET E BASE*/
+* {
+  margin: 0;
+  padding: 0;
 }
 
-/* HERO */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/*HERO*/
+
 .hero {
     position: relative;
     height: 300px;
@@ -35,9 +41,10 @@ body {
     font-size: 16px;
 }
 
-/* CIDADE */
+/*SEÇÃO DA CIDADE*/
+
 .cidade {
-    padding: 40px 60px;
+    padding: 40px 200px;
 }
 
 .cidade h2 {
@@ -45,14 +52,16 @@ body {
     margin-bottom: 20px;
 }
 
-/* GRID */
+/*GRID DOS EVENTOS*/
+
 .event-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 25px;
 }
 
-/* CARD */
+/*CARD DO EVENTO*/
+
 .event-card {
     position: relative;
     height: 260px;
@@ -75,7 +84,7 @@ body {
     background: rgba(0,0,0,0.4);
 }
 
-/* TEXTO DO CARD */
+/*TEXTO DO CARD*/
 .event-info {
     position: absolute;
     bottom: 15px;

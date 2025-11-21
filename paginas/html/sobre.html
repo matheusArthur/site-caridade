@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre Nós</title>
+
+    <!-- CSS GLOBAL (MENU) -->
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/global.css">
+
+    <!-- CSS ESPECÍFICO DA PÁGINA -->
+    <link rel="stylesheet" href="../css/sobre.css">
+</head>
+
+<body>
+
+<!-- MENU GLOBAL -->
+<header>
+    <nav>
+        <a class="logo" href="">Caridade</a>
+
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+        <ul class="nav-list">
+            <li><a href="../html/home.html">Home</a></li>
+            <li><a href="eventos.html">Eventos</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="">Doações</a></li>
+            <li><a type="button" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- SEÇÃO 1 — TÍTULO E TEXTO -->
+<section class="sobre-topo">
+    <div class="container">
+        <h1>Transforme vidas com sua doação ou serviço</h1>
+        <p>
+            Sua contribuição, independente do valor, ajuda a levar alimento, educação e dignidade para
+            crianças e famílias em situação de vulnerabilidade. Cada doação faz a diferença.
+        </p>
+    </div>
+</section>
+
+<!-- SEÇÃO 2 — IMAGEM COM TEXTO -->
+<section class="sobre-imagem">
+    <img src="../img/i1.jpg" class="sobre-img" alt="ação solidária">
+    <div class="sobre-texto">
+        Somos uma iniciativa solidária dedicada a ajudar quem mais precisa.
+        Acreditamos no poder da união e da empatia para transformar vidas.
+    </div>
+</section>
+
+<!-- JS DO MENU -->
+<script src="../js/mobile-navbar.js"></script>
+
+<!-- FIREBASE (MESMO DA HOME) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
+<!-- CONFIG & AUTENTICAÇÃO -->
+<script src="../js/firebase-init.js"></script>
+<script src="../js/auth-guard.js"></script>
+
+<!-- SCRIPT DO LOGOUT (HOME USA ESSE ARQUIVO) -->
+<script src="../js/home.js"></script>
+
+</body>
+</html>
