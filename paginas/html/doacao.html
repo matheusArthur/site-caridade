@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doações</title>
+  <link rel="stylesheet" href="doacoes.css">
+</head>
+<body>
+
+  <header>
+    Página de Doações
+  </header>
+
+  <div class="conteudo">
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <h2>Cadastrar Produto</h2>
+
+    <form id="formProduto">
+      <label>Título:</label>
+      <input type="text" id="titulo" required>
+
+      <label>Descrição:</label>
+      <textarea id="descricao" required></textarea>
+
+      <label>Categoria:</label>
+      <select id="categoria">
+        <option value="roupa">Roupa</option>
+        <option value="casa">Casa</option>
+        <option value="comida">Comida</option>
+        <option value="dinheiro">Dinheiro</option>
+      </select>
+
+      <label>URL da Imagem:</label>
+      <input type="text" id="imagem" required>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <p id="status"></p>
+
+    <hr style="margin: 40px 0;">
+
+    <div class="titulo-secao">Itens Disponíveis</div>
+
+    <!-- Produtos aparecerão aqui -->
+    <div id="produtos" class="cards-container"></div>
+  </div>
+
+
+  <!-- Firebase V8 -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA",
+      authDomain: "caridade-6464e.firebaseapp.com",
+      projectId: "caridade-6464e",
+      storageBucket: "caridade-6464e.firebasestorage.app",
+      messagingSenderId: "916897058334",
+      appId: "1:916897058334:web:906d1343b3523b3a9ca80f"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
+  <script>
+    function carregarProdutos() {
+      const container = document.getElementById("produtos");
+      container.innerHTML = "<p>Carregando...</p>";
+
+      db.collection("produtos").get().then((querySnapshot) => {
+        container.innerHTML = "";
+
+        querySnapshot.forEach((doc) => {
+          const item = doc.data();
+
+          const card = `
+            <div class="card-item">
+              <img src="${item.imagem}" alt="${item.titulo}">
+              <h3>${item.titulo}</h3>
+              <p>${item.descricao}</p>
+            </div>
+          `;
+
+          container.innerHTML += card;
+        });
+      });
+    }
+
+    window.onload = carregarProdutos;
+  </script>
+
+  <script>
+    const form = document.getElementById("formProduto");
+    const status = document.getElementById("status");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const titulo = document.getElementById("titulo").value;
+      const descricao = document.getElementById("descricao").value;
+      const categoria = document.getElementById("categoria").value;
+      const imagem = document.getElementById("imagem").value;
+
+      db.collection("produtos").add({
+        titulo: titulo,
+        descricao: descricao,
+        categoria: categoria,
+        imagem: imagem,
+        criadoEm: new Date()
+      })
+      .then(() => {
+        status.innerText = "Produto cadastrado com sucesso!";
+        form.reset();
+        carregarProdutos(); // atualiza a página automaticamente
+      })
+      .catch((error) => {
+        status.innerText = "Erro ao cadastrar: " + error;
+      });
+    });
+  </script>
+
+</body>
+</html>
