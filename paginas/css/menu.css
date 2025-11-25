@@ -1,4 +1,4 @@
-/*RESET*/
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -20,26 +20,41 @@ a:hover {
   letter-spacing: 4px;
 }
 
-/*NAVBAR*/
+/* NAVBAR */
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
   background: #ffffff;
+  padding: 0 40px;
   height: 8vh;
 }
 
+/* LISTA DE LINKS */
 .nav-list {
   list-style: none;
   display: flex;
+  align-items: center;
+  gap: 20px;  /* IMPORTANTE! */
 }
 
-.nav-list li {
-  letter-spacing: 3px;
-  margin-left: 32px;
+/* BOTÃO LOGOUT */
+.logout-btn {
+  background: #E15151;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 15px;
 }
 
+.logout-btn:hover {
+  opacity: 0.8;
+}
+
+/* MENU MOBILE */
 .mobile-menu {
   display: none;
   cursor: pointer;
@@ -53,11 +68,12 @@ nav {
   transition: 0.3s;
 }
 
-/* MOBILE NAV */
+/* RESPONSIVIDADE */
 @media (max-width: 999px) {
   body {
     overflow-x: hidden;
   }
+
   .nav-list {
     position: absolute;
     top: 8vh;
@@ -67,14 +83,16 @@ nav {
     background: #ffffff;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     transform: translateX(100%);
     transition: transform 0.3s ease-in;
   }
+
   .nav-list li {
+    opacity: 1;
     margin-left: 0;
-    opacity: 0;
   }
+
   .mobile-menu {
     display: block;
   }
@@ -84,18 +102,7 @@ nav {
   transform: translateX(0);
 }
 
-/* ANIMAÇÕES DO MENU */
-@keyframes navLinkFade {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
+/* ANIMAÇÕES */
 .mobile-menu.active .line1 {
   transform: rotate(-45deg) translate(-8px, 8px);
 }
