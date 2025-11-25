@@ -1,10 +1,12 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <!-- CSS DO MENU (novo arquivo separado) -->
+    <!-- CSS DO MENU -->
     <link rel="stylesheet" href="../css/menu.css">
 
     <!-- SEUS OUTROS CSS -->
@@ -13,26 +15,12 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a class="logo" href="">Caridade</a>
 
-            <div class="mobile-menu">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
+    <!-- MENU AUTOMÁTICO -->
+    <div id="menu"></div>
+    <script src="../js/menu.js"></script>
 
-            <ul class="nav-list">
-                <li><a href="../html/home.html">Home</a></li>
-                <li><a href="eventos.html">Eventos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="doacao.html">Doações</a></li>
-                <li><a type="button" onclick="logout()">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <!-- CONTEÚDO DA PÁGINA -->
     <div class="section">
         <div class="text">
             <h2>QUEM SOMOS</h2>
@@ -67,15 +55,13 @@
 
     <main></main>
 
-    <!-- JS DO MENU -->
-    <script src="../js/mobile-navbar.js"></script>
-
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
     <script src="../js/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>
     <script src="../js/home.js"></script>
+
 </body>
 
 </html>
