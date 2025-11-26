@@ -11,6 +11,9 @@
 
     <!-- CSS ESPECÍFICO DA PÁGINA -->
     <link rel="stylesheet" href="../css/sobre.css">
+
+    <!-- Reutilizando CSS dos eventos (grade de vídeos) -->
+    <link rel="stylesheet" href="../css/eventos.css">
 </head>
 
 <body>
@@ -18,7 +21,7 @@
 <!-- MENU GLOBAL -->
 <header>
     <nav>
-        <a class="logo" href="">Caridade</a>
+        <a class="logo" href="../html/home.html">Caridade</a>
 
         <div class="mobile-menu">
             <div class="line1"></div>
@@ -29,7 +32,7 @@
         <ul class="nav-list">
             <li><a href="../html/home.html">Home</a></li>
             <li><a href="eventos.html">Eventos</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="sobre.html" class="active">Sobre</a></li>
             <li><a href="doacao.html">Doações</a></li>
             <li><a type="button" onclick="logout()">Logout</a></li>
         </ul>
@@ -42,7 +45,7 @@
         <h1>Transforme vidas com sua doação ou serviço</h1>
         <p>
             Sua contribuição, independente do valor, ajuda a levar alimento, educação e dignidade para
-            crianças e famílias em situação de vulnerabilidade. Cada doação faz a diferença.
+            famílias em situação de vulnerabilidade. Cada doação faz a diferença.
         </p>
     </div>
 </section>
@@ -56,18 +59,72 @@
     </div>
 </section>
 
-<!-- JS DO MENU -->
+<!-- SEÇÃO DE VÍDEOS (ESTILO IGUAL A EVENTOS) -->
+<section class="cidade">
+    <h2>A Importância de Doar</h2>
+
+    <div class="event-grid">
+
+        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
+            <div class="event-info">
+                <h3>Por que doar?</h3>
+                <span>Assista</span>
+            </div>
+        </div>
+
+        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
+            <div class="event-info">
+                <h3>O impacto das doações</h3>
+                <span>Assista</span>
+            </div>
+        </div>
+
+        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
+            <div class="event-info">
+                <h3>A solidariedade na prática</h3>
+                <span>Assista</span>
+            </div>
+        </div>
+
+        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
+            <div class="event-info">
+                <h3>Como ajudar mais pessoas</h3>
+                <span>Assista</span>
+            </div>
+        </div>
+
+        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
+            <div class="event-info">
+                <h3>Histórias que emocionam</h3>
+                <span>Assista</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SCRIPTS DO SITE -->
 <script src="../js/mobile-navbar.js"></script>
 
-<!-- FIREBASE (MESMO DA HOME) -->
+<!-- Evento de clique nos cards -->
+<script>
+    document.querySelectorAll(".event-card").forEach(card => {
+        card.addEventListener("click", () => {
+            const link = card.getAttribute("data-youtube");
+            if (link) {
+                window.open(link, "_blank");
+            }
+        });
+    });
+</script>
+
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 
 <!-- CONFIG & AUTENTICAÇÃO -->
 <script src="../js/firebase-init.js"></script>
 <script src="../js/auth-guard.js"></script>
-
-<!-- SCRIPT DO LOGOUT (HOME USA ESSE ARQUIVO) -->
 <script src="../js/home.js"></script>
 
 </body>
