@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const id = extractYouTubeID(link);
 
         if (id) {
-            const thumbnail = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+            const thumbnail = `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
             card.style.backgroundImage = `url('${thumbnail}')`;
 
             card.addEventListener("click", () => {
