@@ -1,5 +1,5 @@
 // Carregar o menu automaticamente
-fetch("../html/menu.html")
+fetch("/site_caridade/paginas/html/menu.html")
   .then(r => r.text())
   .then(html => {
     document.getElementById("menu").innerHTML = html;
@@ -18,9 +18,9 @@ fetch("../html/menu.html")
   .catch(err => console.error("Erro ao carregar o menu:", err));
 
 
-// FUNÇÃO LOGOUT (se ainda não existir)
+// FUNÇÃO LOGOUT
 function logout() {
   firebase.auth().signOut().then(() => {
-    window.location.href = "login.html";
+    window.location.href = "index.html"; // ← ajuste aqui
   });
 }
