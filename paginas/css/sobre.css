@@ -1,32 +1,30 @@
-/* ========= SEÇÃO DO TOPO ========= */
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* TOPO */
 .sobre-topo {
     padding: 80px 200px;
-    background: #ffffff;
-    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: #fff;
 }
 
 .sobre-topo h1 {
     font-size: 42px;
-    font-weight: bold;
     color: #e15151;
-    line-height: 1.2;
-    margin-bottom: 20px;
 }
 
 .sobre-topo p {
-    font-size: 16px;
+    margin-top: 15px;
     color: #555;
-    max-width: 650px;
-    line-height: 1.6;
 }
 
-
-/* ========= SEÇÃO DA IMAGEM ========= */
-
+/* IMAGEM */
 .sobre-imagem {
     position: relative;
-    height: 400px;
+    height: 450px;
     overflow: hidden;
 }
 
@@ -34,142 +32,74 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(55%);
 }
 
-/* Texto centralizado na imagem */
+/* OVERLAY ESCURO */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+/* TEXTO DINÂMICO */
 .sobre-texto {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
     text-align: center;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1.5;
     width: 80%;
+
+    transition: 0.5s;
 }
 
-/* ========= RESPONSIVIDADE ========= */
+/* EFEITO FADE */
+.fade {
+    opacity: 0;
+}
 
+/* CARDS */
+.event-card {
+    height: 230px;
+    border-radius: 12px;
+    background: url('../img/i2.png') center/cover no-repeat;
+    position: relative;
+    transition: 0.3s;
+}
+
+.event-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.event-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+/* RESPONSIVO */
 @media (max-width: 900px) {
     .sobre-topo {
-        padding: 40px 40px;
+        padding: 40px;
     }
 
-    .sobre-topo h1 {
-        font-size: 32px;
-    }
-
-    .sobre-topo p {
-        font-size: 14px;
+    .sobre-texto {
+        font-size: 20px;
     }
 
     .sobre-imagem {
         height: 300px;
     }
-
-    .sobre-texto {
-        font-size: 18px;
-        width: 90%;
-    }
-}
-
-@media (max-width: 550px) {
-    .sobre-topo {
-        padding: 30px 20px;
-    }
-
-    .sobre-topo h1 {
-        font-size: 26px;
-    }
-
-    .sobre-imagem {
-        height: 260px;
-    }
-}
-
-/* ======== SEÇÃO DE VÍDEOS ======== */
-
-.videos-section {
-    padding: 50px 80px;
-    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
-}
-
-.videos-section h2 {
-    font-size: 30px;
-    font-weight: bold;
-    color: #e15151;
-    margin-bottom: 20px;
-}
-
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-}
-
-.video-card {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.video-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    filter: brightness(60%);
-    transition: 0.3s;
-}
-
-.video-card span {
-    position: absolute;
-    bottom: 10px;
-    left: 15px;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.video-card:hover img {
-    filter: brightness(80%);
-}
-
-/* RESPONSIVO */
-@media (max-width: 1200px) {
-    .videos-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 800px) {
-    .videos-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 500px) {
-    .videos-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.event-card {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    border-radius: 12px;
-    height: 230px;
-    position: relative;
-    overflow: hidden;
-    filter: brightness(80%);
-    transition: 0.3s;
-}
-
-.event-card:hover {
-    filter: brightness(65%);
 }

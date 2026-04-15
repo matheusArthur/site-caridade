@@ -2,186 +2,161 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-main {
-  background: url("bg.jpg") no-repeat center center;
-  background-size: cover;
-  height: 92vh;
-}
+/* ================= BANNER ================= */
 
-/*HERO COM IMAGEM + FILTRO*/
-
-.hero {
-  position: relative;
+.banner {
   height: 70vh;
+  background: url('../img/i1.jpg') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: white;
-
-  background: url('../img/i1.jpg') center/cover no-repeat;
-  overflow: hidden;
+  position: relative;
 }
 
-/*filtro*/
-.hero::before {
+.banner::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(150, 50, 50, 0.45);
-  z-index: 0;
+  background: rgba(0, 0, 0, 0.45);
 }
 
-/*texto*/
-.hero-content {
+.banner-content {
   position: relative;
   z-index: 1;
+  max-width: 700px;
 }
 
-.hero-content h1 {
+.banner-content h1 {
   font-size: 48px;
   margin-bottom: 15px;
-  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
 }
 
-.hero-content p {
+.banner-content p {
   font-size: 18px;
-  max-width: 600px;
-  margin: 0 auto 20px auto;
-  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  margin-bottom: 25px;
 }
 
-/*botão*/
-.hero-content button {
-  padding: 12px 26px;
+.banner-content button {
+  padding: 12px 30px;
+  background: #e74c3c;
   border: none;
-  border-radius: 8px;
-  background-color: #ff6f6f;
+  border-radius: 6px;
   color: white;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
-.hero-content button:hover {
-  background-color: #ff4b4b;
+.banner-content button:hover {
+  background: #c0392b;
+  transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .hero {
-    height: 60vh;
-    padding: 20px;
-  }
+/* ================= SEÇÕES ================= */
 
-  .hero-content h1 {
-    font-size: 32px;
-  }
-
-  .hero-content p {
-    font-size: 16px;
-    width: 90%;
-  }
-}
-
-/*SEÇÃO 1 (QUEM SOMOS)*/
-
-.section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.text {
-  width: 50%;
-  padding-right: 150px;
-}
-
-.text h2 {
-  color: #e74c3c;
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.text p {
-  font-size: 20px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.text button {
-  background-color: #e74c3c;
-  border: none;
-  padding: 10px 20px;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.text button:hover {
-  background-color: #c0392b;
-}
-
-.image {
-  width: 60%;
-}
-
-.image img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/*SEÇÃO 2 (COMO DOAR)*/
-
+.section,
 .section1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px;
+  padding: 80px 60px;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 40px;
+  gap: 50px;
 }
 
+/* fundo leve para diferenciar */
+.section {
+  background: #f9f9f9;
+}
+
+.section1 {
+  background: #ffffff;
+}
+
+/* TEXTOS */
+
+.text,
 .text1 {
   width: 50%;
-  padding-right: 150px;
 }
 
+.text h2,
 .text1 h2 {
   color: #e74c3c;
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.text1 p {
-  font-size: 20px;
-  line-height: 1.6;
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
-.text1 button {
-  background-color: #e74c3c;
+.text p,
+.text1 p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* BOTÃO PADRÃO */
+
+.btn-primary {
+  background: #e74c3c;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   color: white;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.text1 button:hover {
-  background-color: #c0392b;
+.btn-primary:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
 }
 
+/* IMAGENS */
+
+.image,
 .image1 {
-  width: 60%;
+  width: 50%;
 }
 
+.image img,
 .image1 img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media (max-width: 900px) {
+
+  .banner {
+    height: 60vh;
+    padding: 20px;
+  }
+
+  .banner-content h1 {
+    font-size: 32px;
+  }
+
+  .section,
+  .section1 {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 20px;
+  }
+
+  .text,
+  .text1,
+  .image,
+  .image1 {
+    width: 100%;
+  }
 }

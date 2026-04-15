@@ -4,64 +4,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Home - Caridade</title>
 
-    <!-- CSS DO MENU -->
-    <link rel="stylesheet" href="../css/menu.css">
-
-    <!-- SEUS OUTROS CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
 
-    <!-- MENU AUTOMÁTICO -->
-    <div id="menu"></div>
-    <script src="../js/menu.js"></script>
+    <!-- ===== MENU ===== -->
+    <nav>
+        <a class="logo" href="../html/home.html">Caridade</a>
 
-    <!-- CONTEÚDO DA PÁGINA -->
-    <div class="section">
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+        <ul class="nav-list">
+            <li><a href="../html/home.html" class="active">Home</a></li>
+            <li><a href="eventos.html">Eventos</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="doacao.html">Doações</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== BANNER ===== -->
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Bem-vindo ao Projeto</h1>
+            <p>Juntos podemos transformar vidas</p>
+            <button>Saiba Mais</button>
+        </div>
+    </section>
+
+    <!-- ===== QUEM SOMOS ===== -->
+    <section class="section">
         <div class="text">
-            <h2>QUEM SOMOS</h2>
+            <h2>Quem Somos</h2>
+
             <p>
                 Somos uma iniciativa movida pela empatia e pelo desejo de transformar vidas.
                 Acreditamos que pequenos gestos podem gerar grandes mudanças.
                 Nossa missão é conectar quem pode ajudar com quem precisa,
                 promovendo solidariedade, inclusão e esperança.
             </p>
-            <button>Botão</button>
+
+            <button class="btn-primary">Saiba mais</button>
         </div>
 
         <div class="image">
             <img src="../img/i2.png" alt="Mãos segurando coração">
         </div>
-    </div>
+    </section>
 
-    <div class="section1">
+    <!-- ===== COMO DOAR ===== -->
+    <section class="section1">
         <div class="image1">
-            <img src="../img/i3.gif" alt="Animação de coração">
+            <img src="../img/i3.gif" alt="Animação de doação">
         </div>
 
         <div class="text1">
             <h2>Descubra como DOAR</h2>
+
             <p>
                 De forma rápida e fácil, você pode fazer a diferença na vida de alguém.
-                Clique no botão abaixo para saber mais sobre como doar e contribuir para nossa causa.
+                Clique abaixo e contribua com a nossa causa.
             </p>
-            <button>Botão</button>
+
+            <button class="btn-primary">Doar agora</button>
         </div>
-    </div>
+    </section>
 
-    <main></main>
+    <!-- ===== SCRIPTS ===== -->
+    <script src="../js/mobile-navbar.js"></script>
 
-    <!-- FIREBASE -->
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
     <script src="../js/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>
     <script src="../js/home.js"></script>
 
-</body>
+    <!-- ===== INFORMAÇÕES ===== -->
+<section class="info-section">
 
+    <h3 class="info-title">Comprovante</h3>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <h4>Transparência</h4>
+            <p>
+                Trabalhamos com total transparência. Todos os recursos doados
+                são registrados e divulgados periodicamente para garantir a
+                confiança dos nossos parceiros e doadores.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h4>Seja um voluntário</h4>
+            <p>
+                Toda ajuda é bem-vinda! Participe das nossas ações como voluntário
+                e ajude a transformar vidas com seu tempo, talento ou carinho.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h4>Quem somos ++</h4>
+            <p>
+                Somos uma organização sem fins lucrativos, conectando pessoas que
+                precisam com aquelas que podem ajudar.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h4>Próximas campanhas</h4>
+            <p>
+                Acompanhe nosso calendário de eventos solidários e participe
+                das campanhas que fazem a diferença.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-left">
+            <h3>Caridade</h3>
+            <p>Transformando vidas através da solidariedade.</p>
+        </div>
+
+        <div class="footer-links">
+            <div>
+                <h4>Contato</h4>
+                <p>WhatsApp</p>
+                <p>Email</p>
+                <p>Sugestões</p>
+            </div>
+
+            <div>
+                <h4>Parcerias</h4>
+                <p>Página</p>
+                <p>Página</p>
+                <p>Página</p>
+            </div>
+
+            <div>
+                <h4>Termos</h4>
+                <p>Página</p>
+                <p>Página</p>
+                <p>Página</p>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
 </html>
