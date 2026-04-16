@@ -14,24 +14,8 @@
 
 <body>
 
-    <!-- ===== MENU ===== -->
-    <nav>
-        <a class="logo" href="../html/home.html">Caridade</a>
-
-        <div class="mobile-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-
-        <ul class="nav-list">
-            <li><a href="../html/home.html" class="active">Home</a></li>
-            <li><a href="eventos.html">Eventos</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="doacao.html">Doações</a></li>
-            <li><a href="#" onclick="logout()">Logout</a></li>
-        </ul>
-    </nav>
+    <!-- ===== MENU DINÂMICO ===== -->
+    <div id="menu"></div>
 
     <!-- ===== BANNER ===== -->
     <section class="banner">
@@ -80,96 +64,96 @@
         </div>
     </section>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ===== INFORMAÇÕES ===== -->
+    <section class="info-section">
+
+        <h3 class="info-title">Comprovante</h3>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+                <h4>Transparência</h4>
+                <p>
+                    Trabalhamos com total transparência. Todos os recursos doados
+                    são registrados e divulgados periodicamente.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h4>Seja um voluntário</h4>
+                <p>
+                    Participe das nossas ações e ajude a transformar vidas com seu tempo.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h4>Quem somos ++</h4>
+                <p>
+                    Somos uma organização conectando quem precisa com quem pode ajudar.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h4>Próximas campanhas</h4>
+                <p>
+                    Acompanhe nossos eventos e participe das campanhas solidárias.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-left">
+                <h3>Caridade</h3>
+                <p>Transformando vidas através da solidariedade.</p>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h4>Contato</h4>
+                    <p>WhatsApp</p>
+                    <p>Email</p>
+                    <p>Sugestões</p>
+                </div>
+
+                <div>
+                    <h4>Parcerias</h4>
+                    <p>Página</p>
+                    <p>Página</p>
+                    <p>Página</p>
+                </div>
+
+                <div>
+                    <h4>Termos</h4>
+                    <p>Página</p>
+                    <p>Página</p>
+                    <p>Página</p>
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- ===== SCRIPTS (SEMPRE NO FINAL) ===== -->
+
+    <!-- MENU DINÂMICO -->
+    <script src="../js/menu.js"></script>
+
+    <!-- MENU MOBILE -->
     <script src="../js/mobile-navbar.js"></script>
 
-    <!-- Firebase -->
+    <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
     <script src="../js/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>
-    <script src="../js/home.js"></script>
-
-    <!-- ===== INFORMAÇÕES ===== -->
-<section class="info-section">
-
-    <h3 class="info-title">Comprovante</h3>
-
-    <div class="info-grid">
-
-        <div class="info-card">
-            <h4>Transparência</h4>
-            <p>
-                Trabalhamos com total transparência. Todos os recursos doados
-                são registrados e divulgados periodicamente para garantir a
-                confiança dos nossos parceiros e doadores.
-            </p>
-        </div>
-
-        <div class="info-card">
-            <h4>Seja um voluntário</h4>
-            <p>
-                Toda ajuda é bem-vinda! Participe das nossas ações como voluntário
-                e ajude a transformar vidas com seu tempo, talento ou carinho.
-            </p>
-        </div>
-
-        <div class="info-card">
-            <h4>Quem somos ++</h4>
-            <p>
-                Somos uma organização sem fins lucrativos, conectando pessoas que
-                precisam com aquelas que podem ajudar.
-            </p>
-        </div>
-
-        <div class="info-card">
-            <h4>Próximas campanhas</h4>
-            <p>
-                Acompanhe nosso calendário de eventos solidários e participe
-                das campanhas que fazem a diferença.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-
-    <div class="footer-container">
-
-        <div class="footer-left">
-            <h3>Caridade</h3>
-            <p>Transformando vidas através da solidariedade.</p>
-        </div>
-
-        <div class="footer-links">
-            <div>
-                <h4>Contato</h4>
-                <p>WhatsApp</p>
-                <p>Email</p>
-                <p>Sugestões</p>
-            </div>
-
-            <div>
-                <h4>Parcerias</h4>
-                <p>Página</p>
-                <p>Página</p>
-                <p>Página</p>
-            </div>
-
-            <div>
-                <h4>Termos</h4>
-                <p>Página</p>
-                <p>Página</p>
-                <p>Página</p>
-            </div>
-        </div>
-
-    </div>
-
-</footer>
 
 </body>
 </html>
