@@ -58,11 +58,10 @@
 <!-- PRODUTOS -->
 <section class="produtos">
   <h2>Últimos adicionados</h2>
-
   <div id="lista-produtos" class="produtos-grid"></div>
 </section>
 
-<!-- JS MENU -->
+<!-- MENU MOBILE -->
 <script src="../js/mobile-navbar.js"></script>
 
 <!-- FIREBASE -->
@@ -80,7 +79,7 @@
   const db = firebase.firestore();
 </script>
 
-<!-- SCRIPT PRODUTOS -->
+<!-- SCRIPT PRINCIPAL -->
 <script>
   const container = document.getElementById("lista-produtos");
 
@@ -100,11 +99,11 @@
         const item = doc.data();
 
         const card = `
-          <div class="card">
-            <img src="${item.imagem}">
+          <div class="card" onclick="abrirProduto('${doc.id}')">
+            <img src="${item.imagem}" alt="${item.titulo}">
             <div class="card-info">
               <h3>${item.titulo}</h3>
-              <p>${item.descricao}</p>
+              <p>${item.descricao ? item.descricao.substring(0, 60) : ""}...</p>
               <span>${item.categoria}</span>
             </div>
           </div>
@@ -115,6 +114,11 @@
     });
   }
 
+  // 🔥 REDIRECIONA PARA A PÁGINA DE DETALHE CORRETA
+  function abrirProduto(id) {
+    window.location.href = `produtosDetalhe.html?id=${id}`;
+  }
+
   // FILTRO POR CATEGORIA
   document.querySelectorAll(".categoria").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -123,7 +127,7 @@
     });
   });
 
-  // CARREGAR TODOS
+  // CARREGAMENTO INICIAL
   carregarProdutos();
 </script>
 

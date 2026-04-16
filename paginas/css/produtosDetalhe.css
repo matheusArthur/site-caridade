@@ -1,0 +1,96 @@
+.produto-detalhe {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.produto-img img {
+  width: 400px;
+  border-radius: 10px;
+}
+
+.produto-info {
+  flex: 1;
+}
+
+.produto-info h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.produto-info p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.categoria {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.btn-doar {
+  padding: 12px 20px;
+  background: #e15151;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-doar:hover {
+  background: #c0392b;
+}
+
+/* RELACIONADOS */
+
+.relacionados {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+
+.relacionados h2 {
+  margin-bottom: 20px;
+}
+
+/* GRID IGUAL PRODUTOS */
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 10px;
+}
+
+.card-info h3 {
+  font-size: 16px;
+}
+
+.card-info p {
+  font-size: 13px;
+  color: #555;
+}
