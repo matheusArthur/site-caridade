@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- CSS -->
+
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/eventos.css">
@@ -14,78 +15,117 @@
 
 <body>
 
-<!-- ===== MENU DINÂMICO ===== -->
+<!-- MENU -->
 <div id="menu"></div>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <header class="hero">
-    <img src="../img/i1.jpg" class="hero-img">
-    <div class="hero-content">
-        <h1>Eventos</h1>
-        <p>Acompanhe os principais eventos solidários.</p>
+    <div class="hero-overlay">
+        <h1>Eventos Solidários</h1>
+        <p id="frase">A solidariedade transforma vidas</p>
     </div>
 </header>
 
-<!-- ===== CIDADE ===== -->
-<section class="cidade">
-    <h2>Londrina</h2>
-
-    <div class="event-grid">
-
-        <div class="event-card" data-youtube="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <div class="event-info">
-                <h3>Coleta de lixo equipada</h3>
-                <span>26/08</span>
-            </div>
-        </div>
-
-        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
-            <div class="event-info">
-                <h3>Ação ambiental</h3>
-                <span>26/08</span>
-            </div>
-        </div>
-
-        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
-            <div class="event-info">
-                <h3>Doação de alimentos</h3>
-                <span>26/08</span>
-            </div>
-        </div>
-
-        <div class="event-card" data-youtube="https://youtu.be/aqz-KE-bpKQ">
-            <div class="event-info">
-                <h3>Campanha solidária</h3>
-                <span>26/08</span>
-            </div>
-        </div>
-
-    </div>
+<!-- BUSCA -->
+<section class="search-section">
+    <h2>Descubra eventos e ações solidárias</h2>
+    <input type="text" id="busca" placeholder="Buscar por cidade, tema ou causa...">
 </section>
 
-<!-- ===== MENU (OBRIGATÓRIO) ===== -->
-<script src="../js/menu.js"></script>
+<!-- VIDEOS -->
+<section class="videos-section">
+    <div id="event-grid" class="event-grid"></div>
+</section>
 
-<!-- ===== MENU MOBILE ===== -->
+<!-- FRASE INSPIRAÇÃO -->
+<section class="inspiration">
+    <h2>🌍 Faça parte da mudança</h2>
+    <p>
+        Eventos de solidariedade não são apenas encontros — são oportunidades de transformar vidas.
+        Cada gesto importa. Cada ação gera impacto.
+    </p>
+</section>
+
+<script src="../js/menu.js"></script>
 <script src="../js/mobile-navbar.js"></script>
 
-<!-- ===== EVENTOS JS ===== -->
 <script>
-document.querySelectorAll(".event-card").forEach(card => {
-    card.addEventListener("click", () => {
-        const link = card.getAttribute("data-youtube");
-        if (link) {
-            window.open(link, "_blank");
-        }
-    });
-});
-</script>
+const API_KEY = "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA";
 
-<!-- ===== FIREBASE ===== -->
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
-<script src="../js/firebase-init.js"></script>
-<script src="../js/auth-guard.js"></script>
+const container = document.getElementById("event-grid");
+const inputBusca = document.getElementById("busca");
+
+// FRASES DINÂMICAS
+const frases = [
+    "A solidariedade transforma vidas.",
+    "Doe hoje, mude o amanhã.",
+    "Pequenas ações geram grandes mudanças.",
+    "Seu gesto pode salvar alguém."
+];
+
+let i = 0;
+setInterval(() => {
+    i = (i + 1) % frases.length;
+    document.getElementById("frase").innerText = frases[i];
+}, 8000);
+
+
+// CARREGAR VIDEOS
+async function carregarVideos(termo = "doação solidariedade Brasil") {
+
+    container.innerHTML = "Carregando...";
+
+    try {
+        const res = await fetch(
+            `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(termo)}&type=video&maxResults=10&order=date&regionCode=BR&key=${API_KEY}`
+        );
+
+        const data = await res.json();
+
+        container.innerHTML = "";
+
+        data.items.forEach(video => {
+
+            const videoId = video.id.videoId;
+            const titulo = video.snippet.title;
+            const thumb = video.snippet.thumbnails.high.url;
+
+            const card = `
+                <div class="event-card" onclick="abrirVideo('${videoId}')">
+                    <img src="${thumb}" alt="">
+                    
+                    <div class="event-info">
+                        <h3>${titulo}</h3>
+                        <span>Assistir</span>
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML += card;
+        });
+
+    } catch (erro) {
+        container.innerHTML = "Erro ao carregar vídeos.";
+    }
+}
+
+// ABRIR VIDEO
+function abrirVideo(id) {
+    window.open(`https://www.youtube.com/watch?v=${id}`, "_blank");
+}
+
+// BUSCA
+inputBusca.addEventListener("keyup", (e) => {
+    const termo = e.target.value;
+
+    if (termo.length > 2) {
+        carregarVideos(termo);
+    }
+});
+
+// INICIAL
+carregarVideos();
+</script>
 
 </body>
 </html>
