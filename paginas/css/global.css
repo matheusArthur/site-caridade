@@ -79,3 +79,7 @@ button.fab.right {
     color: white;
     display: none;
 } 
+
+body {
+    font-family: 'Poppins', sans-serif;
+}

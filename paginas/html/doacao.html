@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doações</title>
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/menu.css">
@@ -13,26 +13,8 @@
 
 <body>
 
-<!-- MENU -->
-<header>
-  <nav>
-    <a class="logo" href="../html/home.html">Caridade</a>
-
-    <div class="mobile-menu">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
-
-    <ul class="nav-list">
-      <li><a href="../html/home.html">Home</a></li>
-      <li><a href="eventos.html">Eventos</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="doacao.html" class="active">Doações</a></li>
-      <li><a href="#" onclick="logout()">Logout</a></li>
-    </ul>
-  </nav>
-</header>
+<!-- MENU DINÂMICO -->
+<div id="menu"></div>
 
 <!-- CONTEÚDO -->
 <div class="conteudo">
@@ -68,6 +50,9 @@
 
   <div id="produtos" class="cards-container"></div>
 </div>
+
+<!-- MENU (IMPORTANTE) -->
+<script src="../js/menu.js"></script>
 
 <!-- MENU MOBILE -->
 <script src="../js/mobile-navbar.js"></script>

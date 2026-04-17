@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Caridade</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/menu.css">
@@ -14,146 +14,150 @@
 
 <body>
 
-    <!-- ===== MENU DINÂMICO ===== -->
-    <div id="menu"></div>
+<!-- ===== MENU DINÂMICO ===== -->
+<div id="menu"></div>
 
-    <!-- ===== BANNER ===== -->
-    <section class="banner">
-        <div class="banner-content">
-            <h1>Bem-vindo ao Projeto</h1>
-            <p>Juntos podemos transformar vidas</p>
-            <button>Saiba Mais</button>
-        </div>
-    </section>
+<!-- ===== BANNER ===== -->
+<section class="banner">
+    <div class="banner-content">
+        <h1>Bem-vindo ao Projeto</h1>
+        <p>Juntos podemos transformar vidas</p>
+        <button onclick="window.location.href='sobre.html'">Saiba Mais</button>
+    </div>
+</section>
 
-    <!-- ===== QUEM SOMOS ===== -->
-    <section class="section">
-        <div class="text">
-            <h2>Quem Somos</h2>
+<!-- ===== QUEM SOMOS ===== -->
+<section class="section">
+    <div class="text">
+        <h2>Quem Somos</h2>
 
+        <p>
+            Somos uma iniciativa movida pela empatia e pelo desejo de transformar vidas.
+            Acreditamos que pequenos gestos podem gerar grandes mudanças.
+            Nossa missão é conectar quem pode ajudar com quem precisa,
+            promovendo solidariedade, inclusão e esperança.
+        </p>
+
+        <button class="btn-primary" onclick="window.location.href='sobre.html'">
+            Saiba mais
+        </button>
+    </div>
+
+    <div class="image">
+        <img src="../img/i2.png" alt="Mãos segurando coração">
+    </div>
+</section>
+
+<!-- ===== COMO DOAR ===== -->
+<section class="section1">
+    <div class="image1">
+        <img src="../img/i3.gif" alt="Animação de doação">
+    </div>
+
+    <div class="text1">
+        <h2>Descubra como DOAR</h2>
+
+        <p>
+            De forma rápida e fácil, você pode fazer a diferença na vida de alguém.
+            Clique abaixo e contribua com a nossa causa.
+        </p>
+
+        <button class="btn-primary" onclick="window.location.href='doacao.html'">
+            Doar agora
+        </button>
+    </div>
+</section>
+
+<!-- ===== INFORMAÇÕES ===== -->
+<section class="info-section">
+
+    <h3 class="info-title">Comprovante</h3>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <h4>Transparência</h4>
             <p>
-                Somos uma iniciativa movida pela empatia e pelo desejo de transformar vidas.
-                Acreditamos que pequenos gestos podem gerar grandes mudanças.
-                Nossa missão é conectar quem pode ajudar com quem precisa,
-                promovendo solidariedade, inclusão e esperança.
+                Trabalhamos com total transparência. Todos os recursos doados
+                são registrados e divulgados periodicamente.
             </p>
-
-            <button class="btn-primary">Saiba mais</button>
         </div>
 
-        <div class="image">
-            <img src="../img/i2.png" alt="Mãos segurando coração">
-        </div>
-    </section>
-
-    <!-- ===== COMO DOAR ===== -->
-    <section class="section1">
-        <div class="image1">
-            <img src="../img/i3.gif" alt="Animação de doação">
-        </div>
-
-        <div class="text1">
-            <h2>Descubra como DOAR</h2>
-
+        <div class="info-card">
+            <h4>Seja um voluntário</h4>
             <p>
-                De forma rápida e fácil, você pode fazer a diferença na vida de alguém.
-                Clique abaixo e contribua com a nossa causa.
+                Participe das nossas ações e ajude a transformar vidas com seu tempo.
             </p>
-
-            <button class="btn-primary">Doar agora</button>
-        </div>
-    </section>
-
-    <!-- ===== INFORMAÇÕES ===== -->
-    <section class="info-section">
-
-        <h3 class="info-title">Comprovante</h3>
-
-        <div class="info-grid">
-
-            <div class="info-card">
-                <h4>Transparência</h4>
-                <p>
-                    Trabalhamos com total transparência. Todos os recursos doados
-                    são registrados e divulgados periodicamente.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h4>Seja um voluntário</h4>
-                <p>
-                    Participe das nossas ações e ajude a transformar vidas com seu tempo.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h4>Quem somos ++</h4>
-                <p>
-                    Somos uma organização conectando quem precisa com quem pode ajudar.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h4>Próximas campanhas</h4>
-                <p>
-                    Acompanhe nossos eventos e participe das campanhas solidárias.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-
-        <div class="footer-container">
-
-            <div class="footer-left">
-                <h3>Caridade</h3>
-                <p>Transformando vidas através da solidariedade.</p>
-            </div>
-
-            <div class="footer-links">
-                <div>
-                    <h4>Contato</h4>
-                    <p>WhatsApp</p>
-                    <p>Email</p>
-                    <p>Sugestões</p>
-                </div>
-
-                <div>
-                    <h4>Parcerias</h4>
-                    <p>Página</p>
-                    <p>Página</p>
-                    <p>Página</p>
-                </div>
-
-                <div>
-                    <h4>Termos</h4>
-                    <p>Página</p>
-                    <p>Página</p>
-                    <p>Página</p>
-                </div>
-            </div>
-
         </div>
 
-    </footer>
+        <div class="info-card">
+            <h4>Quem somos ++</h4>
+            <p>
+                Somos uma organização conectando quem precisa com quem pode ajudar.
+            </p>
+        </div>
 
-    <!-- ===== SCRIPTS (SEMPRE NO FINAL) ===== -->
+        <div class="info-card">
+            <h4>Próximas campanhas</h4>
+            <p>
+                Acompanhe nossos eventos e participe das campanhas solidárias.
+            </p>
+        </div>
 
-    <!-- MENU DINÂMICO -->
-    <script src="../js/menu.js"></script>
+    </div>
+</section>
 
-    <!-- MENU MOBILE -->
-    <script src="../js/mobile-navbar.js"></script>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
 
-    <!-- FIREBASE -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <div class="footer-container">
 
-    <script src="../js/firebase-init.js"></script>
-    <script src="../js/auth-guard.js"></script>
+        <div class="footer-left">
+            <h3>Caridade</h3>
+            <p>Transformando vidas através da solidariedade.</p>
+        </div>
+
+        <div class="footer-links">
+            <div>
+                <h4>Contato</h4>
+                <p>WhatsApp</p>
+                <p>Email</p>
+                <p>Sugestões</p>
+            </div>
+
+            <div>
+                <h4>Parcerias</h4>
+                <p>Página</p>
+                <p>Página</p>
+                <p>Página</p>
+            </div>
+
+            <div>
+                <h4>Termos</h4>
+                <p>Página</p>
+                <p>Página</p>
+                <p>Página</p>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+
+<!-- MENU (SEMPRE PRIMEIRO) -->
+<script src="../js/menu.js"></script>
+
+<!-- MENU MOBILE -->
+<script src="../js/mobile-navbar.js"></script>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
+<script src="../js/firebase-init.js"></script>
+<script src="../js/auth-guard.js"></script>
 
 </body>
 </html>
