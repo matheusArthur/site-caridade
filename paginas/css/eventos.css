@@ -1,118 +1,174 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #f8f9fb;
+body{
+font-family:'Poppins',sans-serif;
+background:#f8f9fb;
 }
 
 /* HERO */
-.hero {
-    height: 300px;
-    background: url("../img/i1.jpg") center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.hero{
+height:300px;
+background:url("../img/i1.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-.hero-overlay {
-    background: rgba(0,0,0,0.5);
-    padding: 40px;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
+.hero-overlay{
+background:rgba(0,0,0,0.6);
+padding:40px;
+color:white;
+border-radius:10px;
+text-align:center;
 }
 
-.hero h1 {
-    font-size: 40px;
+/* IMPACTO */
+.impacto{
+display:flex;
+justify-content:space-around;
+padding:30px;
+background:white;
+font-weight:bold;
 }
 
-.hero p {
-    margin-top: 10px;
-    font-size: 18px;
+/* ALERTA */
+.alerta{
+background:#e63946;
+color:white;
+padding:10px;
+text-align:center;
+}
+
+/* FILTROS MINIMALISTAS */
+.filtros{
+text-align:center;
+padding:20px;
+}
+
+.filtros button{
+margin:5px;
+padding:6px 12px;
+border:1px solid #ddd;
+background:transparent;
+color:#555;
+border-radius:20px;
+cursor:pointer;
+font-size:13px;
+transition:0.3s;
+}
+
+.filtros button:hover{
+border-color:#e63946;
+color:#e63946;
+}
+
+.filtros button.active{
+background:#e63946;
+color:white;
+border-color:#e63946;
 }
 
 /* BUSCA */
-.search-section {
-    text-align: center;
-    padding: 40px 20px;
+.search-section{
+text-align:center;
+padding:20px;
 }
 
-.search-section h2 {
-    margin-bottom: 15px;
-}
-
-.search-section input {
-    padding: 12px;
-    width: 300px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    outline: none;
+.search-section input{
+padding:12px;
+width:300px;
+border-radius:8px;
+border:1px solid #ddd;
 }
 
 /* GRID */
-.videos-section {
-    padding: 20px 40px;
-}
-
-.event-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+.event-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
 }
 
 /* CARD */
-.event-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.event-card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
 
-.event-card:hover {
-    transform: translateY(-5px);
+.event-card:hover{
+transform:scale(1.05);
 }
 
-.event-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
+.event-card img{
+width:100%;
+height:160px;
+object-fit:cover;
 }
 
-.event-info {
-    padding: 10px;
+.event-info{
+padding:10px;
 }
 
-.event-info h3 {
-    font-size: 14px;
-    height: 40px;
-    overflow: hidden;
+.event-info span{
+color:#e63946;
 }
 
-.event-info span {
-    color: #e63946;
-    font-size: 12px;
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.8);
+justify-content:center;
+align-items:center;
+z-index:999;
 }
 
-/* INSPIRAÇÃO */
-.inspiration {
-    background: #ffe5e5;
-    text-align: center;
-    padding: 60px 20px;
-    margin-top: 40px;
+.modal-content{
+background:black;
+padding:20px;
+border-radius:10px;
+position:relative;
 }
 
-.inspiration h2 {
-    margin-bottom: 15px;
+.modal iframe{
+width:600px;
+height:350px;
 }
 
-.inspiration p {
-    max-width: 600px;
-    margin: auto;
+.close{
+position:absolute;
+top:10px;
+right:10px;
+color:white;
+font-size:25px;
+cursor:pointer;
+}
+
+/* BOTAO */
+.btn-ajudar{
+margin-top:10px;
+background:#e63946;
+color:white;
+padding:10px;
+border:none;
+width:100%;
+cursor:pointer;
+border-radius:6px;
+}
+
+/* LOADING */
+.loading{
+text-align:center;
+padding:40px;
 }
 
 /* RESPONSIVO */
-@media (max-width: 900px) {
-    .event-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+@media(max-width:768px){
+.modal iframe{
+width:90vw;
+height:50vw;
+}
 }

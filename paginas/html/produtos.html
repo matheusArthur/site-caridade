@@ -1,135 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produtos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produtos</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- CSS -->
-  <link rel="stylesheet" href="../css/global.css">
-  <link rel="stylesheet" href="../css/menu.css">
-  <link rel="stylesheet" href="../css/produtos.css">
+
+<link rel="stylesheet" href="../css/menu.css">
+<link rel="stylesheet" href="../css/produtos.css">
 </head>
 
 <body>
 
 <!-- MENU -->
-<header>
-  <nav>
-    <a class="logo" href="../html/home.html">Caridade</a>
-
-    <div class="mobile-menu">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
-
-    <ul class="nav-list">
-      <li><a href="../html/home.html">Home</a></li>
-      <li><a href="eventos.html">Eventos</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="doacao.html">Doações</a></li>
-      <li><a href="produtos.html" class="active">Produtos</a></li>
-      <li><a href="#" onclick="logout()">Logout</a></li>
-    </ul>
-  </nav>
-</header>
+<div id="menu"></div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <h1>Faça uma boa doação</h1>
-    <button>Saber +</button>
+    <h1>Produtos para Doação</h1>
+    <button>Explorar</button>
   </div>
 </section>
 
 <!-- CATEGORIAS -->
 <section class="categorias">
-  <h2>O que você procura?</h2>
+  <h2>Categorias</h2>
 
   <div class="categorias-grid">
-    <div class="categoria" data-categoria="roupa">ROUPA</div>
-    <div class="categoria" data-categoria="casa">CASA</div>
-    <div class="categoria" data-categoria="comida">COMIDA</div>
-    <div class="categoria" data-categoria="dinheiro">DINHEIRO</div>
+    <div class="categoria">👕 Roupas</div>
+    <div class="categoria">🏠 Casa</div>
+    <div class="categoria">🍞 Alimentos</div>
+    <div class="categoria">💰 Financeiro</div>
   </div>
 </section>
 
-<!-- PRODUTOS -->
+<!-- PRODUTOS DINÂMICOS -->
 <section class="produtos">
-  <h2>Últimos adicionados</h2>
-  <div id="lista-produtos" class="produtos-grid"></div>
-</section>
+  <h2>Doações Disponíveis</h2>
 
-<!-- MENU MOBILE -->
-<script src="../js/mobile-navbar.js"></script>
+  <div id="produtos" class="produtos-grid"></div>
+</section>
 
 <!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
 <script>
-  const firebaseConfig = {
-    apiKey: "SUA_API_KEY",
-    authDomain: "caridade-6464e.firebaseapp.com",
-    projectId: "caridade-6464e"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA",
+  authDomain: "caridade-6464e.firebaseapp.com",
+  projectId: "caridade-6464e",
+};
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-</script>
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-<!-- SCRIPT PRINCIPAL -->
-<script>
-  const container = document.getElementById("lista-produtos");
+/* CARREGAR PRODUTOS */
+function carregarProdutos() {
+  const container = document.getElementById("produtos");
+  container.innerHTML = "<p>Carregando...</p>";
 
-  function carregarProdutos(categoria = null) {
-    container.innerHTML = "Carregando...";
+  db.collection("produtos")
+    .orderBy("criadoEm", "desc")
+    .get()
+    .then(snapshot => {
 
-    let ref = db.collection("produtos");
-
-    if (categoria) {
-      ref = ref.where("categoria", "==", categoria);
-    }
-
-    ref.get().then(snapshot => {
       container.innerHTML = "";
 
       snapshot.forEach(doc => {
         const item = doc.data();
 
-        const card = `
-          <div class="card" onclick="abrirProduto('${doc.id}')">
-            <img src="${item.imagem}" alt="${item.titulo}">
-            <div class="card-info">
-              <h3>${item.titulo}</h3>
-              <p>${item.descricao ? item.descricao.substring(0, 60) : ""}...</p>
-              <span>${item.categoria}</span>
-            </div>
-          </div>
+        const card = document.createElement("div");
+        card.className = "card-item";
+
+        card.innerHTML = `
+          <img src="${item.imagem}" onerror="this.src='https://via.placeholder.com/300'">
+          <h3>${item.titulo}</h3>
+          <p>${item.descricao}</p>
+          <div class="categoria">${item.categoria}</div>
+          <div class="btn-interesse">Tenho interesse</div>
         `;
 
-        container.innerHTML += card;
+        container.appendChild(card);
       });
+
+    })
+    .catch(() => {
+      container.innerHTML = "<p>Erro ao carregar dados</p>";
     });
-  }
+}
 
-  // 🔥 REDIRECIONA PARA A PÁGINA DE DETALHE CORRETA
-  function abrirProduto(id) {
-    window.location.href = `produtosDetalhe.html?id=${id}`;
-  }
-
-  // FILTRO POR CATEGORIA
-  document.querySelectorAll(".categoria").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const cat = btn.getAttribute("data-categoria");
-      carregarProdutos(cat);
-    });
-  });
-
-  // CARREGAMENTO INICIAL
-  carregarProdutos();
+/* INICIAL */
+window.onload = carregarProdutos;
 </script>
+
+<!-- MENU JS -->
+<script src="../js/menu.js"></script>
+<script src="../js/mobile-navbar.js"></script>
 
 </body>
 </html>

@@ -5,20 +5,32 @@
     box-sizing: border-box;
 }
 
+/* GLOBAL */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9f9;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
 /* TOPO */
 .sobre-topo {
-    padding: 80px 200px;
-    background: #fff;
+    padding: 80px 10%;
+    background: white;
 }
 
 .sobre-topo h1 {
-    font-size: 42px;
+    font-size: 48px;
     color: #e15151;
 }
 
 .sobre-topo p {
     margin-top: 15px;
     color: #555;
+    max-width: 700px;
 }
 
 /* IMAGEM */
@@ -34,14 +46,14 @@
     object-fit: cover;
 }
 
-/* OVERLAY ESCURO */
+/* OVERLAY */
 .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
 }
 
-/* TEXTO DINÂMICO */
+/* TEXTO */
 .sobre-texto {
     position: absolute;
     top: 50%;
@@ -52,41 +64,68 @@
     font-size: 28px;
     font-weight: bold;
     text-align: center;
-    width: 80%;
+    max-width: 600px;
 
-    transition: 0.5s;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
-/* EFEITO FADE */
 .fade {
     opacity: 0;
 }
 
-/* CARDS */
+/* SOBRE */
+.sobre-nos {
+    padding: 80px 10%;
+    background: white;
+    text-align: center;
+}
+
+.sobre-nos h2 {
+    font-size: 32px;
+    color: #e15151;
+    margin-bottom: 20px;
+}
+
+.sobre-nos p {
+    max-width: 700px;
+    margin: 10px auto;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* VÍDEOS */
+.cidade {
+    padding: 80px 10%;
+}
+
+.cidade h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
 .event-card {
-    height: 230px;
+    height: 220px;
     border-radius: 12px;
-    background: url('../img/i2.png') center/cover no-repeat;
-    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     transition: 0.3s;
 }
 
-.event-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-}
-
-.event-info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-}
-
 .event-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+}
+
+.event-card iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 /* RESPONSIVO */

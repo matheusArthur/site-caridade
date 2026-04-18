@@ -2,20 +2,19 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventos Solidários</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/eventos.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/menu.css">
+<link rel="stylesheet" href="../css/eventos.css">
 </head>
 
 <body>
 
-<!-- MENU -->
 <div id="menu"></div>
 
 <!-- HERO -->
@@ -26,105 +25,137 @@
     </div>
 </header>
 
+<!-- IMPACTO -->
+<section class="impacto">
+    <div>+1200 pessoas ajudadas</div>
+    <div>+300 doações</div>
+    <div>+50 projetos</div>
+</section>
+
+<!-- ALERTA -->
+<div class="alerta">
+🔥 Campanha urgente em Londrina: ajude famílias em vulnerabilidade
+</div>
+
+<!-- FILTROS -->
+<section class="filtros">
+<button onclick="filtrar('solidariedade', this)" class="active">Todos</button>
+<button onclick="filtrar('doação', this)">Doação</button>
+<button onclick="filtrar('voluntariado', this)">Voluntariado</button>
+<button onclick="filtrar('crianças', this)">Crianças</button>
+</section>
+
 <!-- BUSCA -->
 <section class="search-section">
-    <h2>Descubra eventos e ações solidárias</h2>
-    <input type="text" id="busca" placeholder="Buscar por cidade, tema ou causa...">
+<input type="text" id="busca" placeholder="Buscar eventos...">
 </section>
 
 <!-- VIDEOS -->
 <section class="videos-section">
-    <div id="event-grid" class="event-grid"></div>
+<div id="event-grid" class="event-grid"></div>
 </section>
 
-<!-- FRASE INSPIRAÇÃO -->
-<section class="inspiration">
-    <h2>🌍 Faça parte da mudança</h2>
-    <p>
-        Eventos de solidariedade não são apenas encontros — são oportunidades de transformar vidas.
-        Cada gesto importa. Cada ação gera impacto.
-    </p>
-</section>
+<!-- MODAL -->
+<div id="modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="fecharModal()">×</span>
+<iframe id="video-frame" allowfullscreen></iframe>
+<button class="btn-ajudar">Quero ajudar</button>
+</div>
+</div>
 
 <script src="../js/menu.js"></script>
 <script src="../js/mobile-navbar.js"></script>
 
 <script>
 const API_KEY = "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA";
-
 const container = document.getElementById("event-grid");
 const inputBusca = document.getElementById("busca");
 
-// FRASES DINÂMICAS
+let termoAtual = "solidariedade Brasil";
+
+// FRASES
 const frases = [
-    "A solidariedade transforma vidas.",
-    "Doe hoje, mude o amanhã.",
-    "Pequenas ações geram grandes mudanças.",
-    "Seu gesto pode salvar alguém."
+"A solidariedade transforma vidas.",
+"Pequenas ações geram grandes mudanças.",
+"Seu gesto pode mudar o mundo."
 ];
 
 let i = 0;
-setInterval(() => {
-    i = (i + 1) % frases.length;
-    document.getElementById("frase").innerText = frases[i];
-}, 8000);
-
+setInterval(()=>{
+i=(i+1)%frases.length;
+document.getElementById("frase").innerText=frases[i];
+},5000);
 
 // CARREGAR VIDEOS
-async function carregarVideos(termo = "doação solidariedade Brasil") {
+async function carregarVideos(termo){
+container.innerHTML = '<div class="loading">Carregando...</div>';
 
-    container.innerHTML = "Carregando...";
+try{
+const res = await fetch(
+`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(termo)}&type=video&maxResults=8&key=${API_KEY}`
+);
 
-    try {
-        const res = await fetch(
-            `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(termo)}&type=video&maxResults=10&order=date&regionCode=BR&key=${API_KEY}`
-        );
+const data = await res.json();
 
-        const data = await res.json();
+container.innerHTML = "";
 
-        container.innerHTML = "";
+data.items.forEach(v=>{
+const id = v.id.videoId;
+const titulo = v.snippet.title;
+const thumb = v.snippet.thumbnails.high.url;
 
-        data.items.forEach(video => {
-
-            const videoId = video.id.videoId;
-            const titulo = video.snippet.title;
-            const thumb = video.snippet.thumbnails.high.url;
-
-            const card = `
-                <div class="event-card" onclick="abrirVideo('${videoId}')">
-                    <img src="${thumb}" alt="">
-                    
-                    <div class="event-info">
-                        <h3>${titulo}</h3>
-                        <span>Assistir</span>
-                    </div>
-                </div>
-            `;
-
-            container.innerHTML += card;
-        });
-
-    } catch (erro) {
-        container.innerHTML = "Erro ao carregar vídeos.";
-    }
+container.innerHTML += `
+<div class="event-card" onclick="abrirModal('${id}')">
+<img src="${thumb}">
+<div class="event-info">
+<h3>${titulo}</h3>
+<span>Assistir</span>
+</div>
+</div>`;
+});
+}catch(e){
+container.innerHTML = '<div class="loading">Erro ao carregar 😢</div>';
+}
 }
 
-// ABRIR VIDEO
-function abrirVideo(id) {
-    window.open(`https://www.youtube.com/watch?v=${id}`, "_blank");
+// MODAL
+function abrirModal(id){
+document.getElementById("modal").style.display="flex";
+document.getElementById("video-frame").src =
+`https://www.youtube.com/embed/${id}`;
 }
 
-// BUSCA
-inputBusca.addEventListener("keyup", (e) => {
-    const termo = e.target.value;
+function fecharModal(){
+document.getElementById("modal").style.display="none";
+document.getElementById("video-frame").src="";
+}
 
-    if (termo.length > 2) {
-        carregarVideos(termo);
-    }
+// FILTRO (COM BOTÃO ATIVO)
+function filtrar(tipo, el){
+termoAtual = tipo + " solidariedade Brasil";
+carregarVideos(termoAtual);
+
+document.querySelectorAll('.filtros button')
+.forEach(btn => btn.classList.remove('active'));
+
+el.classList.add('active');
+}
+
+// BUSCA COM DELAY
+let timeout;
+inputBusca.addEventListener("keyup",(e)=>{
+clearTimeout(timeout);
+
+timeout = setTimeout(()=>{
+if(e.target.value.length > 2){
+carregarVideos(e.target.value);
+}
+},500);
 });
 
 // INICIAL
-carregarVideos();
+carregarVideos(termoAtual);
 </script>
 
 </body>

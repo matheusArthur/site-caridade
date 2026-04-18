@@ -2,32 +2,36 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nós</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/sobre.css">
-    <link rel="stylesheet" href="../css/eventos.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sobre Nós</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/menu.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/sobre.css">
+<link rel="stylesheet" href="../css/eventos.css">
 </head>
 
 <body>
 
-<!-- MENU DINÂMICO -->
+<!-- MENU -->
 <div id="menu"></div>
 
 <!-- TOPO -->
 <section class="sobre-topo">
     <div class="container">
-        <h1>Transforme vidas com sua doação</h1>
+        <h1>Juntos podemos transformar vidas</h1>
         <p>
-            Sua contribuição ajuda a levar esperança para quem mais precisa.
+            Somos um grupo de voluntários da cidade de Londrina unidos por um propósito:
+            levar esperança, apoio e dignidade para pessoas em situação de vulnerabilidade.
         </p>
     </div>
 </section>
 
-<!-- IMAGEM COM TEXTO DINÂMICO -->
+<!-- IMAGEM -->
 <section class="sobre-imagem">
     <img src="../img/i1.jpg" class="sobre-img">
 
@@ -38,6 +42,27 @@
     </div>
 </section>
 
+<!-- SOBRE -->
+<section class="sobre-nos">
+    <div class="container">
+        <h2>Quem somos</h2>
+
+        <p>
+            Somos um grupo de voluntários que criou este projeto com o objetivo de ajudar
+            pessoas da região de Londrina que enfrentam dificuldades no dia a dia.
+        </p>
+
+        <p>
+            Acreditamos que a solidariedade pode transformar realidades e construir
+            um futuro melhor para todos.
+        </p>
+
+        <p>
+            Nosso compromisso é conectar pessoas que querem ajudar com quem realmente precisa.
+        </p>
+    </div>
+</section>
+
 <!-- VÍDEOS -->
 <section class="cidade">
     <h2>A importância de doar</h2>
@@ -45,49 +70,34 @@
     <div class="event-grid">
 
         <div class="event-card">
-            <div class="event-info">
-                <h3>Por que doar?</h3>
-                <span>Assistir</span>
-            </div>
+            <iframe src="https://www.youtube.com/embed/21mDekTZwsw" allowfullscreen></iframe>
         </div>
 
         <div class="event-card">
-            <div class="event-info">
-                <h3>Impacto das doações</h3>
-                <span>Assistir</span>
-            </div>
+            <iframe src="https://www.youtube.com/embed/MVa8vRHagTA" allowfullscreen></iframe>
         </div>
 
         <div class="event-card">
-            <div class="event-info">
-                <h3>Solidariedade</h3>
-                <span>Assistir</span>
-            </div>
+            <iframe src="https://www.youtube.com/embed/uczupUvTqDk" allowfullscreen></iframe>
         </div>
 
         <div class="event-card">
-            <div class="event-info">
-                <h3>Ajude mais pessoas</h3>
-                <span>Assistir</span>
-            </div>
+            <iframe src="https://www.youtube.com/embed/zZY7pwyhFEY" allowfullscreen></iframe>
         </div>
 
     </div>
 </section>
 
-<!-- MENU (IMPORTANTE) -->
+<!-- SCRIPTS -->
 <script src="../js/menu.js"></script>
-
-<!-- MENU MOBILE -->
 <script src="../js/mobile-navbar.js"></script>
 
-<!-- TEXTO DINÂMICO -->
 <script>
 const textos = [
-  "Doe esperança e transforme vidas.",
-  "Cada gesto pode mudar um destino.",
-  "Ajude hoje, transforme o amanhã.",
-  "Solidariedade que gera impacto real."
+  "Sua doação pode mudar uma vida hoje.",
+  "Pequenos gestos geram grandes transformações.",
+  "Juntos, somos mais fortes.",
+  "Doe esperança. Doe amor. Doe futuro."
 ];
 
 let i = 0;
@@ -103,7 +113,7 @@ setInterval(() => {
     texto.classList.remove("fade");
   }, 500);
 
-}, 10000);
+}, 4000);
 </script>
 
 </body>

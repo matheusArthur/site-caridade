@@ -9,10 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- CSS -->
+  <link rel="stylesheet" href="../css/menu.css">
   <link rel="stylesheet" href="../css/doacao.css">
 </head>
 
 <body>
+
+<!-- MENU -->
+<div id="menu"></div>
 
 <div class="conteudo">
 
@@ -20,6 +24,7 @@
   <p class="subtitulo">Cadastre itens que você deseja doar 💙</p>
 
   <form id="formProduto">
+
     <label>📝 Título do item</label>
     <input type="text" id="titulo" required>
 
@@ -38,9 +43,19 @@
     <input type="text" id="imagem" required>
 
     <button type="submit">➕ Cadastrar Doação</button>
+
   </form>
 
   <p id="status"></p>
+
+  <!-- FILTROS -->
+  <div class="filtros">
+    <button onclick="filtrar('todos')" class="active">Todos</button>
+    <button onclick="filtrar('roupa')">👕</button>
+    <button onclick="filtrar('casa')">🏠</button>
+    <button onclick="filtrar('comida')">🍞</button>
+    <button onclick="filtrar('dinheiro')">💰</button>
+  </div>
 
   <div class="titulo-secao">🎁 Doações Disponíveis</div>
 
@@ -48,55 +63,66 @@
 
 </div>
 
-<!-- Firebase -->
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
 <script>
   const firebaseConfig = {
-    apiKey: "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA",
+    apiKey: "SUA_API_AQUI",
     authDomain: "caridade-6464e.firebaseapp.com",
     projectId: "caridade-6464e",
   };
 
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
-</script>
 
-<script>
+  let categoriaAtual = "todos";
+
   function carregarProdutos() {
     const container = document.getElementById("produtos");
-    container.innerHTML = "<p>Carregando...</p>";
+    container.innerHTML = "<p class='loading'>Carregando...</p>";
 
-    db.collection("produtos").get().then((querySnapshot) => {
+    db.collection("produtos").orderBy("criadoEm","desc").get()
+    .then(snapshot => {
       container.innerHTML = "";
 
-      querySnapshot.forEach((doc) => {
+      snapshot.forEach(doc => {
         const item = doc.data();
 
-        const div = document.createElement("div");
-        div.className = "card-item";
+        if(categoriaAtual !== "todos" && item.categoria !== categoriaAtual){
+          return;
+        }
 
-        div.innerHTML = `
-          <img src="${item.imagem}">
-          <h3>🎁 ${item.titulo}</h3>
+        const card = document.createElement("div");
+        card.className = "card-item";
+
+        card.innerHTML = `
+          <img src="${item.imagem}" onerror="this.src='https://via.placeholder.com/300'">
+          <h3>${item.titulo}</h3>
           <p>${item.descricao}</p>
-          <div class="categoria">📌 ${item.categoria}</div>
+          <div class="categoria">${item.categoria}</div>
+          <button class="btn-interesse">Tenho interesse</button>
         `;
 
-        container.appendChild(div);
+        container.appendChild(card);
       });
     });
   }
 
-  window.addEventListener("load", carregarProdutos);
-</script>
+  function filtrar(cat) {
+    categoriaAtual = cat;
 
-<script>
-  const form = document.getElementById("formProduto");
-  const status = document.getElementById("status");
+    document.querySelectorAll('.filtros button')
+      .forEach(btn => btn.classList.remove('active'));
 
-  form.addEventListener("submit", function(e) {
+    event.target.classList.add('active');
+
+    carregarProdutos();
+  }
+
+  document.getElementById("formProduto")
+  .addEventListener("submit", e => {
     e.preventDefault();
 
     const titulo = document.getElementById("titulo").value;
@@ -111,18 +137,22 @@
       imagem,
       criadoEm: new Date()
     })
-    .then(() => {
-      status.innerText = "✅ Doação cadastrada com sucesso!";
-      status.style.color = "green";
-      form.reset();
+    .then(()=>{
+      document.getElementById("status").innerText="✅ Cadastrado!";
+      formProduto.reset();
       carregarProdutos();
     })
-    .catch((error) => {
-      status.innerText = "❌ Erro: " + error;
-      status.style.color = "red";
+    .catch(()=>{
+      document.getElementById("status").innerText="❌ Erro!";
     });
   });
+
+  window.onload = carregarProdutos;
 </script>
+
+<!-- MENU JS -->
+<script src="../js/menu.js"></script>
+<script src="../js/mobile-navbar.js"></script>
 
 </body>
 </html>
