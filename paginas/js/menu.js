@@ -1,3 +1,5 @@
+// ../js/menu.js
+
 fetch("menu.html")
   .then(res => res.text())
   .then(data => {
@@ -13,7 +15,7 @@ fetch("menu.html")
       });
     }
 
-    // página ativa
+    // destacar página ativa
     const links = document.querySelectorAll(".nav-list a");
     const currentPage = window.location.pathname.split("/").pop();
 

@@ -1,51 +1,109 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>pagina de login</title>
+    <meta charset="UTF-8">
+    <title>Página de Login</title>
+
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/global.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div class="container">
-        <div class="left-side">
-            <img src="../img/i1.jpg" alt="Imagem solidária">
-        </div>
 
-        <div class="right-side">
-            <img src="../img/logo.png" alt="Logo" class="logo-form">
-            <form>
-                <div class="form-field">
-                    <div><label>Email</label></div>
-                    <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()"/>
-                    <div class="error" id="email-required-error">Email é obrigatório</div>
-                    <div class="error" id="email-invalid-error">Email é inválido</div>
-                </div>
+<div class="container">
 
-                <div class="form-field">
-                    <div><label>Senha</label></div>
-                    <input type="password" name="password" id="password" placeholder="Senha" onchange="onChangePassword()"/>
-                    <div class="error" id="password-required-error">Senha é obrigatória</div>
-                </div>
-
-                <div>
-                    <button type="button" class="clear" id="recover-password-button" onclick="recoverPassword()" disabled="true">Recuperar senha</button>
-                </div>
-                <div>
-                    <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
-                </div>
-                <div>
-                    <button type="button" class="outline" onclick="register()">Registrar</button>
-                </div>
-            </form>
-        </div>
+    <!-- LADO ESQUERDO -->
+    <div class="left-side">
+        <img src="../img/i1.jpg" alt="Imagem solidária">
     </div>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
-    <script src="../js/firebase-init.js"></script>
 
-    <script src="../js/index.js"></script>
-    <script src="../js/validations.js"></script>
-    <script src="../js/loading.js"></script>
+    <!-- LADO DIREITO -->
+    <div class="right-side">
+
+        <img src="../img/logo.png" alt="Logo" class="logo-form">
+
+        <form>
+
+            <!-- EMAIL -->
+            <div class="form-field">
+                <label>Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="seu@email.com"
+                    onkeyup="onChangeEmail()"
+                />
+
+                <div class="error" id="email-required-error">Email é obrigatório</div>
+                <div class="error" id="email-invalid-error">Email inválido</div>
+            </div>
+
+            <!-- SENHA -->
+            <div class="form-field">
+                <label>Senha</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Senha"
+                    onkeyup="onChangePassword()"
+                />
+
+                <div class="error" id="password-required-error">Senha é obrigatória</div>
+            </div>
+
+            <!-- BOTÕES -->
+            <div>
+                <button 
+                    type="button" 
+                    class="clear" 
+                    id="recover-password-button"
+                    onclick="recoverPassword()"
+                    disabled
+                >
+                    Recuperar senha
+                </button>
+            </div>
+
+            <div>
+                <button 
+                    type="button" 
+                    class="solid" 
+                    id="login-button"
+                    onclick="login()"
+                    disabled
+                >
+                    Entrar
+                </button>
+            </div>
+
+            <div>
+                <button 
+                    type="button" 
+                    class="outline" 
+                    onclick="register()"
+                >
+                    Registrar
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
+<script src="../js/firebase-init.js"></script>
+
+<!-- SEU JS -->
+<script src="../js/index.js"></script>
+<script src="../js/validations.js"></script>
+<script src="../js/loading.js"></script>
+
 </body>
 </html>

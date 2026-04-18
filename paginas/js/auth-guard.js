@@ -1,5 +1,10 @@
+// ../js/auth-guard.js
+
 firebase.auth().onAuthStateChanged(user => {
-    if (!user) {
-        window.location.href = "../html/index.html";
-    }
-})
+  if (!user) {
+    // não está logado → volta pro login
+    window.location.href = "../html/index.html";
+  } else {
+    console.log("Usuário logado:", user.email);
+  }
+});
