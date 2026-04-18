@@ -52,12 +52,13 @@
 
   <p id="status"></p>
 
+  <!-- 🔥 FILTROS -->
   <div class="filtros">
-    <button onclick="filtrar('todos')" class="active">Todos</button>
-    <button onclick="filtrar('roupa')">👕</button>
-    <button onclick="filtrar('casa')">🏠</button>
-    <button onclick="filtrar('comida')">🍞</button>
-    <button onclick="filtrar('dinheiro')">💰</button>
+    <button onclick="filtrar('todos', this)" class="active">Todos</button>
+    <button onclick="filtrar('roupa', this)">👕</button>
+    <button onclick="filtrar('casa', this)">🏠</button>
+    <button onclick="filtrar('comida', this)">🍞</button>
+    <button onclick="filtrar('dinheiro', this)">💰</button>
   </div>
 
   <div class="titulo-secao">🎁 Doações Disponíveis</div>
@@ -66,16 +67,14 @@
 
 </div>
 
-<!-- 🔥 FIREBASE IGUAL HOME (ESSENCIAL) -->
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
 
-<!-- 🔥 IGUAL HOME -->
 <script src="../js/firebase-init.js"></script>
 <script src="../js/auth.js"></script>
 
-<!-- MENU -->
 <script src="../js/menu.js"></script>
 <script src="../js/mobile-navbar.js"></script>
 
@@ -84,18 +83,17 @@ const db = firebase.firestore();
 
 let categoriaAtual = "todos";
 
-/* abrir produto */
+/* 🔥 abrir produto */
 function abrirProduto(id) {
   window.location.href = `produtosDetalhe.html?id=${id}`;
 }
 
-/* carregar produtos */
+/* 🔥 carregar produtos */
 function carregarProdutos() {
   const container = document.getElementById("produtos");
   container.innerHTML = "<p>Carregando...</p>";
 
   db.collection("produtos")
-    .orderBy("criadoEm","desc")
     .get()
     .then(snapshot => {
 
@@ -104,7 +102,10 @@ function carregarProdutos() {
       snapshot.forEach(doc => {
         const item = doc.data();
 
-        if (categoriaAtual !== "todos" && item.categoria !== categoriaAtual) return;
+        // 🔥 normalização (evita erro de maiúscula/minúscula)
+        const categoriaItem = (item.categoria || "").toLowerCase().trim();
+
+        if (categoriaAtual !== "todos" && categoriaItem !== categoriaAtual) return;
 
         const card = document.createElement("div");
         card.className = "card-item";
@@ -130,29 +131,29 @@ function carregarProdutos() {
     });
 }
 
-/* filtro */
-function filtrar(cat) {
-  categoriaAtual = cat;
+/* 🔥 filtro corrigido */
+function filtrar(cat, btn) {
+  categoriaAtual = cat.toLowerCase();
 
   document.querySelectorAll('.filtros button')
     .forEach(b => b.classList.remove('active'));
 
-  event.target.classList.add('active');
+  btn.classList.add('active');
 
   carregarProdutos();
 }
 
-/* salvar */
+/* 🔥 salvar doação */
 document.getElementById("formProduto").addEventListener("submit", e => {
   e.preventDefault();
 
   db.collection("produtos").add({
     titulo: titulo.value,
     descricao: descricao.value,
-    categoria: categoria.value,
+    categoria: categoria.value.toLowerCase(), // 🔥 importante
     imagem: imagem.value,
     regiao: regiao.value,
-    valor: valor.value,
+    valor: valor.value || "0,00",
     criadoEm: new Date()
   }).then(() => {
     status.innerText = "✅ Cadastrado com sucesso!";
@@ -161,6 +162,7 @@ document.getElementById("formProduto").addEventListener("submit", e => {
   });
 });
 
+/* 🔥 inicial */
 window.onload = carregarProdutos;
 </script>
 

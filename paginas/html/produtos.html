@@ -9,6 +9,17 @@
 
 <link rel="stylesheet" href="../css/menu.css">
 <link rel="stylesheet" href="../css/produtos.css">
+
+<style>
+/* 🔥 destaque do filtro ativo */
+.categoria.active {
+  background: #4CAF50;
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px;
+}
+</style>
+
 </head>
 
 <body>
@@ -29,10 +40,11 @@
   <h2>Categorias</h2>
 
   <div class="categorias-grid">
-    <div class="categoria">👕 Roupas</div>
-    <div class="categoria">🏠 Casa</div>
-    <div class="categoria">🍞 Alimentos</div>
-    <div class="categoria">💰 Financeiro</div>
+    <div class="categoria active" onclick="filtrar('todos', this)">🌐 Todos</div>
+    <div class="categoria" onclick="filtrar('roupa', this)">👕 Roupas</div>
+    <div class="categoria" onclick="filtrar('casa', this)">🏠 Casa</div>
+    <div class="categoria" onclick="filtrar('comida', this)">🍞 Alimentos</div>
+    <div class="categoria" onclick="filtrar('dinheiro', this)">💰 Financeiro</div>
   </div>
 </section>
 
@@ -56,12 +68,27 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-/* 🔥 ABRIR PRODUTO */
+/* 🔥 estado do filtro */
+let categoriaAtual = "todos";
+
+/* 🔥 abrir produto */
 function abrirProduto(id) {
   window.location.href = `produtosDetalhe.html?id=${id}`;
 }
 
-/* 🔥 CARREGAR PRODUTOS */
+/* 🔥 FILTRO */
+function filtrar(cat, element) {
+  categoriaAtual = cat;
+
+  document.querySelectorAll('.categoria')
+    .forEach(el => el.classList.remove('active'));
+
+  element.classList.add('active');
+
+  carregarProdutos();
+}
+
+/* 🔥 carregar produtos */
 function carregarProdutos() {
   const container = document.getElementById("produtos");
   container.innerHTML = "<p>Carregando...</p>";
@@ -76,16 +103,21 @@ function carregarProdutos() {
       snapshot.forEach(doc => {
         const item = doc.data();
 
+        const categoriaItem = (item.categoria || "").toLowerCase().trim();
+
+        if (categoriaAtual !== "todos" && categoriaItem !== categoriaAtual) return;
+
         const card = document.createElement("div");
         card.className = "card-item";
 
         card.innerHTML = `
           <img src="${item.imagem}" onerror="this.src='https://via.placeholder.com/300'">
+
           <h3>${item.titulo}</h3>
           <p>${item.descricao}</p>
+
           <div class="categoria">${item.categoria}</div>
 
-          <!-- 🔥 BOTÃO ÚNICO CLICÁVEL -->
           <div class="btn-interesse" onclick="abrirProduto('${doc.id}')">
             Tenho interesse
           </div>
@@ -100,7 +132,7 @@ function carregarProdutos() {
     });
 }
 
-/* INICIAL */
+/* 🔥 inicial */
 window.onload = carregarProdutos;
 </script>
 
