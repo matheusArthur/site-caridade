@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/menu.css">
   <link rel="stylesheet" href="../css/produtosDetalhe.css">
+  <!-- 🔥 FOOTER STYLE -->
+  <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
@@ -37,7 +39,7 @@
           Requisitar Produto / Serviço
         </button>
 
-        <!-- 👥 CONTADOR COMIDA -->
+        <!-- 👥 CONTADOR -->
         <p id="contadorBox" style="margin-top:10px; font-weight:600;"></p>
 
         <div class="info-extra">
@@ -59,6 +61,56 @@
     <h2>Produtos recomendados</h2>
     <div id="relacionados" class="produtos-grid"></div>
   </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-left">
+            <h3>Caridade</h3>
+            <p>Transformando vidas através da solidariedade.</p>
+        </div>
+
+        <div class="footer-links">
+
+            <div>
+                <h4>Contato</h4>
+                <p>WhatsApp de suporte</p>
+                <p>Email oficial</p>
+                <p>Central de ajuda</p>
+                <p>Enviar sugestão</p>
+            </div>
+
+            <div>
+                <h4>Parcerias</h4>
+                <p>Seja nosso parceiro</p>
+                <p>Empresas apoiadoras</p>
+                <p>Projetos sociais</p>
+                <p>Trabalhe conosco</p>
+            </div>
+
+            <div>
+                <h4>Termos</h4>
+                <p>Termos de uso</p>
+                <p>Política de privacidade</p>
+                <p>Direitos do usuário</p>
+                <p>Proteção de dados</p>
+            </div>
+
+            <div>
+                <h4>Institucional</h4>
+                <p>Sobre a plataforma</p>
+                <p>Nossa missão</p>
+                <p>Transparência</p>
+                <p>Relatórios de impacto</p>
+            </div>
+
+        </div>
+
+    </div>
+
+  </footer>
 
   <!-- FIREBASE -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -86,7 +138,6 @@
     const btn = document.getElementById("btnRequisitar");
     const contadorBox = document.getElementById("contadorBox");
 
-    /* 🔥 CARREGAR PRODUTO */
     if (!id) {
       document.getElementById("titulo").innerText = "Produto não encontrado";
     } else {
@@ -101,14 +152,12 @@
         document.getElementById("imgProduto").src = item.imagem || "https://via.placeholder.com/300";
         document.getElementById("titulo").innerText = item.titulo || "Sem título";
         document.getElementById("descricao").innerText = item.descricao || "Sem descrição";
-
         document.getElementById("regiao").innerText = item.regiao || "Não informado";
         document.getElementById("valor").innerText = item.valor || "0,00";
 
         categoriaAtual = item.categoria;
         tipoAtual = item.tipo || "outro";
 
-        /* 🍔 COMIDA */
         if (tipoAtual === "comida") {
           btn.innerText = "Tenho interesse";
 
@@ -116,7 +165,6 @@
             `👥 ${item.contador || 0} pessoas demonstraram interesse`;
         }
 
-        /* 📦 PRODUTO NORMAL JÁ REQUISITADO */
         if (item.requisitado && tipoAtual !== "comida") {
           btn.innerText = "Já requisitado";
           btn.disabled = true;
@@ -126,47 +174,34 @@
       });
     }
 
-    /* 🔥 AÇÃO BOTÃO */
     btn.addEventListener("click", async () => {
       if (!id) return;
 
-      try {
-        const ref = db.collection("produtos").doc(id);
-        const doc = await ref.get();
-        const data = doc.data();
+      const ref = db.collection("produtos").doc(id);
+      const doc = await ref.get();
+      const data = doc.data();
 
-        /* 🍔 COMIDA → CONTADOR */
-        if (tipoAtual === "comida") {
-          const novoValor = (data.contador || 0) + 1;
+      if (tipoAtual === "comida") {
+        const novoValor = (data.contador || 0) + 1;
 
-          await ref.update({
-            contador: novoValor
-          });
+        await ref.update({ contador: novoValor });
 
-          contadorBox.innerText =
-            `👥 ${novoValor} pessoas demonstraram interesse`;
+        contadorBox.innerText =
+          `👥 ${novoValor} pessoas demonstraram interesse`;
 
-          return;
-        }
-
-        /* 📦 OUTROS → REQUISITA */
-        await ref.update({
-          requisitado: true
-        });
-
-        btn.innerText = "Já requisitado";
-        btn.disabled = true;
-
-        alert("Produto requisitado com sucesso!");
-
-        carregarRelacionados();
-
-      } catch (error) {
-        console.error("Erro:", error);
+        return;
       }
+
+      await ref.update({ requisitado: true });
+
+      btn.innerText = "Já requisitado";
+      btn.disabled = true;
+
+      alert("Produto requisitado com sucesso!");
+
+      carregarRelacionados();
     });
 
-    /* 🔥 RELACIONADOS */
     function carregarRelacionados() {
       const container = document.getElementById("relacionados");
 
