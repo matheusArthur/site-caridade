@@ -16,127 +16,197 @@
 
 <body>
 
-<!-- MENU -->
-<div id="menu"></div>
+  <!-- MENU -->
+  <div id="menu"></div>
 
-<!-- PRODUTO -->
-<section class="produto-detalhe">
+  <!-- PRODUTO -->
+  <section class="produto-detalhe">
+    <div class="produto-container">
 
-  <div class="produto-container">
+      <!-- IMAGEM -->
+      <div class="produto-img">
+        <img id="imgProduto">
+      </div>
 
-    <!-- IMAGEM -->
-    <div class="produto-img">
-      <img id="imgProduto">
-    </div>
+      <!-- INFO -->
+      <div class="produto-info">
+        <h1 id="titulo">Carregando...</h1>
+        <p class="descricao" id="descricao"></p>
 
-    <!-- INFO -->
-    <div class="produto-info">
+        <button class="btn-doar" id="btnRequisitar">
+          Requisitar Produto / Serviço
+        </button>
 
-      <h1 id="titulo">Carregando...</h1>
+        <!-- 👥 CONTADOR COMIDA -->
+        <p id="contadorBox" style="margin-top:10px; font-weight:600;"></p>
 
-      <p class="descricao" id="descricao"></p>
+        <div class="info-extra">
+          <p><strong>📍 Localização:</strong> <span id="regiao"></span></p>
+          <p><strong>💰 Valor:</strong> R$ <span id="valor"></span></p>
 
-      <button class="btn-doar">Requisitar Produto / Serviço</button>
-
-      <div class="info-extra">
-        <p><strong>📍 Localização:</strong> Londrina / Centro</p>
-        <p><strong>💰 Valor:</strong> R$ 0,00</p>
-
-        <div class="doador">
-          <p><strong>Histórico do doador</strong></p>
-          <span>Bom / Sem reclamações / Usuário confiável</span>
+          <div class="doador">
+            <p><strong>Histórico do doador</strong></p>
+            <span>Bom / Sem reclamações / Usuário confiável</span>
+          </div>
         </div>
       </div>
 
     </div>
+  </section>
 
-  </div>
+  <!-- RELACIONADOS -->
+  <section class="relacionados">
+    <h2>Produtos recomendados</h2>
+    <div id="relacionados" class="produtos-grid"></div>
+  </section>
 
-</section>
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-<!-- RELACIONADOS -->
-<section class="relacionados">
-  <h2>Produtos recomendados</h2>
-  <div id="relacionados" class="produtos-grid"></div>
-</section>
+  <script>
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "caridade-6464e.firebaseapp.com",
+      projectId: "caridade-6464e"
+    };
 
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 
-<script>
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "caridade-6464e.firebaseapp.com",
-  projectId: "caridade-6464e"
-};
+  <!-- SCRIPT -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-</script>
+    let categoriaAtual = "";
+    let tipoAtual = "";
 
-<!-- SCRIPT -->
-<script>
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+    const btn = document.getElementById("btnRequisitar");
+    const contadorBox = document.getElementById("contadorBox");
 
-let categoriaAtual = "";
-
-/* 🔥 PRODUTO PRINCIPAL */
-db.collection("produtos").doc(id).get().then(doc => {
-  const item = doc.data();
-
-  document.getElementById("imgProduto").src = item.imagem;
-  document.getElementById("titulo").innerText = item.titulo;
-  document.getElementById("descricao").innerText = item.descricao;
-
-  categoriaAtual = item.categoria;
-
-  carregarRelacionados();
-});
-
-/* 🔥 RELACIONADOS */
-function carregarRelacionados() {
-  const container = document.getElementById("relacionados");
-
-  db.collection("produtos")
-    .where("categoria", "==", categoriaAtual)
-    .get()
-    .then(snapshot => {
-
-      container.innerHTML = "";
-
-      snapshot.forEach(doc => {
-
-        if (doc.id === id) return;
-
+    /* 🔥 CARREGAR PRODUTO */
+    if (!id) {
+      document.getElementById("titulo").innerText = "Produto não encontrado";
+    } else {
+      db.collection("produtos").doc(id).get().then(doc => {
         const item = doc.data();
 
-        const card = document.createElement("div");
-        card.className = "card";
+        if (!item) {
+          document.getElementById("titulo").innerText = "Produto não encontrado";
+          return;
+        }
 
-        card.onclick = () => {
-          window.location.href = `produtosDetalhe.html?id=${doc.id}`;
-        };
+        document.getElementById("imgProduto").src = item.imagem || "https://via.placeholder.com/300";
+        document.getElementById("titulo").innerText = item.titulo || "Sem título";
+        document.getElementById("descricao").innerText = item.descricao || "Sem descrição";
 
-        card.innerHTML = `
-          <img src="${item.imagem}">
-          <div class="card-info">
-            <h3>${item.titulo}</h3>
-            <p>${item.descricao.substring(0, 60)}...</p>
-          </div>
-        `;
+        document.getElementById("regiao").innerText = item.regiao || "Não informado";
+        document.getElementById("valor").innerText = item.valor || "0,00";
 
-        container.appendChild(card);
+        categoriaAtual = item.categoria;
+        tipoAtual = item.tipo || "outro";
+
+        /* 🍔 COMIDA */
+        if (tipoAtual === "comida") {
+          btn.innerText = "Tenho interesse";
+
+          contadorBox.innerText =
+            `👥 ${item.contador || 0} pessoas demonstraram interesse`;
+        }
+
+        /* 📦 PRODUTO NORMAL JÁ REQUISITADO */
+        if (item.requisitado && tipoAtual !== "comida") {
+          btn.innerText = "Já requisitado";
+          btn.disabled = true;
+        }
+
+        carregarRelacionados();
       });
+    }
 
+    /* 🔥 AÇÃO BOTÃO */
+    btn.addEventListener("click", async () => {
+      if (!id) return;
+
+      try {
+        const ref = db.collection("produtos").doc(id);
+        const doc = await ref.get();
+        const data = doc.data();
+
+        /* 🍔 COMIDA → CONTADOR */
+        if (tipoAtual === "comida") {
+          const novoValor = (data.contador || 0) + 1;
+
+          await ref.update({
+            contador: novoValor
+          });
+
+          contadorBox.innerText =
+            `👥 ${novoValor} pessoas demonstraram interesse`;
+
+          return;
+        }
+
+        /* 📦 OUTROS → REQUISITA */
+        await ref.update({
+          requisitado: true
+        });
+
+        btn.innerText = "Já requisitado";
+        btn.disabled = true;
+
+        alert("Produto requisitado com sucesso!");
+
+        carregarRelacionados();
+
+      } catch (error) {
+        console.error("Erro:", error);
+      }
     });
-}
-</script>
 
-<!-- MENU JS -->
-<script src="../js/menu.js"></script>
-<script src="../js/mobile-navbar.js"></script>
+    /* 🔥 RELACIONADOS */
+    function carregarRelacionados() {
+      const container = document.getElementById("relacionados");
+
+      db.collection("produtos")
+        .where("categoria", "==", categoriaAtual)
+        .get()
+        .then(snapshot => {
+
+          container.innerHTML = "";
+
+          snapshot.forEach(doc => {
+            if (doc.id === id) return;
+
+            const item = doc.data();
+
+            const card = document.createElement("div");
+            card.className = "card";
+
+            card.onclick = () => {
+              window.location.href = `produtosDetalhe.html?id=${doc.id}`;
+            };
+
+            card.innerHTML = `
+              <img src="${item.imagem || 'https://via.placeholder.com/300'}">
+              <div class="card-info">
+                <h3>${item.titulo || ''}</h3>
+                <p>${(item.descricao || '').substring(0, 60)}...</p>
+                ${item.requisitado ? '<span style="color:red;font-size:12px;">Requisitado</span>' : ''}
+              </div>
+            `;
+
+            container.appendChild(card);
+          });
+        });
+    }
+  </script>
+
+  <!-- MENU JS -->
+  <script src="../js/menu.js"></script>
+  <script src="../js/mobile-navbar.js"></script>
 
 </body>
 </html>

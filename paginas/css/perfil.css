@@ -1,0 +1,133 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #333;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* PERFIL */
+.perfil {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.foto img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.info h1 {
+  color: #e74c3c;
+  margin-bottom: 10px;
+}
+
+.info p {
+  margin: 5px 0;
+}
+
+.descricao {
+  margin-top: 10px;
+  color: #666;
+}
+
+/* SEÇÕES */
+section {
+  margin-top: 40px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* ITENS DOADOS */
+.grid {
+  display: flex;
+  gap: 15px;
+}
+
+.card {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* PRODUTOS */
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.produto {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding-bottom: 10px;
+}
+
+.produto img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.produto h3 {
+  font-size: 14px;
+  margin: 8px;
+}
+
+.produto p {
+  font-size: 12px;
+  margin: 0 8px;
+  color: #777;
+}
+
+.produto span {
+  display: block;
+  margin: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #888;
+}

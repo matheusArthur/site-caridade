@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/perfil.css">
+  <link rel="stylesheet" href="../css/menu.css">
+</head>
+
+<body>
+
+<!-- MENU -->
+<div id="menu"></div>
+
+<div class="container">
+
+  <!-- PERFIL -->
+  <div class="perfil">
+
+    <!-- FOTO PERFIL -->
+    <div class="foto">
+      <img id="fotoPerfil" src="https://via.placeholder.com/200" alt="Foto de perfil">
+
+      <input type="file" id="inputFoto" accept="image/*">
+    </div>
+
+    <!-- INFO -->
+    <div class="info">
+
+      <h1>Dados do perfil</h1>
+
+      <p><strong>Nome:</strong> Matheus Arthur Ferreira Silva</p>
+      <p><strong>Email:</strong> matheus783@gmail.com</p>
+      <p><strong>Whatsapp:</strong> (43) 987033568</p>
+      <p><strong>Região:</strong> Londrina / Zona Norte</p>
+
+      <p class="descricao">
+        Transforme gestos em esperança — cada doação ajuda a mudar vidas de verdade.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- ITENS DOADOS -->
+  <section>
+    <h2>Últimos itens doados</h2>
+
+    <div class="grid">
+      <div class="card"><img src="https://via.placeholder.com/200"><span class="add">+</span></div>
+      <div class="card"><img src="https://via.placeholder.com/200"><span class="add">+</span></div>
+      <div class="card"><img src="https://via.placeholder.com/200"><span class="add">+</span></div>
+      <div class="card"><img src="https://via.placeholder.com/200"><span class="add">+</span></div>
+    </div>
+  </section>
+
+  <!-- ADQUIRIDOS -->
+  <section>
+    <h2>Últimos adquiridos</h2>
+
+    <div class="grid-produtos" id="produtosAdquiridos"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Caridade</p>
+  </footer>
+
+</div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA",
+  authDomain: "caridade-6464e.firebaseapp.com",
+  projectId: "caridade-6464e"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+</script>
+
+<!-- MENU JS -->
+<script src="../js/menu.js"></script>
+<script src="../js/mobile-navbar.js"></script>
+
+<!-- FOTO PERFIL SCRIPT -->
+<script>
+const inputFoto = document.getElementById("inputFoto");
+const fotoPerfil = document.getElementById("fotoPerfil");
+
+/* carregar foto salva */
+window.onload = function () {
+  const fotoSalva = localStorage.getItem("fotoPerfil");
+  if (fotoSalva) {
+    fotoPerfil.src = fotoSalva;
+  }
+
+  carregarProdutosRequisitados();
+};
+
+/* trocar foto */
+inputFoto.addEventListener("change", function () {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      fotoPerfil.src = e.target.result;
+      localStorage.setItem("fotoPerfil", e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+/* 🔥 CARREGAR PRODUTOS REQUISITADOS */
+function carregarProdutosRequisitados() {
+  const container = document.getElementById("produtosAdquiridos");
+
+  db.collection("produtos")
+    .where("requisitado", "==", true)
+    .get()
+    .then(snapshot => {
+
+      container.innerHTML = "";
+
+      if (snapshot.empty) {
+        container.innerHTML = "<p>Nenhum produto adquirido ainda.</p>";
+        return;
+      }
+
+      snapshot.forEach(doc => {
+        const item = doc.data();
+
+        const div = document.createElement("div");
+        div.className = "produto";
+
+        div.innerHTML = `
+          <img src="${item.imagem || 'https://via.placeholder.com/300'}">
+          <h3>${item.titulo || ''}</h3>
+          <p>${item.descricao || ''}</p>
+          <span>R$ ${item.valor || '0,00'}</span>
+        `;
+
+        container.appendChild(div);
+      });
+
+    })
+    .catch(error => {
+      console.error("Erro ao carregar produtos:", error);
+    });
+}
+</script>
+
+</body>
+</html>
