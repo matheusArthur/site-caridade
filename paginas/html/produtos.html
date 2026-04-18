@@ -36,10 +36,9 @@
   </div>
 </section>
 
-<!-- PRODUTOS DINÂMICOS -->
+<!-- PRODUTOS -->
 <section class="produtos">
   <h2>Doações Disponíveis</h2>
-
   <div id="produtos" class="produtos-grid"></div>
 </section>
 
@@ -57,7 +56,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-/* CARREGAR PRODUTOS */
+/* 🔥 ABRIR PRODUTO */
+function abrirProduto(id) {
+  window.location.href = `produtosDetalhe.html?id=${id}`;
+}
+
+/* 🔥 CARREGAR PRODUTOS */
 function carregarProdutos() {
   const container = document.getElementById("produtos");
   container.innerHTML = "<p>Carregando...</p>";
@@ -80,7 +84,11 @@ function carregarProdutos() {
           <h3>${item.titulo}</h3>
           <p>${item.descricao}</p>
           <div class="categoria">${item.categoria}</div>
-          <div class="btn-interesse">Tenho interesse</div>
+
+          <!-- 🔥 BOTÃO ÚNICO CLICÁVEL -->
+          <div class="btn-interesse" onclick="abrirProduto('${doc.id}')">
+            Tenho interesse
+          </div>
         `;
 
         container.appendChild(card);
