@@ -4,58 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doações</title>
+
+  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <!-- CSS -->
-  <link rel="stylesheet" href="../css/global.css">
-  <link rel="stylesheet" href="../css/menu.css">
   <link rel="stylesheet" href="../css/doacao.css">
 </head>
 
 <body>
 
-<!-- MENU DINÂMICO -->
-<div id="menu"></div>
-
-<!-- CONTEÚDO -->
 <div class="conteudo">
 
-  <h2>Cadastrar Produto</h2>
+  <h2>📦 Cadastro de Doações</h2>
+  <p class="subtitulo">Cadastre itens que você deseja doar 💙</p>
 
   <form id="formProduto">
-    <label>Título:</label>
+    <label>📝 Título do item</label>
     <input type="text" id="titulo" required>
 
-    <label>Descrição:</label>
+    <label>📄 Descrição</label>
     <textarea id="descricao" required></textarea>
 
-    <label>Categoria:</label>
+    <label>🏷️ Categoria</label>
     <select id="categoria">
-      <option value="roupa">Roupa</option>
-      <option value="casa">Casa</option>
-      <option value="comida">Comida</option>
-      <option value="dinheiro">Dinheiro</option>
+      <option value="roupa">👕 Roupa</option>
+      <option value="casa">🏠 Casa</option>
+      <option value="comida">🍞 Comida</option>
+      <option value="dinheiro">💰 Dinheiro</option>
     </select>
 
-    <label>URL da Imagem:</label>
+    <label>🖼️ URL da imagem</label>
     <input type="text" id="imagem" required>
 
-    <button type="submit">Cadastrar</button>
+    <button type="submit">➕ Cadastrar Doação</button>
   </form>
 
   <p id="status"></p>
 
-  <hr style="margin: 40px 0;">
-
-  <div class="titulo-secao">Itens Disponíveis</div>
+  <div class="titulo-secao">🎁 Doações Disponíveis</div>
 
   <div id="produtos" class="cards-container"></div>
+
 </div>
-
-<!-- MENU (IMPORTANTE) -->
-<script src="../js/menu.js"></script>
-
-<!-- MENU MOBILE -->
-<script src="../js/mobile-navbar.js"></script>
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -63,12 +54,9 @@
 
 <script>
   const firebaseConfig = {
-    apiKey: "SUA_API_KEY",
+    apiKey: "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA",
     authDomain: "caridade-6464e.firebaseapp.com",
     projectId: "caridade-6464e",
-    storageBucket: "caridade-6464e.firebasestorage.app",
-    messagingSenderId: "916897058334",
-    appId: "1:916897058334:web:906d1343b3523b3a9ca80f"
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -86,20 +74,22 @@
       querySnapshot.forEach((doc) => {
         const item = doc.data();
 
-        const card = `
-          <div class="card-item">
-            <img src="${item.imagem}" alt="${item.titulo}">
-            <h3>${item.titulo}</h3>
-            <p>${item.descricao}</p>
-          </div>
+        const div = document.createElement("div");
+        div.className = "card-item";
+
+        div.innerHTML = `
+          <img src="${item.imagem}">
+          <h3>🎁 ${item.titulo}</h3>
+          <p>${item.descricao}</p>
+          <div class="categoria">📌 ${item.categoria}</div>
         `;
 
-        container.innerHTML += card;
+        container.appendChild(div);
       });
     });
   }
 
-  window.onload = carregarProdutos;
+  window.addEventListener("load", carregarProdutos);
 </script>
 
 <script>
@@ -122,12 +112,14 @@
       criadoEm: new Date()
     })
     .then(() => {
-      status.innerText = "Produto cadastrado com sucesso!";
+      status.innerText = "✅ Doação cadastrada com sucesso!";
+      status.style.color = "green";
       form.reset();
       carregarProdutos();
     })
     .catch((error) => {
-      status.innerText = "Erro ao cadastrar: " + error;
+      status.innerText = "❌ Erro: " + error;
+      status.style.color = "red";
     });
   });
 </script>
