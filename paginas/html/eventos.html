@@ -64,6 +64,56 @@
 </div>
 </div>
 
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-left">
+    <h3>Caridade</h3>
+    <p>Transformando vidas através da solidariedade.</p>
+</div>
+
+<div class="footer-links">
+
+    <div>
+        <h4>Contato</h4>
+        <p>WhatsApp de suporte</p>
+        <p>Email oficial</p>
+        <p>Central de ajuda</p>
+        <p>Enviar sugestão</p>
+    </div>
+
+    <div>
+        <h4>Parcerias</h4>
+        <p>Seja nosso parceiro</p>
+        <p>Empresas apoiadoras</p>
+        <p>Projetos sociais</p>
+        <p>Trabalhe conosco</p>
+    </div>
+
+    <div>
+        <h4>Termos</h4>
+        <p>Termos de uso</p>
+        <p>Política de privacidade</p>
+        <p>Direitos do usuário</p>
+        <p>Proteção de dados</p>
+    </div>
+
+    <div>
+        <h4>Institucional</h4>
+        <p>Sobre a plataforma</p>
+        <p>Nossa missão</p>
+        <p>Transparência</p>
+        <p>Relatórios de impacto</p>
+    </div>
+
+</div>
+
+</div>
+
+</footer>
+
 <script src="../js/menu.js"></script>
 <script src="../js/mobile-navbar.js"></script>
 
@@ -74,7 +124,6 @@ const inputBusca = document.getElementById("busca");
 
 let termoAtual = "solidariedade Brasil";
 
-// FRASES
 const frases = [
 "A solidariedade transforma vidas.",
 "Pequenas ações geram grandes mudanças.",
@@ -87,7 +136,6 @@ i=(i+1)%frases.length;
 document.getElementById("frase").innerText=frases[i];
 },5000);
 
-// CARREGAR VIDEOS
 async function carregarVideos(termo){
 container.innerHTML = '<div class="loading">Carregando...</div>';
 
@@ -119,7 +167,6 @@ container.innerHTML = '<div class="loading">Erro ao carregar 😢</div>';
 }
 }
 
-// MODAL
 function abrirModal(id){
 document.getElementById("modal").style.display="flex";
 document.getElementById("video-frame").src =
@@ -131,7 +178,6 @@ document.getElementById("modal").style.display="none";
 document.getElementById("video-frame").src="";
 }
 
-// FILTRO (COM BOTÃO ATIVO)
 function filtrar(tipo, el){
 termoAtual = tipo + " solidariedade Brasil";
 carregarVideos(termoAtual);
@@ -142,7 +188,6 @@ document.querySelectorAll('.filtros button')
 el.classList.add('active');
 }
 
-// BUSCA COM DELAY
 let timeout;
 inputBusca.addEventListener("keyup",(e)=>{
 clearTimeout(timeout);
@@ -154,7 +199,6 @@ carregarVideos(e.target.value);
 },500);
 });
 
-// INICIAL
 carregarVideos(termoAtual);
 </script>
 

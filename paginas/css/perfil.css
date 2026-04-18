@@ -125,9 +125,23 @@ h2 {
   color: #333;
 }
 
-/* FOOTER */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: #888;
+/* ===== FOOTER SIMPLES À ESQUERDA ===== */
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 40px 20px;
+  margin-top: 50px;
+  text-align: left; /* 🔥 tudo alinhado à esquerda */
+}
+
+.footer h3 {
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.footer p {
+  color: #aaa;
+  font-size: 13px;
+  margin-top: 10px;
 }

@@ -21,14 +21,11 @@
   <!-- PERFIL -->
   <div class="perfil">
 
-    <!-- FOTO PERFIL -->
     <div class="foto">
       <img id="fotoPerfil" src="https://via.placeholder.com/200" alt="Foto de perfil">
-
       <input type="file" id="inputFoto" accept="image/*">
     </div>
 
-    <!-- INFO -->
     <div class="info">
 
       <h1>Dados do perfil</h1>
@@ -61,16 +58,60 @@
   <!-- ADQUIRIDOS -->
   <section>
     <h2>Últimos adquiridos</h2>
-
     <div class="grid-produtos" id="produtosAdquiridos"></div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Caridade</p>
-  </footer>
-
 </div>
+
+<!-- ===== FOOTER IGUAL HOME ===== -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-left">
+      <h3>Caridade</h3>
+      <p>Transformando vidas através da solidariedade.</p>
+    </div>
+
+    <div class="footer-links">
+
+      <div>
+        <h4>Contato</h4>
+        <p>WhatsApp de suporte</p>
+        <p>Email oficial</p>
+        <p>Central de ajuda</p>
+        <p>Enviar sugestão</p>
+      </div>
+
+      <div>
+        <h4>Parcerias</h4>
+        <p>Seja nosso parceiro</p>
+        <p>Empresas apoiadoras</p>
+        <p>Projetos sociais</p>
+        <p>Trabalhe conosco</p>
+      </div>
+
+      <div>
+        <h4>Termos</h4>
+        <p>Termos de uso</p>
+        <p>Política de privacidade</p>
+        <p>Direitos do usuário</p>
+        <p>Proteção de dados</p>
+      </div>
+
+      <div>
+        <h4>Institucional</h4>
+        <p>Sobre a plataforma</p>
+        <p>Nossa missão</p>
+        <p>Transparência</p>
+        <p>Relatórios de impacto</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
 
 <!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -96,33 +137,26 @@ const db = firebase.firestore();
 const inputFoto = document.getElementById("inputFoto");
 const fotoPerfil = document.getElementById("fotoPerfil");
 
-/* carregar foto salva */
 window.onload = function () {
   const fotoSalva = localStorage.getItem("fotoPerfil");
-  if (fotoSalva) {
-    fotoPerfil.src = fotoSalva;
-  }
+  if (fotoSalva) fotoPerfil.src = fotoSalva;
 
   carregarProdutosRequisitados();
 };
 
-/* trocar foto */
 inputFoto.addEventListener("change", function () {
   const file = this.files[0];
 
   if (file) {
     const reader = new FileReader();
-
-    reader.onload = function (e) {
+    reader.onload = e => {
       fotoPerfil.src = e.target.result;
       localStorage.setItem("fotoPerfil", e.target.result);
     };
-
     reader.readAsDataURL(file);
   }
 });
 
-/* 🔥 CARREGAR PRODUTOS REQUISITADOS */
 function carregarProdutosRequisitados() {
   const container = document.getElementById("produtosAdquiridos");
 
@@ -141,22 +175,16 @@ function carregarProdutosRequisitados() {
       snapshot.forEach(doc => {
         const item = doc.data();
 
-        const div = document.createElement("div");
-        div.className = "produto";
-
-        div.innerHTML = `
-          <img src="${item.imagem || 'https://via.placeholder.com/300'}">
-          <h3>${item.titulo || ''}</h3>
-          <p>${item.descricao || ''}</p>
-          <span>R$ ${item.valor || '0,00'}</span>
+        container.innerHTML += `
+          <div class="produto">
+            <img src="${item.imagem || 'https://via.placeholder.com/300'}">
+            <h3>${item.titulo || ''}</h3>
+            <p>${item.descricao || ''}</p>
+            <span>R$ ${item.valor || '0,00'}</span>
+          </div>
         `;
-
-        container.appendChild(div);
       });
 
-    })
-    .catch(error => {
-      console.error("Erro ao carregar produtos:", error);
     });
 }
 </script>
