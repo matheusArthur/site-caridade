@@ -1,247 +1,255 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalhes do Produto</title>
+  <title>Detalhes do Produto - Projeto Caridade</title>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/menu.css">
   <link rel="stylesheet" href="../css/produtosDetalhe.css">
-  <!-- 🔥 FOOTER STYLE -->
-  <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
+<div id="menu"></div>
 
-  <!-- MENU -->
-  <div id="menu"></div>
+<main>
+  <section class="detail-hero">
+    <div class="hero-content">
+      <span class="hero-tag">Detalhes da doação</span>
+      <h1>Veja as informações antes de demonstrar interesse.</h1>
+      <p>
+        Confira a descrição, localização e disponibilidade do item cadastrado pela comunidade.
+      </p>
+    </div>
+  </section>
 
-  <!-- PRODUTO -->
   <section class="produto-detalhe">
     <div class="produto-container">
-
-      <!-- IMAGEM -->
       <div class="produto-img">
-        <img id="imgProduto">
+        <img id="imgProduto" src="https://via.placeholder.com/600x600?text=Doacao" alt="Imagem do produto">
       </div>
 
-      <!-- INFO -->
       <div class="produto-info">
-        <h1 id="titulo">Carregando...</h1>
+        <span class="section-kicker" id="categoriaLabel">Doação</span>
+        <h2 id="titulo">Carregando...</h2>
         <p class="descricao" id="descricao"></p>
 
         <button class="btn-doar" id="btnRequisitar">
-          Requisitar Produto / Serviço
+          Requisitar produto
         </button>
 
-        <!-- 👥 CONTADOR -->
-        <p id="contadorBox" style="margin-top:10px; font-weight:600;"></p>
+        <p id="contadorBox" class="contador-box"></p>
 
         <div class="info-extra">
-          <p><strong>📍 Localização:</strong> <span id="regiao"></span></p>
-          <p><strong>💰 Valor:</strong> R$ <span id="valor"></span></p>
+          <p><strong>Localização:</strong> <span id="regiao"></span></p>
+          <p><strong>Valor:</strong> <span id="valor"></span></p>
 
           <div class="doador">
-            <p><strong>Histórico do doador</strong></p>
-            <span>Bom / Sem reclamações / Usuário confiável</span>
+            <span>Histórico do doador</span>
+            <p>Bom histórico, sem reclamações e perfil confiável na comunidade.</p>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- RELACIONADOS -->
   <section class="relacionados">
-    <h2>Produtos recomendados</h2>
+    <div class="section-header">
+      <span class="section-kicker">Também pode ajudar</span>
+      <h2>Produtos recomendados</h2>
+    </div>
+
     <div id="relacionados" class="produtos-grid"></div>
   </section>
+</main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-
-    <div class="footer-container">
-
-        <div class="footer-left">
-            <h3>Caridade</h3>
-            <p>Transformando vidas através da solidariedade.</p>
-        </div>
-
-        <div class="footer-links">
-
-            <div>
-                <h4>Contato</h4>
-                <p>WhatsApp de suporte</p>
-                <p>Email oficial</p>
-                <p>Central de ajuda</p>
-                <p>Enviar sugestão</p>
-            </div>
-
-            <div>
-                <h4>Parcerias</h4>
-                <p>Seja nosso parceiro</p>
-                <p>Empresas apoiadoras</p>
-                <p>Projetos sociais</p>
-                <p>Trabalhe conosco</p>
-            </div>
-
-            <div>
-                <h4>Termos</h4>
-                <p>Termos de uso</p>
-                <p>Política de privacidade</p>
-                <p>Direitos do usuário</p>
-                <p>Proteção de dados</p>
-            </div>
-
-            <div>
-                <h4>Institucional</h4>
-                <p>Sobre a plataforma</p>
-                <p>Nossa missão</p>
-                <p>Transparência</p>
-                <p>Relatórios de impacto</p>
-            </div>
-
-        </div>
-
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h3>Projeto Caridade</h3>
+      <p>Transformando solidariedade em cuidado real.</p>
     </div>
 
-  </footer>
+    <div class="footer-links">
+      <div>
+        <h4>Contato</h4>
+        <p>WhatsApp</p>
+        <p>Email oficial</p>
+        <p>Central de ajuda</p>
+      </div>
 
-  <!-- FIREBASE -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+      <div>
+        <h4>Participe</h4>
+        <p>Seja voluntário</p>
+        <p>Seja parceiro</p>
+        <p>Projetos sociais</p>
+      </div>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "caridade-6464e.firebaseapp.com",
-      projectId: "caridade-6464e"
-    };
+      <div>
+        <h4>Institucional</h4>
+        <p>Sobre o projeto</p>
+        <p>Transparência</p>
+        <p>Relatórios de impacto</p>
+      </div>
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-  </script>
+      <div>
+        <h4>Segurança</h4>
+        <p>Termos de uso</p>
+        <p>Privacidade</p>
+        <p>Proteção de dados</p>
+      </div>
+    </div>
+  </div>
+</footer>
 
-  <!-- SCRIPT -->
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-    let categoriaAtual = "";
-    let tipoAtual = "";
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBerrzBXG7xEPY-zokNSzxsOLcCXHvSKyA",
+  authDomain: "caridade-6464e.firebaseapp.com",
+  projectId: "caridade-6464e"
+};
 
-    const btn = document.getElementById("btnRequisitar");
-    const contadorBox = document.getElementById("contadorBox");
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+</script>
 
-    if (!id) {
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+let categoriaAtual = "";
+let tipoAtual = "";
+
+const btn = document.getElementById("btnRequisitar");
+const contadorBox = document.getElementById("contadorBox");
+
+function formatarValor(valor) {
+  if (!valor || valor === "0,00" || valor === "0") return "Doação gratuita";
+  return `R$ ${valor}`;
+}
+
+if (!id) {
+  document.getElementById("titulo").innerText = "Produto não encontrado";
+  btn.disabled = true;
+} else {
+  db.collection("produtos").doc(id).get().then(doc => {
+    const item = doc.data();
+
+    if (!item) {
       document.getElementById("titulo").innerText = "Produto não encontrado";
-    } else {
-      db.collection("produtos").doc(id).get().then(doc => {
-        const item = doc.data();
-
-        if (!item) {
-          document.getElementById("titulo").innerText = "Produto não encontrado";
-          return;
-        }
-
-        document.getElementById("imgProduto").src = item.imagem || "https://via.placeholder.com/300";
-        document.getElementById("titulo").innerText = item.titulo || "Sem título";
-        document.getElementById("descricao").innerText = item.descricao || "Sem descrição";
-        document.getElementById("regiao").innerText = item.regiao || "Não informado";
-        document.getElementById("valor").innerText = item.valor || "0,00";
-
-        categoriaAtual = item.categoria;
-        tipoAtual = item.tipo || "outro";
-
-        if (tipoAtual === "comida") {
-          btn.innerText = "Tenho interesse";
-
-          contadorBox.innerText =
-            `👥 ${item.contador || 0} pessoas demonstraram interesse`;
-        }
-
-        if (item.requisitado && tipoAtual !== "comida") {
-          btn.innerText = "Já requisitado";
-          btn.disabled = true;
-        }
-
-        carregarRelacionados();
-      });
+      btn.disabled = true;
+      return;
     }
 
-    btn.addEventListener("click", async () => {
-      if (!id) return;
+    document.getElementById("imgProduto").src = item.imagem || "https://via.placeholder.com/600x600?text=Doacao";
+    document.getElementById("titulo").innerText = item.titulo || "Produto sem título";
+    document.getElementById("descricao").innerText = item.descricao || "Nenhuma descrição foi informada.";
+    document.getElementById("regiao").innerText = item.regiao || "Não informado";
+    document.getElementById("valor").innerText = formatarValor(item.valor);
+    document.getElementById("categoriaLabel").innerText = item.categoria || "Doação";
 
-      const ref = db.collection("produtos").doc(id);
-      const doc = await ref.get();
-      const data = doc.data();
+    categoriaAtual = item.categoria || "";
+    tipoAtual = item.tipo || item.categoria || "outro";
 
-      if (tipoAtual === "comida") {
-        const novoValor = (data.contador || 0) + 1;
+    if (tipoAtual === "comida") {
+      btn.innerText = "Tenho interesse";
+      contadorBox.innerText = `${item.contador || 0} pessoas demonstraram interesse`;
+    }
 
-        await ref.update({ contador: novoValor });
-
-        contadorBox.innerText =
-          `👥 ${novoValor} pessoas demonstraram interesse`;
-
-        return;
-      }
-
-      await ref.update({ requisitado: true });
-
+    if (item.requisitado && tipoAtual !== "comida") {
       btn.innerText = "Já requisitado";
       btn.disabled = true;
-
-      alert("Produto requisitado com sucesso!");
-
-      carregarRelacionados();
-    });
-
-    function carregarRelacionados() {
-      const container = document.getElementById("relacionados");
-
-      db.collection("produtos")
-        .where("categoria", "==", categoriaAtual)
-        .get()
-        .then(snapshot => {
-
-          container.innerHTML = "";
-
-          snapshot.forEach(doc => {
-            if (doc.id === id) return;
-
-            const item = doc.data();
-
-            const card = document.createElement("div");
-            card.className = "card";
-
-            card.onclick = () => {
-              window.location.href = `produtosDetalhe.html?id=${doc.id}`;
-            };
-
-            card.innerHTML = `
-              <img src="${item.imagem || 'https://via.placeholder.com/300'}">
-              <div class="card-info">
-                <h3>${item.titulo || ''}</h3>
-                <p>${(item.descricao || '').substring(0, 60)}...</p>
-                ${item.requisitado ? '<span style="color:red;font-size:12px;">Requisitado</span>' : ''}
-              </div>
-            `;
-
-            container.appendChild(card);
-          });
-        });
+      btn.classList.add("disabled");
     }
-  </script>
 
-  <!-- MENU JS -->
-  <script src="../js/menu.js"></script>
-  <script src="../js/mobile-navbar.js"></script>
+    carregarRelacionados();
+  });
+}
+
+btn.addEventListener("click", async () => {
+  if (!id) return;
+
+  const ref = db.collection("produtos").doc(id);
+  const doc = await ref.get();
+  const data = doc.data();
+
+  if (tipoAtual === "comida") {
+    const novoValor = (data.contador || 0) + 1;
+
+    await ref.update({ contador: novoValor });
+
+    contadorBox.innerText = `${novoValor} pessoas demonstraram interesse`;
+    return;
+  }
+
+  await ref.update({ requisitado: true });
+
+  btn.innerText = "Já requisitado";
+  btn.disabled = true;
+  btn.classList.add("disabled");
+
+  contadorBox.innerText = "Produto requisitado com sucesso.";
+  carregarRelacionados();
+});
+
+function carregarRelacionados() {
+  const container = document.getElementById("relacionados");
+  container.innerHTML = '<div class="loading">Carregando produtos recomendados...</div>';
+
+  if (!categoriaAtual) {
+    container.innerHTML = '<div class="loading">Nenhum produto recomendado encontrado.</div>';
+    return;
+  }
+
+  db.collection("produtos")
+    .where("categoria", "==", categoriaAtual)
+    .get()
+    .then(snapshot => {
+      container.innerHTML = "";
+
+      snapshot.forEach(doc => {
+        if (doc.id === id) return;
+
+        const item = doc.data();
+
+        const card = document.createElement("article");
+        card.className = "related-card";
+
+        card.onclick = () => {
+          window.location.href = `produtosDetalhe.html?id=${doc.id}`;
+        };
+
+        card.innerHTML = `
+          <img src="${item.imagem || 'https://via.placeholder.com/600x400?text=Doacao'}" alt="${item.titulo || 'Produto recomendado'}">
+
+          <div class="card-info">
+            <span>${item.requisitado ? "Requisitado" : item.categoria || "Doação"}</span>
+            <h3>${item.titulo || "Produto recomendado"}</h3>
+            <p>${(item.descricao || "Item disponível para doação.").substring(0, 80)}</p>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      if (!container.innerHTML) {
+        container.innerHTML = '<div class="loading">Nenhum produto recomendado encontrado.</div>';
+      }
+    })
+    .catch(() => {
+      container.innerHTML = '<div class="loading">Não foi possível carregar recomendações agora.</div>';
+    });
+}
+</script>
+
+<script src="../js/menu.js"></script>
+<script src="../js/mobile-navbar.js"></script>
 
 </body>
 </html>

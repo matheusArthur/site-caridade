@@ -1,112 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Produtos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos para Doação</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../css/menu.css">
-<link rel="stylesheet" href="../css/produtos.css">
-<!-- 🔥 FOOTER STYLE REUTILIZADO -->
-<link rel="stylesheet" href="../css/home.css">
-
-<style>
-/* 🔥 destaque do filtro ativo */
-.categoria.active {
-  background: #4CAF50;
-  color: #fff;
-  border-radius: 10px;
-  padding: 8px;
-}
-</style>
-
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/produtos.css">
 </head>
 
 <body>
 
-<!-- MENU -->
 <div id="menu"></div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
-    <h1>Produtos para Doação</h1>
-    <button>Explorar</button>
-  </div>
-</section>
+<main>
+  <section class="products-hero">
+    <div class="hero-content">
+      <span class="hero-tag">Doações disponíveis</span>
+      <h1>Encontre itens doados pela comunidade.</h1>
+      <p>
+        Veja roupas, alimentos, itens para casa e contribuições cadastradas por pessoas
+        que desejam ajudar quem mais precisa.
+      </p>
 
-<!-- CATEGORIAS -->
-<section class="categorias">
-  <h2>Categorias</h2>
+      <button class="btn btn-primary" onclick="document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' })">
+        Explorar doações
+      </button>
+    </div>
+  </section>
 
-  <div class="categorias-grid">
-    <div class="categoria active" onclick="filtrar('todos', this)">🌐 Todos</div>
-    <div class="categoria" onclick="filtrar('roupa', this)">👕 Roupas</div>
-    <div class="categoria" onclick="filtrar('casa', this)">🏠 Casa</div>
-    <div class="categoria" onclick="filtrar('comida', this)">🍞 Alimentos</div>
-    <div class="categoria" onclick="filtrar('dinheiro', this)">💰 Financeiro</div>
-  </div>
-</section>
-
-<!-- PRODUTOS -->
-<section class="produtos">
-  <h2>Doações Disponíveis</h2>
-  <div id="produtos" class="produtos-grid"></div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-
-    <div class="footer-container">
-
-        <div class="footer-left">
-            <h3>Caridade</h3>
-            <p>Transformando vidas através da solidariedade.</p>
-        </div>
-
-        <div class="footer-links">
-
-            <div>
-                <h4>Contato</h4>
-                <p>WhatsApp de suporte</p>
-                <p>Email oficial</p>
-                <p>Central de ajuda</p>
-                <p>Enviar sugestão</p>
-            </div>
-
-            <div>
-                <h4>Parcerias</h4>
-                <p>Seja nosso parceiro</p>
-                <p>Empresas apoiadoras</p>
-                <p>Projetos sociais</p>
-                <p>Trabalhe conosco</p>
-            </div>
-
-            <div>
-                <h4>Termos</h4>
-                <p>Termos de uso</p>
-                <p>Política de privacidade</p>
-                <p>Direitos do usuário</p>
-                <p>Proteção de dados</p>
-            </div>
-
-            <div>
-                <h4>Institucional</h4>
-                <p>Sobre a plataforma</p>
-                <p>Nossa missão</p>
-                <p>Transparência</p>
-                <p>Relatórios de impacto</p>
-            </div>
-
-        </div>
-
+  <section class="categories-section">
+    <div class="section-header">
+      <span class="section-kicker">Categorias</span>
+      <h2>Filtre pelo tipo de doação.</h2>
     </div>
 
+    <div class="categories-grid">
+      <button class="category-pill active" onclick="filtrar('todos', this)">Todos</button>
+      <button class="category-pill" onclick="filtrar('roupa', this)">Roupas</button>
+      <button class="category-pill" onclick="filtrar('casa', this)">Casa</button>
+      <button class="category-pill" onclick="filtrar('comida', this)">Alimentos</button>
+      <button class="category-pill" onclick="filtrar('dinheiro', this)">Financeiro</button>
+    </div>
+  </section>
+
+  <section class="products-section">
+    <div class="section-header">
+      <span class="section-kicker">Itens cadastrados</span>
+      <h2>Doações que podem fazer diferença hoje.</h2>
+    </div>
+
+    <div id="produtos" class="produtos-grid"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h3>Projeto Caridade</h3>
+      <p>Transformando solidariedade em cuidado real.</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Contato</h4>
+        <p>WhatsApp</p>
+        <p>Email oficial</p>
+        <p>Central de ajuda</p>
+      </div>
+
+      <div>
+        <h4>Participe</h4>
+        <p>Seja voluntário</p>
+        <p>Seja parceiro</p>
+        <p>Projetos sociais</p>
+      </div>
+
+      <div>
+        <h4>Institucional</h4>
+        <p>Sobre o projeto</p>
+        <p>Transparência</p>
+        <p>Relatórios de impacto</p>
+      </div>
+
+      <div>
+        <h4>Segurança</h4>
+        <p>Termos de uso</p>
+        <p>Privacidade</p>
+        <p>Proteção de dados</p>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
@@ -120,75 +109,86 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-/* 🔥 estado do filtro */
 let categoriaAtual = "todos";
 
-/* 🔥 abrir produto */
 function abrirProduto(id) {
   window.location.href = `produtosDetalhe.html?id=${id}`;
 }
 
-/* 🔥 FILTRO */
+function formatarValor(valor) {
+  if (!valor || valor === "0,00" || valor === "0") return "Doação gratuita";
+  return `R$ ${valor}`;
+}
+
 function filtrar(cat, element) {
   categoriaAtual = cat;
 
-  document.querySelectorAll('.categoria')
-    .forEach(el => el.classList.remove('active'));
+  document.querySelectorAll(".category-pill").forEach(el => {
+    el.classList.remove("active");
+  });
 
-  element.classList.add('active');
-
+  element.classList.add("active");
   carregarProdutos();
 }
 
-/* 🔥 carregar produtos */
 function carregarProdutos() {
   const container = document.getElementById("produtos");
-  container.innerHTML = "<p>Carregando...</p>";
+  container.innerHTML = '<div class="loading">Carregando doações...</div>';
 
   db.collection("produtos")
     .orderBy("criadoEm", "desc")
     .get()
     .then(snapshot => {
-
       container.innerHTML = "";
+
+      if (snapshot.empty) {
+        container.innerHTML = '<div class="loading">Nenhuma doação cadastrada ainda.</div>';
+        return;
+      }
 
       snapshot.forEach(doc => {
         const item = doc.data();
-
         const categoriaItem = (item.categoria || "").toLowerCase().trim();
 
         if (categoriaAtual !== "todos" && categoriaItem !== categoriaAtual) return;
 
-        const card = document.createElement("div");
-        card.className = "card-item";
+        const card = document.createElement("article");
+        card.className = "product-card";
 
         card.innerHTML = `
-          <img src="${item.imagem}" onerror="this.src='https://via.placeholder.com/300'">
+          <img src="${item.imagem}" alt="${item.titulo}" onerror="this.src='https://via.placeholder.com/600x400?text=Doacao'">
 
-          <h3>${item.titulo}</h3>
-          <p>${item.descricao}</p>
+          <div class="product-info">
+            <span class="card-category">${item.categoria || "Doação"}</span>
+            <h3>${item.titulo || "Item para doação"}</h3>
+            <p>${item.descricao || "Item disponível para doação."}</p>
 
-          <div class="categoria">${item.categoria}</div>
+            <div class="product-meta">
+              <span>${item.regiao || "Região não informada"}</span>
+              <strong>${formatarValor(item.valor)}</strong>
+            </div>
 
-          <div class="btn-interesse" onclick="abrirProduto('${doc.id}')">
-            Tenho interesse
+            <button class="btn-card" onclick="abrirProduto('${doc.id}')">
+              Tenho interesse
+            </button>
           </div>
         `;
 
         container.appendChild(card);
       });
 
+      if (!container.innerHTML) {
+        container.innerHTML = '<div class="loading">Nenhuma doação encontrada nessa categoria.</div>';
+      }
     })
     .catch(() => {
-      container.innerHTML = "<p>Erro ao carregar dados</p>";
+      container.innerHTML = '<div class="loading">Não foi possível carregar as doações agora.</div>';
     });
 }
 
-/* 🔥 inicial */
 window.onload = carregarProdutos;
 </script>
 
-<!-- MENU JS -->
 <script src="../js/menu.js"></script>
 <script src="../js/mobile-navbar.js"></script>
 

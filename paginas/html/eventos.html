@@ -1,117 +1,144 @@
 <!doctype html>
 <html lang="pt-BR">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eventos Solidários</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos Solidários</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../css/global.css">
-<link rel="stylesheet" href="../css/menu.css">
-<link rel="stylesheet" href="../css/eventos.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/eventos.css">
 </head>
 
 <body>
 
 <div id="menu"></div>
 
-<!-- HERO -->
-<header class="hero">
-    <div class="hero-overlay">
-        <h1>Eventos Solidários</h1>
-        <p id="frase">A solidariedade transforma vidas</p>
-    </div>
-</header>
+<main>
+    <header class="events-hero">
+        <div class="hero-content">
+            <span class="hero-tag">Ações que aproximam pessoas</span>
+            <h1>Eventos solidários que geram impacto real.</h1>
+            <p id="frase">
+                A solidariedade transforma vidas quando vira atitude.
+            </p>
 
-<!-- IMPACTO -->
-<section class="impacto">
-    <div>+1200 pessoas ajudadas</div>
-    <div>+300 doações</div>
-    <div>+50 projetos</div>
-</section>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="window.location.href='doacao.html'">
+                    Quero ajudar
+                </button>
+                <button class="btn btn-secondary" onclick="document.querySelector('.events-panel').scrollIntoView({ behavior: 'smooth' })">
+                    Ver eventos
+                </button>
+            </div>
+        </div>
+    </header>
 
-<!-- ALERTA -->
-<div class="alerta">
-🔥 Campanha urgente em Londrina: ajude famílias em vulnerabilidade
-</div>
+    <section class="impact-section">
+        <div class="impact-item">
+            <strong>+1200</strong>
+            <span>Pessoas ajudadas</span>
+        </div>
 
-<!-- FILTROS -->
-<section class="filtros">
-<button onclick="filtrar('solidariedade', this)" class="active">Todos</button>
-<button onclick="filtrar('doação', this)">Doação</button>
-<button onclick="filtrar('voluntariado', this)">Voluntariado</button>
-<button onclick="filtrar('crianças', this)">Crianças</button>
-</section>
+        <div class="impact-item">
+            <strong>+300</strong>
+            <span>Doações recebidas</span>
+        </div>
 
-<!-- BUSCA -->
-<section class="search-section">
-<input type="text" id="busca" placeholder="Buscar eventos...">
-</section>
+        <div class="impact-item">
+            <strong>+50</strong>
+            <span>Projetos apoiados</span>
+        </div>
+    </section>
 
-<!-- VIDEOS -->
-<section class="videos-section">
-<div id="event-grid" class="event-grid"></div>
-</section>
+    <section class="urgent-box">
+        <div>
+            <span>Campanha urgente</span>
+            <h2>Londrina precisa de apoio agora.</h2>
+            <p>Ajude famílias em situação de vulnerabilidade com doações, divulgação ou trabalho voluntário.</p>
+        </div>
 
-<!-- MODAL -->
+        <button class="btn btn-primary" onclick="window.location.href='doacao.html'">
+            Apoiar campanha
+        </button>
+    </section>
+
+    <section class="events-panel">
+        <div class="panel-header">
+            <div>
+                <span class="section-kicker">Eventos e campanhas</span>
+                <h2>Encontre ações solidárias para apoiar.</h2>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="busca" placeholder="Buscar por campanha, cidade ou tema...">
+            </div>
+        </div>
+
+        <div class="filters">
+            <button onclick="filtrar('solidariedade', this)" class="active">Todos</button>
+            <button onclick="filtrar('doação', this)">Doação</button>
+            <button onclick="filtrar('voluntariado', this)">Voluntariado</button>
+            <button onclick="filtrar('crianças', this)">Crianças</button>
+        </div>
+
+        <div id="event-grid" class="event-grid"></div>
+    </section>
+</main>
+
 <div id="modal" class="modal">
-<div class="modal-content">
-<span class="close" onclick="fecharModal()">×</span>
-<iframe id="video-frame" allowfullscreen></iframe>
-<button class="btn-ajudar">Quero ajudar</button>
-</div>
+    <div class="modal-content">
+        <button class="close" onclick="fecharModal()">×</button>
+        <iframe id="video-frame" allowfullscreen></iframe>
+
+        <div class="modal-footer">
+            <p>Gostou dessa ação? Você também pode fazer parte dessa mudança.</p>
+            <button class="btn btn-primary" onclick="window.location.href='doacao.html'">
+                Quero ajudar
+            </button>
+        </div>
+    </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h3>Projeto Caridade</h3>
+            <p>Transformando solidariedade em cuidado real.</p>
+        </div>
 
-<div class="footer-container">
+        <div class="footer-links">
+            <div>
+                <h4>Contato</h4>
+                <p>WhatsApp</p>
+                <p>Email oficial</p>
+                <p>Central de ajuda</p>
+            </div>
 
-<div class="footer-left">
-    <h3>Caridade</h3>
-    <p>Transformando vidas através da solidariedade.</p>
-</div>
+            <div>
+                <h4>Participe</h4>
+                <p>Seja voluntário</p>
+                <p>Seja parceiro</p>
+                <p>Projetos sociais</p>
+            </div>
 
-<div class="footer-links">
+            <div>
+                <h4>Institucional</h4>
+                <p>Sobre o projeto</p>
+                <p>Transparência</p>
+                <p>Relatórios de impacto</p>
+            </div>
 
-    <div>
-        <h4>Contato</h4>
-        <p>WhatsApp de suporte</p>
-        <p>Email oficial</p>
-        <p>Central de ajuda</p>
-        <p>Enviar sugestão</p>
+            <div>
+                <h4>Segurança</h4>
+                <p>Termos de uso</p>
+                <p>Privacidade</p>
+                <p>Proteção de dados</p>
+            </div>
+        </div>
     </div>
-
-    <div>
-        <h4>Parcerias</h4>
-        <p>Seja nosso parceiro</p>
-        <p>Empresas apoiadoras</p>
-        <p>Projetos sociais</p>
-        <p>Trabalhe conosco</p>
-    </div>
-
-    <div>
-        <h4>Termos</h4>
-        <p>Termos de uso</p>
-        <p>Política de privacidade</p>
-        <p>Direitos do usuário</p>
-        <p>Proteção de dados</p>
-    </div>
-
-    <div>
-        <h4>Institucional</h4>
-        <p>Sobre a plataforma</p>
-        <p>Nossa missão</p>
-        <p>Transparência</p>
-        <p>Relatórios de impacto</p>
-    </div>
-
-</div>
-
-</div>
-
 </footer>
 
 <script src="../js/menu.js"></script>
@@ -125,78 +152,99 @@ const inputBusca = document.getElementById("busca");
 let termoAtual = "solidariedade Brasil";
 
 const frases = [
-"A solidariedade transforma vidas.",
-"Pequenas ações geram grandes mudanças.",
-"Seu gesto pode mudar o mundo."
+    "A solidariedade transforma vidas quando vira atitude.",
+    "Cada evento é uma oportunidade de espalhar cuidado.",
+    "Seu tempo, sua doação ou sua divulgação podem mudar uma história."
 ];
 
-let i = 0;
-setInterval(()=>{
-i=(i+1)%frases.length;
-document.getElementById("frase").innerText=frases[i];
-},5000);
+let fraseAtual = 0;
 
-async function carregarVideos(termo){
-container.innerHTML = '<div class="loading">Carregando...</div>';
+setInterval(() => {
+    fraseAtual = (fraseAtual + 1) % frases.length;
+    document.getElementById("frase").innerText = frases[fraseAtual];
+}, 5000);
 
-try{
-const res = await fetch(
-`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(termo)}&type=video&maxResults=8&key=${API_KEY}`
-);
+async function carregarVideos(termo) {
+    container.innerHTML = '<div class="loading">Buscando eventos solidários...</div>';
 
-const data = await res.json();
+    try {
+        const resposta = await fetch(
+            `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(termo)}&type=video&maxResults=8&key=${API_KEY}`
+        );
 
-container.innerHTML = "";
+        const dados = await resposta.json();
 
-data.items.forEach(v=>{
-const id = v.id.videoId;
-const titulo = v.snippet.title;
-const thumb = v.snippet.thumbnails.high.url;
+        container.innerHTML = "";
 
-container.innerHTML += `
-<div class="event-card" onclick="abrirModal('${id}')">
-<img src="${thumb}">
-<div class="event-info">
-<h3>${titulo}</h3>
-<span>Assistir</span>
-</div>
-</div>`;
-});
-}catch(e){
-container.innerHTML = '<div class="loading">Erro ao carregar 😢</div>';
-}
-}
+        if (!dados.items || dados.items.length === 0) {
+            container.innerHTML = '<div class="loading">Nenhum evento encontrado no momento.</div>';
+            return;
+        }
 
-function abrirModal(id){
-document.getElementById("modal").style.display="flex";
-document.getElementById("video-frame").src =
-`https://www.youtube.com/embed/${id}`;
-}
+        dados.items.forEach(video => {
+            const id = video.id.videoId;
+            const titulo = video.snippet.title;
+            const thumb = video.snippet.thumbnails.high.url;
 
-function fecharModal(){
-document.getElementById("modal").style.display="none";
-document.getElementById("video-frame").src="";
-}
+            const card = document.createElement("article");
+            card.className = "event-card";
+            card.onclick = () => abrirModal(id);
 
-function filtrar(tipo, el){
-termoAtual = tipo + " solidariedade Brasil";
-carregarVideos(termoAtual);
+            card.innerHTML = `
+                <div class="thumb-wrap">
+                    <img src="${thumb}" alt="${titulo}">
+                    <span>Assistir</span>
+                </div>
+                <div class="event-info">
+                    <h3>${titulo}</h3>
+                    <p>Conheça essa ação e veja como a solidariedade acontece na prática.</p>
+                </div>
+            `;
 
-document.querySelectorAll('.filtros button')
-.forEach(btn => btn.classList.remove('active'));
-
-el.classList.add('active');
+            container.appendChild(card);
+        });
+    } catch (erro) {
+        container.innerHTML = '<div class="loading">Não foi possível carregar os eventos agora.</div>';
+    }
 }
 
-let timeout;
-inputBusca.addEventListener("keyup",(e)=>{
-clearTimeout(timeout);
-
-timeout = setTimeout(()=>{
-if(e.target.value.length > 2){
-carregarVideos(e.target.value);
+function abrirModal(id) {
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("video-frame").src = `https://www.youtube.com/embed/${id}`;
 }
-},500);
+
+function fecharModal() {
+    document.getElementById("modal").style.display = "none";
+    document.getElementById("video-frame").src = "";
+}
+
+function filtrar(tipo, elemento) {
+    termoAtual = `${tipo} solidariedade Brasil`;
+    carregarVideos(termoAtual);
+
+    document.querySelectorAll(".filters button").forEach(botao => {
+        botao.classList.remove("active");
+    });
+
+    elemento.classList.add("active");
+}
+
+let tempoBusca;
+
+inputBusca.addEventListener("keyup", evento => {
+    clearTimeout(tempoBusca);
+
+    tempoBusca = setTimeout(() => {
+        const valor = evento.target.value.trim();
+
+        if (valor.length > 2) {
+            carregarVideos(valor);
+        }
+
+        if (valor.length === 0) {
+            carregarVideos(termoAtual);
+        }
+    }, 500);
 });
 
 carregarVideos(termoAtual);

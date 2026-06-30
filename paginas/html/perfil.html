@@ -1,119 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil</title>
+  <title>Perfil - Projeto Caridade</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/perfil.css">
+  <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/perfil.css">
 </head>
 
 <body>
 
-<!-- MENU -->
 <div id="menu"></div>
 
-<div class="container">
-
-  <!-- PERFIL -->
-  <div class="perfil">
-
-    <div class="foto">
-      <img id="fotoPerfil" src="https://via.placeholder.com/200" alt="Foto de perfil">
-      <input type="file" id="inputFoto" accept="image/*">
-    </div>
-
-    <div class="info">
-
-      <h1>Dados do perfil</h1>
-
-      <p><strong>Nome:</strong> Matheus Arthur Ferreira Silva</p>
-      <p><strong>Email:</strong> matheus783@gmail.com</p>
-      <p><strong>Whatsapp:</strong> (43) 987033568</p>
-      <p><strong>Região:</strong> Londrina / Zona Norte</p>
-
-      <p class="descricao">
-        Transforme gestos em esperança — cada doação ajuda a mudar vidas de verdade.
+<main>
+  <section class="profile-hero">
+    <div class="hero-content">
+      <span class="hero-tag">Meu perfil</span>
+      <h1>Acompanhe suas doações e sua participação no projeto.</h1>
+      <p>
+        Este espaço reúne seus dados, itens doados e produtos adquiridos dentro da plataforma.
       </p>
-
-    </div>
-
-  </div>
-
-  <!-- ITENS DOADOS -->
-  <section>
-    <h2>Últimos itens doados</h2>
-
-    <div class="grid">
-      <div class="card"><img src="https://via.placeholder.com/200"><span class="add">+</span></div>
-      <div class="card"><img src="https://via.placeholder.com/200"><span class="add">+</span></div>
-      <div class="card"><img src="https://via.placeholder.com/200"><span class="add">+</span></div>
-      <div class="card"><img src="https://via.placeholder.com/200"><span class="add">+</span></div>
     </div>
   </section>
 
-  <!-- ADQUIRIDOS -->
-  <section>
-    <h2>Últimos adquiridos</h2>
-    <div class="grid-produtos" id="produtosAdquiridos"></div>
+  <section class="profile-container">
+    <div class="profile-card">
+      <div class="photo-panel">
+        <img id="fotoPerfil" src="https://via.placeholder.com/400x400?text=Perfil" alt="Foto de perfil">
+
+        <label class="upload-button" for="inputFoto">
+          Alterar foto
+        </label>
+
+        <input type="file" id="inputFoto" accept="image/*">
+      </div>
+
+      <div class="profile-info">
+        <span class="section-kicker">Dados pessoais</span>
+        <h2>Matheus Arthur Ferreira Silva</h2>
+
+        <div class="info-grid">
+          <div>
+            <strong>Email</strong>
+            <p>matheus783@gmail.com</p>
+          </div>
+
+          <div>
+            <strong>WhatsApp</strong>
+            <p>(43) 98703-3568</p>
+          </div>
+
+          <div>
+            <strong>Região</strong>
+            <p>Londrina / Zona Norte</p>
+          </div>
+
+          <div>
+            <strong>Participação</strong>
+            <p>Doador e apoiador</p>
+          </div>
+        </div>
+
+        <p class="profile-description">
+          Transforme gestos em esperança. Cada doação ajuda a mudar vidas de verdade.
+        </p>
+      </div>
+    </div>
+
+    <section class="dashboard-section">
+      <div class="section-header">
+        <span class="section-kicker">Histórico</span>
+        <h2>Últimos itens doados</h2>
+      </div>
+
+      <div class="donated-grid">
+        <div class="donated-card">
+          <img src="https://via.placeholder.com/400x300?text=Doacao" alt="Item doado">
+          <span>+</span>
+        </div>
+
+        <div class="donated-card">
+          <img src="https://via.placeholder.com/400x300?text=Doacao" alt="Item doado">
+          <span>+</span>
+        </div>
+
+        <div class="donated-card">
+          <img src="https://via.placeholder.com/400x300?text=Doacao" alt="Item doado">
+          <span>+</span>
+        </div>
+
+        <div class="donated-card">
+          <img src="https://via.placeholder.com/400x300?text=Doacao" alt="Item doado">
+          <span>+</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-section">
+      <div class="section-header">
+        <span class="section-kicker">Solicitações</span>
+        <h2>Últimos adquiridos</h2>
+      </div>
+
+      <div class="grid-produtos" id="produtosAdquiridos"></div>
+    </section>
   </section>
+</main>
 
-</div>
-
-<!-- ===== FOOTER IGUAL HOME ===== -->
 <footer class="footer">
-
   <div class="footer-container">
-
-    <div class="footer-left">
-      <h3>Caridade</h3>
-      <p>Transformando vidas através da solidariedade.</p>
+    <div class="footer-brand">
+      <h3>Projeto Caridade</h3>
+      <p>Transformando solidariedade em cuidado real.</p>
     </div>
 
     <div class="footer-links">
-
       <div>
         <h4>Contato</h4>
-        <p>WhatsApp de suporte</p>
+        <p>WhatsApp</p>
         <p>Email oficial</p>
         <p>Central de ajuda</p>
-        <p>Enviar sugestão</p>
       </div>
 
       <div>
-        <h4>Parcerias</h4>
-        <p>Seja nosso parceiro</p>
-        <p>Empresas apoiadoras</p>
+        <h4>Participe</h4>
+        <p>Seja voluntário</p>
+        <p>Seja parceiro</p>
         <p>Projetos sociais</p>
-        <p>Trabalhe conosco</p>
-      </div>
-
-      <div>
-        <h4>Termos</h4>
-        <p>Termos de uso</p>
-        <p>Política de privacidade</p>
-        <p>Direitos do usuário</p>
-        <p>Proteção de dados</p>
       </div>
 
       <div>
         <h4>Institucional</h4>
-        <p>Sobre a plataforma</p>
-        <p>Nossa missão</p>
+        <p>Sobre o projeto</p>
         <p>Transparência</p>
         <p>Relatórios de impacto</p>
       </div>
 
+      <div>
+        <h4>Segurança</h4>
+        <p>Termos de uso</p>
+        <p>Privacidade</p>
+        <p>Proteção de dados</p>
+      </div>
     </div>
-
   </div>
-
 </footer>
 
-<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
@@ -128,18 +164,19 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 </script>
 
-<!-- MENU JS -->
 <script src="../js/menu.js"></script>
 <script src="../js/mobile-navbar.js"></script>
 
-<!-- FOTO PERFIL SCRIPT -->
 <script>
 const inputFoto = document.getElementById("inputFoto");
 const fotoPerfil = document.getElementById("fotoPerfil");
 
 window.onload = function () {
   const fotoSalva = localStorage.getItem("fotoPerfil");
-  if (fotoSalva) fotoPerfil.src = fotoSalva;
+
+  if (fotoSalva) {
+    fotoPerfil.src = fotoSalva;
+  }
 
   carregarProdutosRequisitados();
 };
@@ -149,42 +186,58 @@ inputFoto.addEventListener("change", function () {
 
   if (file) {
     const reader = new FileReader();
+
     reader.onload = e => {
       fotoPerfil.src = e.target.result;
       localStorage.setItem("fotoPerfil", e.target.result);
     };
+
     reader.readAsDataURL(file);
   }
 });
 
+function formatarValor(valor) {
+  if (!valor || valor === "0,00" || valor === "0") return "Doação gratuita";
+  return `R$ ${valor}`;
+}
+
 function carregarProdutosRequisitados() {
   const container = document.getElementById("produtosAdquiridos");
+  container.innerHTML = '<div class="loading">Carregando itens adquiridos...</div>';
 
   db.collection("produtos")
     .where("requisitado", "==", true)
     .get()
     .then(snapshot => {
-
       container.innerHTML = "";
 
       if (snapshot.empty) {
-        container.innerHTML = "<p>Nenhum produto adquirido ainda.</p>";
+        container.innerHTML = '<div class="loading">Nenhum produto adquirido ainda.</div>';
         return;
       }
 
       snapshot.forEach(doc => {
         const item = doc.data();
 
-        container.innerHTML += `
-          <div class="produto">
-            <img src="${item.imagem || 'https://via.placeholder.com/300'}">
-            <h3>${item.titulo || ''}</h3>
-            <p>${item.descricao || ''}</p>
-            <span>R$ ${item.valor || '0,00'}</span>
+        const produto = document.createElement("article");
+        produto.className = "produto";
+
+        produto.innerHTML = `
+          <img src="${item.imagem || 'https://via.placeholder.com/600x400?text=Doacao'}" alt="${item.titulo || 'Produto adquirido'}">
+
+          <div class="produto-info">
+            <span>${item.categoria || "Doação"}</span>
+            <h3>${item.titulo || "Produto adquirido"}</h3>
+            <p>${item.descricao || "Item solicitado dentro da plataforma."}</p>
+            <strong>${formatarValor(item.valor)}</strong>
           </div>
         `;
-      });
 
+        container.appendChild(produto);
+      });
+    })
+    .catch(() => {
+      container.innerHTML = '<div class="loading">Não foi possível carregar seus itens agora.</div>';
     });
 }
 </script>

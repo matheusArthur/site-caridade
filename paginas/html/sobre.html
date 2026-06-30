@@ -1,168 +1,188 @@
 <!doctype html>
 <html lang="pt-BR">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Projeto Caridade</title>
 
-<title>Sobre Nós</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="../css/menu.css">
-<link rel="stylesheet" href="../css/global.css">
-<link rel="stylesheet" href="../css/sobre.css">
-<link rel="stylesheet" href="../css/eventos.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/sobre.css">
 </head>
 
 <body>
 
-<!-- MENU -->
 <div id="menu"></div>
 
-<!-- TOPO -->
-<section class="sobre-topo">
-    <div class="container">
-        <h1>Juntos podemos transformar vidas</h1>
-        <p>
-            Somos um grupo de voluntários da cidade de Londrina unidos por um propósito:
-            levar esperança, apoio e dignidade para pessoas em situação de vulnerabilidade.
-        </p>
-    </div>
-</section>
+<main>
+    <section class="about-hero">
+        <div class="hero-content">
+            <span class="hero-tag">Sobre o projeto</span>
+            <h1>Juntos, levamos cuidado para quem mais precisa.</h1>
+            <p>
+                Somos voluntários de Londrina unidos por um propósito simples e poderoso:
+                transformar solidariedade em apoio real para pessoas em situação de vulnerabilidade.
+            </p>
 
-<!-- IMAGEM -->
-<section class="sobre-imagem">
-    <img src="../img/i1.jpg" class="sobre-img">
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="window.location.href='doacao.html'">
+                    Quero ajudar
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='eventos.html'">
+                    Ver ações
+                </button>
+            </div>
+        </div>
+    </section>
 
-    <div class="overlay"></div>
-
-    <div class="sobre-texto" id="texto-dinamico">
-        Doe esperança e transforme vidas.
-    </div>
-</section>
-
-<!-- SOBRE -->
-<section class="sobre-nos">
-    <div class="container">
-        <h2>Quem somos</h2>
-
-        <p>
-            Somos um grupo de voluntários que criou este projeto com o objetivo de ajudar
-            pessoas da região de Londrina que enfrentam dificuldades no dia a dia.
-        </p>
-
-        <p>
-            Acreditamos que a solidariedade pode transformar realidades e construir
-            um futuro melhor para todos.
-        </p>
-
-        <p>
-            Nosso compromisso é conectar pessoas que querem ajudar com quem realmente precisa.
-        </p>
-    </div>
-</section>
-
-<!-- VÍDEOS -->
-<section class="cidade">
-    <h2>A importância de doar</h2>
-
-    <div class="event-grid">
-
-        <div class="event-card">
-            <iframe src="https://www.youtube.com/embed/21mDekTZwsw" allowfullscreen></iframe>
+    <section class="about-intro">
+        <div class="about-text">
+            <span class="section-kicker">Quem somos</span>
+            <h2>Uma iniciativa feita por pessoas, para pessoas.</h2>
+            <p>
+                O Projeto Caridade nasceu do desejo de aproximar quem pode ajudar de quem
+                precisa de apoio. Atuamos com campanhas, doações e ações voluntárias para
+                levar alimento, acolhimento, esperança e dignidade a famílias em momentos difíceis.
+            </p>
+            <p>
+                Acreditamos que a solidariedade não precisa ser complicada. Com organização,
+                empatia e responsabilidade, pequenos gestos podem se transformar em grandes mudanças.
+            </p>
         </div>
 
-        <div class="event-card">
-            <iframe src="https://www.youtube.com/embed/MVa8vRHagTA" allowfullscreen></iframe>
+        <div class="about-card">
+            <h3>Nosso propósito</h3>
+            <p id="texto-dinamico">Sua doação pode mudar uma vida hoje.</p>
+        </div>
+    </section>
+
+    <section class="image-banner">
+        <img src="../img/i1.jpg" alt="Pessoas unidas em uma ação solidária">
+        <div class="image-overlay"></div>
+        <div class="image-text">
+            <span>Solidariedade em movimento</span>
+            <h2>Cada ajuda conta. Cada pessoa importa.</h2>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="values-header">
+            <span class="section-kicker">O que nos guia</span>
+            <h2>Trabalhamos com empatia, transparência e compromisso.</h2>
         </div>
 
-        <div class="event-card">
-            <iframe src="https://www.youtube.com/embed/uczupUvTqDk" allowfullscreen></iframe>
+        <div class="values-grid">
+            <article class="value-card">
+                <h3>Empatia</h3>
+                <p>Ouvimos as necessidades reais das pessoas antes de agir.</p>
+            </article>
+
+            <article class="value-card">
+                <h3>Transparência</h3>
+                <p>Valorizamos a confiança de quem doa, participa e acompanha o projeto.</p>
+            </article>
+
+            <article class="value-card">
+                <h3>Comunidade</h3>
+                <p>Unimos voluntários, parceiros e doadores em torno de uma causa comum.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="video-header">
+            <span class="section-kicker">Por que doar?</span>
+            <h2>Entenda a importância de participar.</h2>
+            <p>
+                A doação vai além do valor entregue. Ela representa cuidado, presença e esperança
+                para quem enfrenta uma realidade difícil.
+            </p>
         </div>
 
-        <div class="event-card">
-            <iframe src="https://www.youtube.com/embed/zZY7pwyhFEY" allowfullscreen></iframe>
+        <div class="video-grid">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/21mDekTZwsw" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/MVa8vRHagTA" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/uczupUvTqDk" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/zZY7pwyhFEY" allowfullscreen></iframe>
+            </div>
         </div>
+    </section>
+</main>
 
-    </div>
-</section>
-
-<!-- ===== FOOTER (DA HOME) ===== -->
 <footer class="footer">
-
     <div class="footer-container">
-
-        <div class="footer-left">
-            <h3>Caridade</h3>
-            <p>Transformando vidas através da solidariedade.</p>
+        <div class="footer-brand">
+            <h3>Projeto Caridade</h3>
+            <p>Transformando solidariedade em cuidado real.</p>
         </div>
 
         <div class="footer-links">
-
             <div>
                 <h4>Contato</h4>
-                <p>WhatsApp de suporte</p>
+                <p>WhatsApp</p>
                 <p>Email oficial</p>
                 <p>Central de ajuda</p>
-                <p>Enviar sugestão</p>
             </div>
 
             <div>
-                <h4>Parcerias</h4>
-                <p>Seja nosso parceiro</p>
-                <p>Empresas apoiadoras</p>
+                <h4>Participe</h4>
+                <p>Seja voluntário</p>
+                <p>Seja parceiro</p>
                 <p>Projetos sociais</p>
-                <p>Trabalhe conosco</p>
-            </div>
-
-            <div>
-                <h4>Termos</h4>
-                <p>Termos de uso</p>
-                <p>Política de privacidade</p>
-                <p>Direitos do usuário</p>
-                <p>Proteção de dados</p>
             </div>
 
             <div>
                 <h4>Institucional</h4>
-                <p>Sobre a plataforma</p>
-                <p>Nossa missão</p>
+                <p>Sobre o projeto</p>
                 <p>Transparência</p>
                 <p>Relatórios de impacto</p>
             </div>
 
+            <div>
+                <h4>Segurança</h4>
+                <p>Termos de uso</p>
+                <p>Privacidade</p>
+                <p>Proteção de dados</p>
+            </div>
         </div>
-
     </div>
-
 </footer>
 
-<!-- SCRIPTS -->
 <script src="../js/menu.js"></script>
 <script src="../js/mobile-navbar.js"></script>
 
 <script>
 const textos = [
-  "Sua doação pode mudar uma vida hoje.",
-  "Pequenos gestos geram grandes transformações.",
-  "Juntos, somos mais fortes.",
-  "Doe esperança. Doe amor. Doe futuro."
+    "Sua doação pode mudar uma vida hoje.",
+    "Pequenos gestos geram grandes transformações.",
+    "Juntos, somos mais fortes.",
+    "Doe esperança. Doe cuidado. Doe futuro."
 ];
 
 let i = 0;
 
 setInterval(() => {
-  const texto = document.getElementById("texto-dinamico");
+    const texto = document.getElementById("texto-dinamico");
 
-  texto.classList.add("fade");
+    texto.classList.add("fade");
 
-  setTimeout(() => {
-    i = (i + 1) % textos.length;
-    texto.innerText = textos[i];
-    texto.classList.remove("fade");
-  }, 500);
-
+    setTimeout(() => {
+        i = (i + 1) % textos.length;
+        texto.innerText = textos[i];
+        texto.classList.remove("fade");
+    }, 500);
 }, 4000);
 </script>
 
