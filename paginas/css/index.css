@@ -1,70 +1,165 @@
-/* Geral */
 body {
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
+  background: #f7f3ef;
 }
 
-/* --- */
-
-/* Formulário e elementos internos */
-form {
-  width: 100%;
-  max-width: 300px; /* limita a largura do formulário */
-}
-
-input {
-  border: none;
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-button {
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-/* --- */
-
-/* Container principal e seus lados */
 .container {
   display: flex;
-  height: 100vh; /* ocupa toda a altura da tela */
+  min-height: 100vh;
 }
 
 .left-side {
-  flex: 1.5; /* ocupa ~65% da tela */
+  flex: 1.5;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0));
 }
 
 .left-side img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* cobre a área sem distorcer */
+  object-fit: cover;
 }
 
 .right-side {
-  flex: 0.35; /* ocupa ~35% da tela */
-  background: #e74c3c; /* cor de fundo */
+  flex: 0.75;
+  min-width: 360px;
+  background: #e74c3c;
   display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  align-items: center; /* centraliza verticalmente */
-  flex-direction: column; /* mantém os elementos em coluna */
-  
-  /* Estilos para posicionamento e padding */
-  position: relative; /* torna o lado direito o ponto de referência */
-  padding: 50px; /* espaçamento interno */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 56px;
+  box-sizing: border-box;
 }
 
-/* --- */
-
-/* Posicionamento da logo */
 .logo-form {
-  position: absolute; /* posiciona a imagem em relação ao .right-side */
-  top: 20px;       /* distância do topo */
-  left: 20px;      /* distância da esquerda */
-  width: 80px;     /* tamanho da logo */
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  width: 86px;
   height: auto;
+}
+
+form {
+  width: 100%;
+  max-width: 340px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 34px;
+  border-radius: 8px;
+  box-shadow: 0 18px 45px rgba(71, 24, 18, 0.22);
+  box-sizing: border-box;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  color: #2c2c2c;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #ddd5d0;
+  border-radius: 6px;
+  padding: 12px 13px;
+  margin-bottom: 6px;
+  font: inherit;
+  color: #222;
+  background: #fff;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.16);
+}
+
+button {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 6px;
+  border: 0;
+  margin-bottom: 10px;
+  padding: 11px 14px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s, opacity 0.2s;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(0.98);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+button.solid {
+  background: #e74c3c;
+  color: #fff;
+}
+
+button.outline {
+  background: #fff;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+
+button.clear {
+  background: transparent;
+  color: #8f332a;
+}
+
+.error {
+  display: none;
+  color: #b42318;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+@media (max-width: 820px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-side {
+    min-height: 34vh;
+    flex: none;
+  }
+
+  .right-side {
+    min-width: 0;
+    flex: none;
+    padding: 96px 22px 32px;
+  }
+
+  .logo-form {
+    top: 22px;
+    left: 22px;
+    width: 74px;
+  }
+
+  form {
+    max-width: 420px;
+    padding: 28px;
+  }
 }
