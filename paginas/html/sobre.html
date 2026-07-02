@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto Caridade: voluntários de Londrina que transformam doações em alimento, acolhimento e dignidade para famílias em situação de vulnerabilidade.">
     <title>Sobre Nós - Projeto Caridade</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/menu.css">
@@ -17,13 +18,14 @@
 <div id="menu"></div>
 
 <main>
+    <!-- HERO: apresenta quem somos e a ação principal em uma frase -->
     <section class="about-hero">
         <div class="hero-content">
             <span class="hero-tag">Sobre o projeto</span>
             <h1>Juntos, levamos cuidado para quem mais precisa.</h1>
             <p>
-                Somos voluntários de Londrina unidos por um propósito simples e poderoso:
-                transformar solidariedade em apoio real para pessoas em situação de vulnerabilidade.
+                Somos voluntários de Londrina unidos por um propósito simples:
+                transformar solidariedade em apoio real para famílias em situação de vulnerabilidade.
             </p>
 
             <div class="hero-actions">
@@ -36,6 +38,27 @@
             </div>
         </div>
     </section>
+
+    <!-- FAIXA DE IMPACTO: números concretos logo após o hero, para gerar confiança rápido -->
+    <section class="impact-strip" aria-label="Nosso impacto em números">
+        <div class="impact-item">
+            <span class="impact-number">1.200+</span>
+            <span class="impact-label">famílias atendidas</span>
+        </div>
+        <div class="impact-item">
+            <span class="impact-number">85</span>
+            <span class="impact-label">voluntários ativos</span>
+        </div>
+        <div class="impact-item">
+            <span class="impact-number">6</span>
+            <span class="impact-label">anos em Londrina</span>
+        </div>
+        <div class="impact-item">
+            <span class="impact-number">100%</span>
+            <span class="impact-label">das doações em ações diretas</span>
+        </div>
+    </section>
+    <p class="impact-note">* Números de exemplo — substitua pelos dados reais do projeto.</p>
 
     <section class="about-intro">
         <div class="about-text">
@@ -54,12 +77,12 @@
 
         <div class="about-card">
             <h3>Nosso propósito</h3>
-            <p id="texto-dinamico">Sua doação pode mudar uma vida hoje.</p>
+            <p id="texto-dinamico" aria-live="polite">Sua doação pode mudar uma vida hoje.</p>
         </div>
     </section>
 
     <section class="image-banner">
-        <img src="../img/i1.jpg" alt="Pessoas unidas em uma ação solidária">
+        <img src="../img/i1.jpg" alt="Voluntários do Projeto Caridade distribuindo doações em Londrina">
         <div class="image-overlay"></div>
         <div class="image-text">
             <span>Solidariedade em movimento</span>
@@ -75,16 +98,25 @@
 
         <div class="values-grid">
             <article class="value-card">
+                <span class="value-icon" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.1 2.3 4.5 6 4c2-.3 3.7.7 6 3 2.3-2.3 4-3.3 6-3 3.7.5 5.4 4.1 4 7.7C19.5 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                </span>
                 <h3>Empatia</h3>
                 <p>Ouvimos as necessidades reais das pessoas antes de agir.</p>
             </article>
 
             <article class="value-card">
+                <span class="value-icon" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6-5.5-3-5.5 3 1-6L3 8.9 9 8l3-6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                </span>
                 <h3>Transparência</h3>
                 <p>Valorizamos a confiança de quem doa, participa e acompanha o projeto.</p>
             </article>
 
             <article class="value-card">
+                <span class="value-icon" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 20c.4-3.3 2.7-5.5 5.5-5.5s5.1 2.2 5.5 5.5M14 20c.3-2.6 1.9-4.4 4-4.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </span>
                 <h3>Comunidade</h3>
                 <p>Unimos voluntários, parceiros e doadores em torno de uma causa comum.</p>
             </article>
@@ -103,19 +135,28 @@
 
         <div class="video-grid">
             <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/21mDekTZwsw" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/21mDekTZwsw" title="Depoimento sobre o Projeto Caridade 1" loading="lazy" allowfullscreen></iframe>
             </div>
-
             <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/MVa8vRHagTA" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/MVa8vRHagTA" title="Depoimento sobre o Projeto Caridade 2" loading="lazy" allowfullscreen></iframe>
             </div>
-
             <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/uczupUvTqDk" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/uczupUvTqDk" title="Depoimento sobre o Projeto Caridade 3" loading="lazy" allowfullscreen></iframe>
             </div>
-
             <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/zZY7pwyhFEY" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/zZY7pwyhFEY" title="Depoimento sobre o Projeto Caridade 4" loading="lazy" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA final: fecha a página com um convite claro à ação -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Sua ajuda começa com um gesto.</h2>
+            <p>Doe hoje ou torne-se voluntário. Qualquer forma de apoio faz diferença real na vida de uma família em Londrina.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="window.location.href='doacao.html'">Fazer uma doação</button>
+                <button class="btn btn-secondary btn-dark" onclick="window.location.href='voluntario.html'">Ser voluntário</button>
             </div>
         </div>
     </section>
@@ -131,30 +172,30 @@
         <div class="footer-links">
             <div>
                 <h4>Contato</h4>
-                <p>WhatsApp</p>
-                <p>Email oficial</p>
-                <p>Central de ajuda</p>
+                <p><a href="#">WhatsApp</a></p>
+                <p><a href="#">Email oficial</a></p>
+                <p><a href="#">Central de ajuda</a></p>
             </div>
 
             <div>
                 <h4>Participe</h4>
-                <p>Seja voluntário</p>
-                <p>Seja parceiro</p>
-                <p>Projetos sociais</p>
+                <p><a href="#">Seja voluntário</a></p>
+                <p><a href="#">Seja parceiro</a></p>
+                <p><a href="#">Projetos sociais</a></p>
             </div>
 
             <div>
                 <h4>Institucional</h4>
-                <p>Sobre o projeto</p>
-                <p>Transparência</p>
-                <p>Relatórios de impacto</p>
+                <p><a href="sobre.html">Sobre o projeto</a></p>
+                <p><a href="#">Transparência</a></p>
+                <p><a href="#">Relatórios de impacto</a></p>
             </div>
 
             <div>
                 <h4>Segurança</h4>
-                <p>Termos de uso</p>
-                <p>Privacidade</p>
-                <p>Proteção de dados</p>
+                <p><a href="#">Termos de uso</a></p>
+                <p><a href="#">Privacidade</a></p>
+                <p><a href="#">Proteção de dados</a></p>
             </div>
         </div>
     </div>
