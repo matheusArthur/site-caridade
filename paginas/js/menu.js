@@ -1,5 +1,3 @@
-// ../js/menu.js
-
 function carregarScript(src) {
   return new Promise((resolve, reject) => {
     const scriptExistente = document.querySelector(`script[src="${src}"]`);
@@ -56,30 +54,71 @@ window.logout = function () {
     });
 };
 
+function configurarMenu() {
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const navList = document.querySelector(".nav-list");
+  const dropdowns = document.querySelectorAll(".dropdown");
+  const links = document.querySelectorAll(".nav-list a");
+  const currentPage = window.location.pathname.split("/").pop();
+
+  function fecharDropdowns(dropdownAtual) {
+    dropdowns.forEach(dropdown => {
+      if (dropdown !== dropdownAtual) {
+        dropdown.classList.remove("open");
+      }
+    });
+  }
+
+  if (mobileMenu && navList) {
+    mobileMenu.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+      navList.classList.toggle("active");
+    });
+  }
+
+  dropdowns.forEach(dropdown => {
+    const button = dropdown.querySelector(".dropdown-toggle");
+
+    if (button) {
+      button.addEventListener("click", () => {
+        const estaAberto = dropdown.classList.contains("open");
+        fecharDropdowns(dropdown);
+        dropdown.classList.toggle("open", !estaAberto);
+      });
+    }
+  });
+
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    const linkPage = href ? href.split("/").pop() : "";
+
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+      const dropdownPai = link.closest(".dropdown");
+      if (dropdownPai) {
+        const button = dropdownPai.querySelector(".dropdown-toggle");
+        if (button) button.classList.add("active");
+      }
+    }
+
+    link.addEventListener("click", () => {
+      if (navList) navList.classList.remove("active");
+      if (mobileMenu) mobileMenu.classList.remove("active");
+      fecharDropdowns(null);
+    });
+  });
+
+  document.addEventListener("click", event => {
+    if (!event.target.closest("nav")) {
+      fecharDropdowns(null);
+    }
+  });
+}
+
 fetch("menu.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("menu").innerHTML = data;
-
-    const mobileMenu = document.querySelector(".mobile-menu");
-    const navList = document.querySelector(".nav-list");
-
-    if (mobileMenu && navList) {
-      mobileMenu.addEventListener("click", () => {
-        mobileMenu.classList.toggle("active");
-        navList.classList.toggle("active");
-      });
-    }
-
-    // destacar página ativa
-    const links = document.querySelectorAll(".nav-list a");
-    const currentPage = window.location.pathname.split("/").pop();
-
-    links.forEach(link => {
-      const linkPage = link.getAttribute("href").split("/").pop();
-      if (linkPage === currentPage) {
-        link.classList.add("active");
-      }
-    });
+    configurarMenu();
   })
   .catch(err => console.error("Erro ao carregar menu:", err));

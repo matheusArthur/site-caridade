@@ -1,7 +1,7 @@
 <nav>
     <a class="logo" href="home.html">Caridade</a>
 
-    <div class="mobile-menu">
+    <div class="mobile-menu" aria-label="Abrir menu">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
@@ -9,14 +9,39 @@
 
     <ul class="nav-list">
         <li><a href="home.html">Home</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="doacao.html">Doações</a></li>
-        <li><a href="produtos.html">Produtos</a></li>
 
-        <!-- PERFIL ADICIONADO -->
+        <li class="dropdown">
+            <button class="dropdown-toggle" type="button">Doações</button>
+            <ul class="dropdown-menu">
+                <li><a href="doacao.html">Doar itens</a></li>
+                <li><a href="produtos.html">Produtos disponíveis</a></li>
+                <li><a href="solicitar-ajuda.html">Solicitar ajuda</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <button class="dropdown-toggle" type="button">Participar</button>
+            <ul class="dropdown-menu">
+                <li><a href="campanhas.html">Campanhas</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="voluntariado.html">Voluntariado</a></li>
+                <li><a href="parceiros.html">Parceiros</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <button class="dropdown-toggle" type="button">Institucional</button>
+            <ul class="dropdown-menu">
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="como-funciona.html">Como funciona</a></li>
+                <li><a href="transparencia.html">Transparência</a></li>
+                <li><a href="impacto.html">Impacto</a></li>
+                <li><a href="faq.html">Perguntas frequentes</a></li>
+            </ul>
+        </li>
+
+        <li><a href="contato.html">Contato</a></li>
         <li><a href="perfil.html">Perfil</a></li>
-
-        <li><a href="#" onclick="logout()">Logout</a></li>
+        <li><a class="logout-link" href="#" onclick="logout()">Logout</a></li>
     </ul>
 </nav>
