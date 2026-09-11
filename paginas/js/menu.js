@@ -65,6 +65,7 @@ function configurarMenu() {
     dropdowns.forEach(dropdown => {
       if (dropdown !== dropdownAtual) {
         dropdown.classList.remove("open");
+        dropdown.querySelector("button")?.setAttribute("aria-expanded", "false");
       }
     });
   }
@@ -73,6 +74,7 @@ function configurarMenu() {
     mobileMenu.addEventListener("click", () => {
       mobileMenu.classList.toggle("active");
       navList.classList.toggle("active");
+      mobileMenu.setAttribute("aria-expanded", String(navList.classList.contains("active")));
     });
   }
 
@@ -84,6 +86,7 @@ function configurarMenu() {
         const estaAberto = dropdown.classList.contains("open");
         fecharDropdowns(dropdown);
         dropdown.classList.toggle("open", !estaAberto);
+        button.setAttribute("aria-expanded", String(!estaAberto));
       });
     }
   });
@@ -94,6 +97,7 @@ function configurarMenu() {
 
     if (linkPage === currentPage) {
       link.classList.add("active");
+      link.setAttribute("aria-current", "page");
       const dropdownPai = link.closest(".dropdown");
       if (dropdownPai) {
         const button = dropdownPai.querySelector(".dropdown-toggle");
@@ -103,11 +107,18 @@ function configurarMenu() {
 
     link.addEventListener("click", () => {
       if (navList) navList.classList.remove("active");
-      if (mobileMenu) mobileMenu.classList.remove("active");
+      if (mobileMenu) { mobileMenu.classList.remove("active"); mobileMenu.setAttribute("aria-expanded", "false"); }
       fecharDropdowns(null);
     });
   });
 
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      const trigger = document.activeElement.closest(".dropdown")?.querySelector("button");
+      fecharDropdowns(null);
+      if (navList?.classList.contains("active")) { navList.classList.remove("active"); mobileMenu.classList.remove("active"); mobileMenu.setAttribute("aria-expanded", "false"); mobileMenu.focus(); } else { trigger?.focus(); }
+    }
+  });
   document.addEventListener("click", event => {
     if (!event.target.closest("nav")) {
       fecharDropdowns(null);

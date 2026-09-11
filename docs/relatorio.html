@@ -1,0 +1,86 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Entrega 7 | Caridade</title><link rel="stylesheet" href="styles.css"></head><body><header><strong>CARIDADE / PROJETO WEB</strong><nav aria-label="Documentação"><a href="index.html">Projeto</a><a href="relatorio.html">Entrega 7</a><a href="manual.html">Manual</a></nav></header><main><p class="notice">Ajuste final solicitado: a Home agora reutiliza o padrão das páginas institucionais (banner com foto e sobreposição, Poppins, botões coral, fundo branco e rodapé compartilhado). A composição foi reduzida a duas seções, mantendo as opções de contribuição e os cartões com novas imagens. As etapas expansíveis e os elementos decorativos da versão anterior foram removidos.</p><h1>WEB APP — ENTREGA 7: Testes e Refinamento</h1>
+<p><strong>Projeto:</strong> Caridade  </p>
+<p><strong>Responsável pelo projeto:</strong> Matheus Arthur  </p>
+<p><strong>Versão avaliada:</strong> código local baseado no commit <code>81ae4f5</code>, com os refinamentos descritos abaixo.  </p>
+<p><strong>Data da avaliação:</strong> 10/09/2026 (America/Sao_Paulo)  </p>
+<p><strong>Escopo:</strong> avaliação técnica, testes automatizados, inspeção de usabilidade, cinco melhorias, documentação e preparação para publicação. A atualização das hospedagens foi adiada pelo responsável. O vídeo será produzido pelo responsável.</p>
+<h2>1. Executar testes automatizados e de usabilidade</h2>
+<h3>Método e ambiente</h3>
+<p>Os testes automatizados usam Node.js, sem instalar dependências. O arquivo <code>tests/run.cjs</code> executa a validação de email, regras de cadastro, fluxo de gravação de doações com Firebase simulado, análise de sintaxe e verificação de referências locais nos arquivos HTML. A saída integral está em <code>docs/resultados-testes.txt</code>.</p>
+<p>Para repetir, execute na raiz do projeto:</p>
+<pre><code>node tests/run.cjs</code></pre>
+<p><strong>Resultado:</strong> 15 testes aprovados, sem falhas na execução registrada.</p>
+<div class="table-wrap"><table>
+<tr><th>Grupo</th><th>Quantidade</th><th>Resultado</th></tr>
+<tr><td>Email inválido: vazio, sem arroba, sem domínio completo, espaços e duas arrobas</td><td>6</td><td>Aprovados</td></tr>
+<tr><td>Email válido com endereço adicional <code>+teste</code></td><td>1</td><td>Aprovado</td></tr>
+<tr><td>Cadastro: senha curta, confirmação divergente, campos válidos e botão habilitado</td><td>4</td><td>Aprovados</td></tr>
+<tr><td>Doação: sucesso e falha; bloqueio de duplicidade, reativação do botão e preservação dos dados</td><td>2</td><td>Aprovados com Firebase simulado</td></tr>
+<tr><td>Sintaxe dos scripts locais e dos scripts embutidos em HTML</td><td>1</td><td>Aprovado</td></tr>
+<tr><td>Existência dos arquivos referenciados por links e recursos HTML locais</td><td>1</td><td>Aprovado</td></tr>
+</table></div>
+<h3>Inspeção de usabilidade executada</h3>
+<p>Foi realizada uma inspeção guiada no navegador, com interface desktop e viewport móvel de 390 × 844 pixels. Esta atividade é uma avaliação técnica por tarefas, <strong>não uma pesquisa com participantes externos</strong>. Não foram inventados depoimentos, tempos de execução ou métricas de satisfação.</p>
+<div class="table-wrap"><table>
+<tr><th>Tarefa</th><th>Evidência observada</th><th>Resultado</th></tr>
+<tr><td>Abrir o endereço raiz local</td><td>Redirecionamento automático para <code>html/index.html</code></td><td>Aprovado</td></tr>
+<tr><td>Digitar email inválido no login</td><td>Mensagem de email inválido e botão Entrar desabilitado</td><td>Aprovado</td></tr>
+<tr><td>Corrigir o email e preencher a senha</td><td>Botões Entrar e Recuperar senha habilitados</td><td>Aprovado</td></tr>
+<tr><td>Visualizar o login em celular</td><td>Formulário, título e botões legíveis; imagem lateral removida nessa largura</td><td>Aprovado na largura testada</td></tr>
+<tr><td>Abrir Doações e usar Tab</td><td>Foco alcançou o link Doar itens</td><td>Aprovado</td></tr>
+<tr><td>Fechar submenu com Escape</td><td>Estado recolhido e foco devolvido ao botão</td><td>Aprovado</td></tr>
+<tr><td>Abrir e fechar o menu móvel</td><td>Alternância do menu e de <code>aria-expanded</code>; Escape devolveu foco ao botão</td><td>Aprovado</td></tr>
+</table></div>
+<h3>Limites dos resultados</h3>
+<p>Os testes de Firebase simulam respostas e não confirmam autenticação real, regras do Firestore, envio de email, disponibilidade da rede ou persistência no projeto em produção. Nenhuma conta de teste foi criada e nenhuma doação real foi gravada nesta avaliação. Verificar a existência dos recursos locais não confirma a disponibilidade de serviços externos. A inspeção não equivale a uma certificação de acessibilidade nem cobre todos os aparelhos e navegadores.</p>
+<p>Para complementar com usuários, proponha três tarefas: criar uma conta de teste, encontrar uma categoria de doação e cadastrar um item de teste. Registre dificuldade, conclusão e sugestão de cada participante, com consentimento. Não apresente essa etapa como executada enquanto não houver participantes.</p>
+<h2>2. Refinar a interface e experiência do usuário</h2>
+<p>As cinco melhorias foram priorizadas por impedirem o acesso, dificultarem tarefas frequentes ou deixarem o usuário sem resposta. As decisões se baseiam em problemas encontrados no código e na inspeção, não em feedback externo inexistente.</p>
+<h3>Melhoria 1 — Entrada pelo endereço principal</h3>
+<p><strong>Antes:</strong> o arquivo inicial estava apenas em <code>paginas/html/index.html</code>; abrir a raiz da pasta publicada resultava em página não encontrada.  </p>
+<p><strong>Refinamento:</strong> criação de <code>paginas/index.html</code> com encaminhamento relativo e link alternativo para o login.  </p>
+<p><strong>Benefício:</strong> o visitante pode usar o endereço principal sem precisar acrescentar manualmente <code>/html/index.html</code>. O navegador ainda poderá mostrar esse caminho após o encaminhamento.  </p>
+<p><strong>Validação:</strong> acesso à raiz do servidor local abriu a página de login.</p>
+<h3>Melhoria 2 — Login adaptado ao celular</h3>
+<p><strong>Antes:</strong> a página de login não possuía a configuração de viewport; a imagem lateral ocupava espaço antes do formulário em telas pequenas.  </p>
+<p><strong>Refinamento:</strong> adição do viewport, apresentação compacta abaixo de 600 pixels, remoção da imagem decorativa nessa largura e ajustes de espaçamento.  </p>
+<p><strong>Benefício:</strong> os campos e as ações principais ficam mais fáceis de visualizar e tocar.  </p>
+<p><strong>Validação:</strong> inspeção visual em 390 × 844 pixels, com os campos e os três botões visíveis.</p>
+<h3>Melhoria 3 — Preenchimento e validação de login/cadastro</h3>
+<p><strong>Antes:</strong> o login utilizava eventos de teclado e o cadastro dependia da mudança de foco; os rótulos do login não estavam ligados aos campos e a validação de email aceitava alguns textos inválidos. Os botões principais não eram botões de envio do formulário.  </p>
+<p><strong>Refinamento:</strong> validação no evento <code>input</code>, rótulos associados, preenchimento automático, campos obrigatórios, regiões de aviso e envio sem recarregar a página. A expressão de email passou a validar o valor completo. O login recebeu título e explicação.  </p>
+<p><strong>Benefício:</strong> retorno mais rápido durante a digitação, melhor identificação dos campos e suporte ao envio pelo teclado.  </p>
+<p><strong>Validação:</strong> testes automatizados de email/cadastro e interação com o login no navegador. O envio real ao Firebase não foi realizado.</p>
+<h3>Melhoria 4 — Menu acessível por teclado</h3>
+<p><strong>Antes:</strong> o acionador móvel era uma <code>div</code>, os estados dos submenus não eram informados e existiam dois scripts concorrentes de navegação.  </p>
+<p><strong>Refinamento:</strong> botão nativo, <code>aria-expanded</code>, identificação da página atual, foco visível, fechamento por Escape e ocultação do menu móvel fechado. O menu passou a usar somente <code>menu.js</code>; os rótulos foram ajustados para Início e Sair.  </p>
+<p><strong>Benefício:</strong> navegação mais previsível por teclado, toque e tecnologia assistiva.  </p>
+<p><strong>Validação:</strong> abertura, Tab e Escape no navegador; alternância do menu móvel. O comportamento visual de hover foi substituído pela abertura explícita do submenu.</p>
+<h3>Melhoria 5 — Retorno confiável no cadastro de doações</h3>
+<p><strong>Antes:</strong> o fluxo dependia de variáveis globais geradas por IDs; <code>status</code> conflita com uma propriedade do navegador. Não havia tratamento de falha na gravação e era possível enviar repetidamente durante uma operação.  </p>
+<p><strong>Refinamento:</strong> leitura explícita dos campos, mensagem de andamento, bloqueio temporário do botão, aviso de sucesso ou falha, preservação dos campos em erro e reativação para nova tentativa. A imagem usa campo de URL e o valor aceita centavos e não aceita negativos pela validação HTML. A listagem apresenta mensagem quando a leitura falha.  </p>
+<p><strong>Benefício:</strong> o usuário entende o resultado da operação e pode tentar novamente sem perder o preenchimento.  </p>
+<p><strong>Validação:</strong> testes com sucesso e erro simulados; os testes verificam que duas tentativas simultâneas produzem apenas uma chamada de gravação.</p>
+<h2>3. Hospedar a aplicação em um servidor</h2>
+<p><strong>Hospedagem existente:</strong> https://creative-taffy-2ff166.netlify.app  </p>
+<p><strong>Estado desta entrega:</strong> a versão refinada está preparada localmente. Não foi enviada ao Netlify, conforme a orientação de publicar depois. O endereço existente não constitui evidência de que os novos arquivos já estão no ar.</p>
+<p>Para atualizar o mesmo projeto, abra seu painel no Netlify, entre em Deploys e envie a pasta <code>paginas</code> completa ou o arquivo <code>site-publicacao.zip</code>. Não envie a raiz inteira do repositório. Após a publicação, abra o endereço principal em uma janela anônima e confira entrada, estilos, navegação e funcionalidades com sua conta de teste. Mantenha o projeto ativo durante a avaliação.</p>
+<h2>4. Criar página no GitHub Pages</h2>
+<p><strong>Página preparada:</strong> <code>docs/index.html</code>. Inclui objetivos, funcionalidades, arquitetura, fluxo de uso, modelo atual dos dados, as cinco melhorias, os resultados e links para a documentação.</p>
+<p>Os diagramas representam o código observado, incluindo suas limitações. Não existe vínculo implementado entre o documento de doação e o usuário doador/requisitante; o diagrama não inventa esse relacionamento.</p>
+<p><strong>Publicação adiada:</strong> os arquivos estão prontos, mas ainda precisam ser enviados ao repositório e o GitHub Pages precisa ser ativado. Na configuração de Pages do repositório, selecione publicação a partir de uma branch, <code>main</code> e a pasta <code>/docs</code>. Depois da conclusão, verifique o endereço informado pelo GitHub. O endereço esperado é <code>https://matheusarthur.github.io/site-caridade/</code>; sua disponibilidade não foi confirmada nesta entrega.</p>
+<h2>5. Finalizar a documentação completa</h2>
+<p>O <code>README.md</code> explica instalação, execução, testes, configuração do Firebase, estrutura dos arquivos, uso e publicação. Esta página registra a avaliação e as cinco melhorias. <code>docs/index.html</code> apresenta o projeto visualmente; os diagramas estão em <code>docs/diagramas.svg</code>.</p>
+<h3>Limitações existentes encontradas</h3>
+<ul><li>Contato, voluntariado e solicitação de ajuda possuem interfaces institucionais sem integração de envio confirmada; o botão de contato não possui ação implementada.</li></ul>
+<ul><li>O perfil consulta produtos requisitados globalmente, sem filtragem por usuário; a foto é salva apenas no navegador, via <code>localStorage</code>.</li></ul>
+<ul><li>A requisição de itens não usa transação para impedir concorrência entre pessoas, e o contador de interesse não garante um registro único por usuário.</li></ul>
+<ul><li>Alguns cartões interpolam conteúdo do Firestore em HTML. A renderização segura desse conteúdo e a validação das regras do banco continuam pendentes de uma revisão específica.</li></ul>
+<ul><li>As regras de autorização do Firestore não estão presentes no repositório e não foram verificadas no console. A proteção de uma tela no cliente não substitui regras no banco.</li></ul>
+<ul><li>Há versões diferentes do SDK Firebase e arquivos legados que não representam funcionalidades ativas. <code>js/doacao.js</code> não é carregado pela página atual de doação; o fluxo ativo está embutido no HTML. <code>transaction.js</code> depende de um serviço ausente e não comprova um sistema de pagamentos.</li></ul>
+<ul><li>Textos de histórico confiável, dados institucionais e contatos genéricos não foram comprovados por dados reais. Não há processamento de pagamento demonstrado.</li></ul>
+<p>Esses itens não invalidam as correções registradas, mas impedem afirmar que todas as funcionalidades da aplicação foram concluídas ou homologadas para produção.</p>
+<h2>6. Produzir uma apresentação em vídeo</h2>
+<p>Conforme combinado, a gravação e a edição do vídeo de até 10 minutos ficam com o responsável pelo projeto. Esta entrega fornece a documentação e os testes para apoiar a demonstração; nenhum vídeo foi produzido.</p>
+<h2>Complemento — Imagens e Home</h2>
+<p>Após a avaliação inicial, foram adicionadas seis fotografias ilustrativas geradas por IA, redistribuídas as imagens de cabeçalho e reformulada a Home com opções de contribuição interativas, cartões visuais, etapas expansíveis e animações discretas. Os 15 testes anteriores continuam aprovados; cinco testes adicionais da Home verificam troca de conteúdo, teclado e referências de imagens. Veja <a href="IMAGENS-HOME-V2.md">Refinamento visual</a> para os prompts, arquivos e verificações. A atualização não foi publicada.</p></main><footer>Projeto acadêmico • Matheus Arthur • Avaliação de 10 de setembro de 2026<br>Publicação desta revisão adiada pelo responsável. Vídeo a cargo do responsável.</footer></body></html>

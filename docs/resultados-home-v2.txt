@@ -1,0 +1,9 @@
+Comando: node tests/home.cjs
+
+PASS As quatro opções atualizam foto, texto, ação e estado acessível
+PASS Seta direita volta à primeira opção após a última
+PASS Seta esquerda volta à última opção antes da primeira
+PASS Home e End selecionam os extremos; Tab mantém comportamento nativo
+PASS Todas as imagens locais referenciadas em CSS existem
+
+5 testes da Home aprovados. Interações verificadas em DOM simulado; sem operações no Firebase.

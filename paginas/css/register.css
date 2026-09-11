@@ -38,7 +38,7 @@ body {
   color: var(--white);
   background:
     linear-gradient(90deg, rgba(21, 18, 17, 0.82), rgba(21, 18, 17, 0.38)),
-    url("../img/i1.jpg") center/cover no-repeat;
+    url("../img/acolhimento-conversa-v2.png") center/cover no-repeat;
 }
 
 .auth-visual div {

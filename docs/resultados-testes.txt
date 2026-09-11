@@ -1,0 +1,20 @@
+Execução local — 10/09/2026 — Node.js
+Comando: node tests/run.cjs
+
+PASS Rejeita email: ""
+PASS Rejeita email: "a"
+PASS Rejeita email: "a@b"
+PASS Rejeita email: "a b@c.com"
+PASS Rejeita email: "x@y.com lixo"
+PASS Rejeita email: "a@@b.com"
+PASS Aceita email válido
+PASS Cadastro rejeita senha curta
+PASS Cadastro rejeita confirmação divergente
+PASS Cadastro aceita campos válidos
+PASS Cadastro habilita botão após validação
+PASS Doação salva, informa sucesso e impede duplicidade (Firebase simulado)
+PASS Doação preserva dados e permite nova tentativa após falha (Firebase simulado)
+PASS Sintaxe de todos os scripts locais e embutidos
+PASS Links e recursos HTML locais existem
+
+15 testes aprovados. Testes simulados não validam permissões ou gravações reais no Firebase.

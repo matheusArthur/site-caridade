@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1020" role="img" aria-labelledby="title desc">
+<title id="title">Diagramas do Projeto Caridade</title><desc id="desc">Arquitetura web, fluxo de uso e modelo atual dos produtos. Autenticação e produtos não possuem vínculo por UID implementado.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#a34432"/></marker><style>text{font-family:Arial,sans-serif;fill:#292d2b}.title{font-size:25px;font-weight:700}.label{font-size:19px;font-weight:700}.body{font-size:16px}.small{font-size:14px;fill:#52615c}.box{fill:#fff;stroke:#d8ddd8;stroke-width:2}.arrow{fill:none;stroke:#a34432;stroke-width:2;marker-end:url(#arrow)}</style></defs>
+<rect width="1100" height="1020" rx="20" fill="#f6f5ef"/>
+<text x="36" y="48" class="title">01 / Arquitetura atual</text>
+<rect class="box" x="36" y="80" width="220" height="120" rx="10"/><text x="58" y="113" class="label">Navegador</text><text x="58" y="143" class="body">HTML + CSS + JavaScript</text><text x="58" y="172" class="small">Interface e validação local</text>
+<rect class="box" x="335" y="80" width="280" height="120" rx="10"/><text x="355" y="113" class="label">Netlify</text><text x="355" y="143" class="body">Arquivos da pasta paginas</text><text x="355" y="172" class="small">Hospedagem estática</text><path class="arrow" d="M335 140H260"/>
+<rect class="box" x="705" y="80" width="350" height="120" rx="10"/><text x="728" y="113" class="label">Firebase Authentication</text><text x="728" y="143" class="body">Login, cadastro e recuperação</text><text x="728" y="172" class="small">Contas de usuários</text>
+<rect class="box" x="705" y="245" width="350" height="100" rx="10"/><text x="728" y="282" class="label">Cloud Firestore</text><text x="728" y="314" class="body">Coleção produtos</text>
+<path class="arrow" d="M146 200V224H670V140H701"/><path class="arrow" d="M146 224V295H701"/>
+<text x="235" y="282" class="small">Acesso direto pelo SDK no navegador</text>
+<text x="36" y="330" class="small">GitHub Pages publica a documentação em docs, separadamente da aplicação.</text>
+<text x="36" y="404" class="title">02 / Fluxo de uso</text>
+<rect class="box" x="36" y="437" width="185" height="80" rx="10"/><text x="57" y="470" class="label">Endereço raiz</text><text x="57" y="495" class="small">Encaminha ao login</text>
+<rect class="box" x="271" y="437" width="205" height="80" rx="10"/><text x="292" y="470" class="label">Login / cadastro</text><text x="292" y="495" class="small">Firebase Auth</text>
+<rect class="box" x="526" y="437" width="185" height="80" rx="10"/><text x="548" y="470" class="label">Início e menu</text><text x="548" y="495" class="small">Navegação</text>
+<rect class="box" x="761" y="437" width="294" height="80" rx="10"/><text x="783" y="470" class="label">Consultar / doar itens</text><text x="783" y="495" class="small">Listagem e formulário</text>
+<path class="arrow" d="M221 477H267"/><path class="arrow" d="M476 477H522"/><path class="arrow" d="M711 477H757"/>
+<rect class="box" x="761" y="554" width="294" height="75" rx="10"/><text x="783" y="585" class="label">Detalhes do item</text><text x="783" y="611" class="small">Requisição ou interesse</text><path class="arrow" d="M907 517V550"/>
+<text x="36" y="579" class="body">No cadastro de doação:</text><text x="36" y="608" class="small">enviar → bloquear botão → sucesso ou erro → permitir nova tentativa.</text>
+<text x="36" y="692" class="title">03 / Modelo de dados observado</text>
+<rect class="box" x="36" y="725" width="594" height="242" rx="10"/><text x="60" y="760" class="label">produtos / {idDocumento}</text><text x="60" y="794" class="body">titulo, descricao, categoria, imagem, regiao</text><text x="60" y="824" class="body">valor: texto numérico • criadoEm: timestamp</text><text x="60" y="854" class="body">requisitado: booleano • contador: número</text><text x="60" y="884" class="body">tipo: opcional; usa categoria como alternativa</text><text x="60" y="931" class="small">Documento compartilhado; proprietário por UID não implementado.</text>
+<rect class="box" x="675" y="725" width="380" height="105" rx="10"/><text x="697" y="760" class="label">Conta / Authentication</text><text x="697" y="791" class="body">UID e email; senha gerida pelo serviço</text>
+<rect class="box" x="675" y="851" width="380" height="116" rx="10"/><text x="697" y="886" class="label">Navegador / localStorage</text><text x="697" y="917" class="body">fotoPerfil: imagem local</text><text x="697" y="944" class="small">Sem sincronização entre dispositivos</text>
+</svg>

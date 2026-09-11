@@ -1,3 +1,1 @@
-function validateEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-}
+function validateEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }

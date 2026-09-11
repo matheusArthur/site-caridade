@@ -1,0 +1,74 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Manual do sistema | Caridade</title><link rel="stylesheet" href="styles.css"></head><body><header><strong>CARIDADE / PROJETO WEB</strong><nav aria-label="Documentação"><a href="index.html">Projeto</a><a href="relatorio.html">Entrega 7</a><a href="manual.html">Manual</a></nav></header><main><p class="notice">Ajuste final solicitado: a Home agora reutiliza o padrão das páginas institucionais (banner com foto e sobreposição, Poppins, botões coral, fundo branco e rodapé compartilhado). A composição foi reduzida a duas seções, mantendo as opções de contribuição e os cartões com novas imagens. As etapas expansíveis e os elementos decorativos da versão anterior foram removidos.</p><h1>Projeto Caridade</h1>
+<p>Aplicação web acadêmica para apresentar iniciativas solidárias e permitir cadastro, consulta e requisição de itens para doação. O frontend utiliza HTML, CSS e JavaScript; Firebase Authentication gerencia o acesso e Cloud Firestore armazena os produtos.</p>
+<h2>Começar</h2>
+<p>Requisitos: navegador moderno e Python 3 para o servidor local. Node.js é necessário apenas para executar a suíte de testes. Não há etapa de compilação nem dependências npm.</p>
+<p>Na pasta raiz do projeto:</p>
+<pre><code>python -m http.server 5500 --directory paginas</code></pre>
+<p>Abra <code>http://localhost:5500</code>. O arquivo inicial encaminha para o login. Use um servidor HTTP em vez de abrir o HTML diretamente, pois o menu é carregado com <code>fetch</code>. Encerre o servidor com Ctrl+C.</p>
+<h2>Funcionamento</h2>
+<p>1. O usuário abre o login e pode seguir para Criar conta ou recuperar sua senha.</p>
+<p>2. O Firebase Authentication recebe os dados de autenticação. Após o login, o navegador segue para <code>home.html</code>.</p>
+<p>3. O menu leva às páginas institucionais e aos fluxos de doação.</p>
+<p>4. Em Doar itens, o formulário envia os dados à coleção <code>produtos</code> do Firestore. Em falha, conserva os dados para nova tentativa.</p>
+<p>5. A listagem filtra itens por categoria. A tela de detalhes permite registrar requisição ou incrementar interesse, conforme o tipo.</p>
+<p>Esses fluxos dependem da configuração e das regras do Firebase. Os testes executados não realizaram gravações reais. Consulte as limitações antes de demonstrar funcionalidades como concluídas.</p>
+<h2>Configuração do Firebase</h2>
+<p>O código está configurado para o projeto <code>caridade-6464e</code>. Para usar esse projeto, é necessário acesso autorizado ao seu console e serviços ativos. Para utilizar outro projeto:</p>
+<p>1. Crie/registre um aplicativo web no seu próprio projeto Firebase.</p>
+<p>2. Ative Authentication com o provedor Email/Password.</p>
+<p>3. Crie o banco Cloud Firestore e configure suas regras de autorização conforme os papéis e dados permitidos. As regras efetivas não estão versionadas neste repositório. Não use regras que liberem escrita irrestrita para resolver erros de permissão.</p>
+<p>4. Substitua a configuração web em <code>paginas/js/firebase-init.js</code> e nas configurações embutidas de <code>produtos.html</code>, <code>produtosDetalhe.html</code> e <code>perfil.html</code>. O projeto ainda precisa unificar essas configurações.</p>
+<p>5. Confira os domínios autorizados do Authentication e os endereços usados nas ações de recuperação. Adicione o domínio publicado quando necessário ao fluxo de autenticação utilizado.</p>
+<p>6. Verifique login, recuperação e operações de banco com uma conta de teste e registros identificados como teste.</p>
+<p>A configuração web do Firebase é usada no navegador; credenciais administrativas e chaves privadas não devem ser colocadas no frontend. A autorização é responsabilidade das regras do serviço, não do sigilo da configuração web.</p>
+<h2>Dados atuais</h2>
+<p>Coleção principal: <code>produtos</code>.</p>
+<div class="table-wrap"><table>
+<tr><th>Campo</th><th>Uso observado</th></tr>
+<tr><td><code>titulo</code>, <code>descricao</code></td><td>Textos do item</td></tr>
+<tr><td><code>categoria</code></td><td><code>roupa</code>, <code>casa</code>, <code>comida</code> ou <code>dinheiro</code></td></tr>
+<tr><td><code>imagem</code></td><td>URL da imagem</td></tr>
+<tr><td><code>regiao</code></td><td>Localização textual</td></tr>
+<tr><td><code>valor</code></td><td>Texto numérico opcional; não representa pagamento processado</td></tr>
+<tr><td><code>criadoEm</code></td><td>Data enviada pelo cliente e armazenada como timestamp</td></tr>
+<tr><td><code>requisitado</code></td><td>Booleano definido pela requisição</td></tr>
+<tr><td><code>contador</code></td><td>Quantidade de manifestações de interesse em alimentos</td></tr>
+<tr><td><code>tipo</code></td><td>Campo opcional lido pelos detalhes; a categoria é usada como alternativa</td></tr>
+</table></div>
+<p>O ID do documento identifica o item. Não há associação de proprietário ou requisitante por UID no fluxo atual. A foto de perfil fica em <code>localStorage</code>, na chave <code>fotoPerfil</code>, e não é sincronizada com a conta.</p>
+<h2>Organização</h2>
+<pre><code>paginas/
+  index.html       Entrada para publicação
+  html/            Telas e fragmento menu.html
+  css/             Estilos
+  js/              Autenticação, navegação e scripts auxiliares
+  img/             Imagens locais
+docs/
+  index.html       Página preparada para GitHub Pages
+  diagramas.svg    Arquitetura, fluxo e dados
+  ENTREGA-7.md     Avaliação, cinco melhorias e limitações
+  resultados-testes.txt
+tests/
+  run.cjs          Testes sem dependências externas
+autentificacao/    Arquivos legados, fora da publicação estática</code></pre>
+<p>Há scripts embutidos em algumas telas. Nem todo arquivo da pasta <code>js</code> é carregado pela aplicação atual. Por exemplo, <code>doacao.js</code> é legado; a página <code>doacao.html</code> contém o fluxo ativo.</p>
+<h2>Testes</h2>
+<pre><code>node tests/run.cjs</code></pre>
+<p>A suíte retorna código de saída diferente de zero em falha. Inclui validação, regras de cadastro, sucesso/falha de doação com Firebase simulado, sintaxe e referências HTML locais. As simulações não substituem testes de integração no Firebase.</p>
+<p>Para inspecionar a documentação localmente:</p>
+<pre><code>python -m http.server 5501 --directory docs</code></pre>
+<p>Abra <code>http://localhost:5501</code>. O relatório completo está em <a href="ENTREGA-7.md">Entrega 7</a>.</p>
+<h2>Publicação posterior</h2>
+<p><strong>Aplicação / Netlify:</strong> envie apenas o conteúdo da pasta <code>paginas</code> para o projeto existente, na tela Deploys. O <code>index.html</code> precisa ficar no primeiro nível. O pacote <code>site-publicacao.zip</code> contém essa estrutura. O endereço conhecido é https://creative-taffy-2ff166.netlify.app ; esta revisão não foi publicada.</p>
+<p><strong>Documentação / GitHub Pages:</strong> envie as alterações ao repositório, mantenha os arquivos de documentação em <code>docs</code> e configure Settings → Pages → Deploy from a branch → <code>main</code> → <code>/docs</code>. Confira o endereço fornecido pela plataforma ao terminar. Não há necessidade de publicar a aplicação novamente no GitHub Pages.</p>
+<p>Depois de publicar, faça uma verificação em janela anônima: entrada pelo domínio, imagens, navegação, login e regras do banco. Para retornar à versão anterior no Netlify, utilize o histórico de deploys. Preserve uma cópia dos arquivos anteriores antes de atualizar.</p>
+<h2>Limitações</h2>
+<p>Formulários institucionais sem integração, perfil sem isolamento por usuário, operações de requisição sem controle transacional, renderização de dados em HTML e regras do banco não verificadas são limitações conhecidas. Veja a seção 5 do relatório. Não há integração de pagamentos implementada nem estudo com participantes externos nesta entrega.</p>
+<p>O vídeo da apresentação será produzido pelo responsável pelo projeto.</p>
+<h2>Atualização visual da Home e das imagens</h2>
+<p>A Home recebeu uma nova composição, opções interativas de contribuição (alimentos, roupas, higiene e tempo), cartões com fotografias, etapas expansíveis e animações que respeitam movimento reduzido. Seis imagens ilustrativas foram geradas e integradas ao tema de solidariedade; os banners das páginas foram diversificados.</p>
+<p>Os arquivos, prompts e verificações estão em <a href="docs/IMAGENS-HOME-V2.md">Refinamento visual</a>. Execute também <code>node tests/home.cjs</code> para verificar as novas interações e referências de imagens nos estilos. Esta atualização continua local, sem publicação.</p>
+<h2>Referências oficiais</h2>
+<ul><li><a href="https://docs.netlify.com/deploy/create-deploys/">Publicação manual no Netlify</a></li></ul>
+<ul><li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">Configurar a origem do GitHub Pages</a></li></ul>
+<ul><li><a href="https://firebase.google.com/docs/auth/web/password-auth">Autenticação por email e senha no Firebase</a></li></ul></main><footer>Projeto acadêmico • Matheus Arthur • Avaliação de 10 de setembro de 2026<br>Publicação desta revisão adiada pelo responsável. Vídeo a cargo do responsável.</footer></body></html>

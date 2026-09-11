@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/register.css?v=8">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
         </section>
 
         <section class="auth-panel">
-            <form>
+            <form onsubmit="event.preventDefault(); if(isFormValid()) register();">
                 <span class="form-kicker">Cadastro</span>
                 <h2>Criar conta</h2>
                 <p class="form-subtitle">Preencha seus dados para começar.</p>
@@ -36,15 +36,15 @@
                     <input
                         type="email"
                         placeholder="seu@email.com"
-                        id="email"
-                        onchange="onChangeEmail()"
+                        id="email" autocomplete="email" required
+                        oninput="onChangeEmail()"
                     >
 
-                    <div class="error" id="email-required-error">
+                    <div aria-live="polite" class="error" id="email-required-error">
                         Email é obrigatório
                     </div>
 
-                    <div class="error" id="email-invalid-error">
+                    <div aria-live="polite" class="error" id="email-invalid-error">
                         Email é inválido
                     </div>
                 </div>
@@ -54,15 +54,15 @@
                     <input
                         type="password"
                         placeholder="Digite sua senha"
-                        id="password"
-                        onchange="onChangePassword()"
+                        id="password" autocomplete="new-password" required
+                        oninput="onChangePassword()"
                     >
 
-                    <div class="error" id="password-required-error">
+                    <div aria-live="polite" class="error" id="password-required-error">
                         Senha é obrigatória
                     </div>
 
-                    <div class="error" id="password-min-length-error">
+                    <div aria-live="polite" class="error" id="password-min-length-error">
                         Senha deve ter pelo menos 6 caracteres
                     </div>
                 </div>
@@ -72,20 +72,20 @@
                     <input
                         type="password"
                         placeholder="Confirme sua senha"
-                        id="confirmPassword"
-                        onchange="onChangeConfirmPassword()"
+                        id="confirmPassword" autocomplete="new-password" required
+                        oninput="onChangeConfirmPassword()"
                     >
 
-                    <div class="error" id="password-doesnt-match-error">
+                    <div aria-live="polite" class="error" id="password-doesnt-match-error">
                         Senha e confirmação devem ser iguais
                     </div>
                 </div>
 
                 <button
-                    type="button"
+                    type="submit"
                     class="solid"
                     disabled
-                    onclick="register()"
+
                     id="register-button">
                     Criar conta
                 </button>

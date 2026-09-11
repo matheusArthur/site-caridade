@@ -162,4 +162,4 @@ button.clear {
     max-width: 420px;
     padding: 28px;
   }
-}
+}@media(max-width:600px) { .left-side { display:none; } .right-side { min-height:100svh; padding:100px 18px 24px; } .logo-form { width:60px; top:20px; } form { padding:24px; } }

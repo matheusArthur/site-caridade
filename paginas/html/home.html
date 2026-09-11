@@ -1,173 +1,77 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início - Projeto Caridade</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça o Projeto Caridade e encontre sua forma de contribuir com doações, voluntariado e parcerias.">
+  <title>Início - Projeto Caridade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/paginasExtras.css?v=8">
+  <link rel="stylesheet" href="../css/home.css?v=9">
+  <script src="../js/home-interactions.js" defer></script>
 </head>
-
-<body>
-
+<body class="home-page" style="--page-photo: url('../img/comunidade-jardim-v2.png')">
+<a class="skip-home" href="#conteudo">Pular para o conteúdo</a>
 <div id="menu"></div>
-
-<main>
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-tag">Solidariedade com transparência</span>
-            <h1>Pequenas atitudes podem mudar muitas histórias.</h1>
-            <p>
-                Conectamos pessoas que desejam ajudar com quem mais precisa de apoio,
-                criando uma rede de cuidado, empatia e transformação social.
-            </p>
-
-            <div class="hero-actions">
-                <button class="btn btn-primary" onclick="window.location.href='doacao.html'">
-                    Quero ajudar
-                </button>
-                <button class="btn btn-secondary" onclick="window.location.href='sobre.html'">
-                    Conheça o projeto
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <div class="section-text">
-            <span class="section-kicker">Quem somos</span>
-            <h2>Uma ponte entre a solidariedade e a necessidade real.</h2>
-            <p>
-                Somos uma iniciativa criada para tornar o ato de ajudar mais simples,
-                humano e organizado. Acreditamos que cada doação, cada gesto voluntário
-                e cada parceria podem levar alimento, cuidado e dignidade a quem enfrenta
-                momentos difíceis.
-            </p>
-
-            <button class="btn btn-primary" onclick="window.location.href='sobre.html'">
-                Saiba mais
-            </button>
-        </div>
-
-        <div class="section-image">
-            <img src="../img/i2.png" alt="Mãos segurando um coração">
-        </div>
-    </section>
-
-    <section class="content-section donation-section">
-        <div class="section-image">
-            <img src="../img/i3.gif" alt="Animação de doação">
-        </div>
-
-        <div class="section-text">
-            <span class="section-kicker">Como doar</span>
-            <h2>Doe de forma simples, segura e com propósito.</h2>
-            <p>
-                Sua contribuição ajuda a manter campanhas ativas e atender necessidades
-                urgentes. Você pode colaborar com qualquer valor, divulgar nossas ações
-                ou participar como voluntário.
-            </p>
-
-            <div class="steps">
-                <div>
-                    <strong>1</strong>
-                    <p>Escolha como deseja contribuir.</p>
-                </div>
-                <div>
-                    <strong>2</strong>
-                    <p>Envie sua doação com segurança.</p>
-                </div>
-                <div>
-                    <strong>3</strong>
-                    <p>Acompanhe o impacto da sua ajuda.</p>
-                </div>
-            </div>
-
-            <button class="btn btn-primary" onclick="window.location.href='doacao.html'">
-                Doar agora
-            </button>
-        </div>
-    </section>
-
-    <section class="info-section">
-        <div class="info-header">
-            <span class="section-kicker">Nosso compromisso</span>
-            <h2>Ajuda com cuidado, organização e responsabilidade.</h2>
-            <p>
-                Trabalhamos para que cada pessoa que apoia o projeto entenda como sua
-                contribuição participa de uma mudança real.
-            </p>
-        </div>
-
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>Transparência</h3>
-                <p>Registramos nossas ações para manter a confiança de quem doa e de quem recebe apoio.</p>
-            </div>
-
-            <div class="info-card">
-                <h3>Voluntariado</h3>
-                <p>Reunimos pessoas dispostas a doar tempo, talento e presença em ações solidárias.</p>
-            </div>
-
-            <div class="info-card">
-                <h3>Missão</h3>
-                <p>Conectar recursos, pessoas e oportunidades para apoiar quem mais precisa.</p>
-            </div>
-
-            <div class="info-card">
-                <h3>Campanhas</h3>
-                <p>Organizamos ações de arrecadação de alimentos, roupas, higiene e apoio social.</p>
-            </div>
-        </div>
-    </section>
+<main id="conteudo">
+  <section class="page-hero">
+    <div class="hero-content">
+      <span class="page-tag">Projeto Caridade</span>
+      <h1>Pequenos gestos fazem a diferença.</h1>
+      <p>Conectamos pessoas que desejam ajudar a quem precisa de apoio. Faça uma doação ou conheça outras formas de participar.</p>
+      <div class="home-actions">
+        <a class="btn btn-primary" href="doacao.html">Quero ajudar</a>
+        <a class="btn btn-secondary" href="sobre.html">Conheça o projeto</a>
+      </div>
+    </div>
+  </section>
+<section class="home-wrap home-section" id="formas-de-ajudar" aria-labelledby="ways-title">
+ <div class="home-section-heading"><div><span class="home-kicker">Todo gesto tem lugar</span><h2 id="ways-title">Qual é a sua forma de ajudar?</h2></div><p>Escolha uma possibilidade e descubra o próximo passo. Não precisa ser muito para começar.</p></div>
+ <div class="giving-tabs" role="tablist" aria-label="Formas de contribuir"><button type="button" role="tab" id="tab-alimentos" aria-controls="giving-panel" aria-selected="true" data-giving="alimentos">Alimentos</button><button type="button" role="tab" id="tab-roupas" aria-controls="giving-panel" aria-selected="false" tabindex="-1" data-giving="roupas">Roupas</button><button type="button" role="tab" id="tab-higiene" aria-controls="giving-panel" aria-selected="false" tabindex="-1" data-giving="higiene">Higiene</button><button type="button" role="tab" id="tab-tempo" aria-controls="giving-panel" aria-selected="false" tabindex="-1" data-giving="tempo">Seu tempo</button></div>
+ <div class="giving-panel" id="giving-panel" role="tabpanel" aria-labelledby="tab-alimentos" tabindex="0"><div class="giving-image"><img id="giving-photo" src="../img/caridade-alimentos.png" alt="Alimentos organizados para doação" width="1536" height="1024" loading="lazy" decoding="async"></div><div class="giving-copy"><span class="home-kicker" id="giving-tag">Alimento é cuidado</span><h3 id="giving-title">Mais alimento. Mais possibilidades.</h3><p id="giving-description">Arroz, feijão e outros alimentos não perecíveis podem fazer parte de uma cesta de apoio. Confira a validade e mantenha as embalagens fechadas.</p><p class="giving-tip" id="giving-tip">Antes de doar: confira a validade e o estado da embalagem.</p><a class="home-button" id="giving-link" href="doacao.html">Doar alimentos <span aria-hidden="true">↗</span></a><span class="giving-index" aria-hidden="true" id="giving-index">01 / 04</span></div></div>
+</section>
+<section class="home-stories" aria-labelledby="stories-title"><div class="home-wrap home-section">
+ <div class="home-section-heading"><div><span class="home-kicker">Solidariedade em movimento</span><h2 id="stories-title">Existem muitas maneiras de estar presente.</h2></div><a class="home-text-link" href="campanhas.html">Conhecer as campanhas <span aria-hidden="true">↗</span></a></div>
+ <div class="story-grid"><a class="story-card" href="voluntariado.html"><div class="story-image"><img src="../img/cozinha-solidaria-v2.png" alt="Voluntários preparando refeições em uma cozinha comunitária" width="1536" height="1024" loading="lazy" decoding="async"></div><div class="story-copy"><h3>Seu tempo pode virar cuidado.</h3><p>Conheça as formas de participar e compartilhar suas habilidades.</p></div></a>
+ <a class="story-card" href="parceiros.html"><div class="story-image"><img src="../img/parceria-coleta-v2.png" alt="Comerciante e voluntária colaborando em uma coleta de doações" width="1536" height="1024" loading="lazy" decoding="async"></div><div class="story-copy"><h3>O seu negócio também pode fazer parte.</h3><p>Descubra como aproximar seu comércio ou organização da comunidade.</p></div></a></div>
+</div></section>
 </main>
-
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-brand">
             <h3>Projeto Caridade</h3>
             <p>Transformando solidariedade em cuidado real.</p>
         </div>
-
         <div class="footer-links">
             <div>
+                <h4>Participe</h4>
+                <p><a href="voluntariado.html">Voluntariado</a></p>
+                <p><a href="campanhas.html">Campanhas</a></p>
+                <p><a href="parceiros.html">Parceiros</a></p>
+            </div>
+            <div>
+                <h4>Ajuda</h4>
+                <p><a href="solicitar-ajuda.html">Solicitar ajuda</a></p>
+                <p><a href="como-funciona.html">Como funciona</a></p>
+                <p><a href="faq.html">Perguntas frequentes</a></p>
+            </div>
+            <div>
+                <h4>Confiança</h4>
+                <p><a href="transparencia.html">Transparência</a></p>
+                <p><a href="impacto.html">Relatórios de impacto</a></p>
+                <p><a href="termos-privacidade.html">Termos e privacidade</a></p>
+            </div>
+            <div>
                 <h4>Contato</h4>
+                <p><a href="contato.html">Fale conosco</a></p>
                 <p>WhatsApp</p>
                 <p>Email oficial</p>
-                <p>Central de ajuda</p>
-            </div>
-
-            <div>
-                <h4>Participe</h4>
-                <p>Seja voluntário</p>
-                <p>Seja parceiro</p>
-                <p>Projetos sociais</p>
-            </div>
-
-            <div>
-                <h4>Institucional</h4>
-                <p>Sobre o projeto</p>
-                <p>Transparência</p>
-                <p>Relatórios de impacto</p>
-            </div>
-
-            <div>
-                <h4>Segurança</h4>
-                <p>Termos de uso</p>
-                <p>Privacidade</p>
-                <p>Proteção de dados</p>
             </div>
         </div>
     </div>
 </footer>
-
 <script src="../js/menu.js"></script>
-<script src="../js/mobile-navbar.js"></script>
-
 </body>
 </html>
