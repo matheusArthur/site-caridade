@@ -1,1 +1,56 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Entrega final | Projeto Caridade</title><link rel="stylesheet" href="styles.css"></head><body><header><strong>CARIDADE / PROJETO WEB</strong><nav aria-label="Documentação"><a href="index.html">Projeto</a><a href="manual.html">Manual</a></nav></header><main><p class="eyebrow">Publicação e divulgação</p><h1>Projeto Caridade</h1><p class="lead">Uma aplicação acadêmica para aproximar pessoas que desejam doar de quem procura apoio.</p><h2>Problema e público</h2><p>O projeto reúne a divulgação de iniciativas solidárias e itens disponíveis para doação. Atende doadores, pessoas em busca de apoio e interessados em voluntariado.</p><h2>Funcionalidades e tecnologias</h2><p>Interface em HTML, CSS e JavaScript, contas com Firebase Authentication e armazenamento de produtos com Cloud Firestore. A navegação reúne campanhas, categorias, detalhes de produtos e formulário de doação.</p><h2>Refinamentos finais</h2><p>Preservamos a identidade visual. Os ajustes incluem validação de campos, bloqueio de envios repetidos, mensagens de autenticação, contraste, foco pelo teclado e identificação da conta no perfil.</p><h2>Verificação e limites</h2><p>31 testes automatizados aprovados, com Firebase simulado. A entrada real com conta de teste e as regras do Firestore permanecem pendentes de validação. O histórico de solicitações ainda não é individual por usuário e há formulários institucionais sem integração.</p><h2>Impacto esperado</h2><p>Facilitar a descoberta de itens e oportunidades de contribuição. Esse benefício é uma proposta do projeto; ainda não há métricas medidas ou pesquisa com usuários para quantificá-lo.</p><h2>Links e documentação</h2><p><a href="https://github.com/matheusArthur/site-caridade">Código no GitHub</a> · <a href="https://creative-taffy-2ff166.netlify.app">Endereço de hospedagem registrado no projeto</a> · <a href="manual.html">Instruções de execução</a> · <a href="REVISAO-FINAL.md">Relatório e roteiro de apresentação</a></p><p class="notice">Esta revisão está local e ainda não foi publicada. O endereço de hospedagem acima veio da documentação existente e não comprova a implantação desta versão.</p><h2>Vídeo final</h2><p>Gravação pendente. O roteiro tem duração prevista de 9 minutos e 30 segundos. O link será incluído quando o vídeo estiver disponível.</p></main><footer>Projeto acadêmico · Matheus Arthur · Revisão de 15/11/2026</footer></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resumo das melhorias — Projeto Caridade</title>
+</head>
+<body>
+  <header>
+    <h1>Resumo das melhorias</h1>
+    <p>Projeto Caridade — Matheus Arthur</p>
+    <nav aria-label="Documentação">
+      <a href="index.html">Projeto</a> |
+      <a href="relatorio.html">Melhorias</a> |
+      <a href="manual.html">Manual</a> |
+      <a href="visual.html">Home e imagens</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Objetivo</h2>
+      <p>Criei o Projeto Caridade para aproximar pessoas que querem doar de quem precisa de apoio, reunindo informações e itens disponíveis em um só lugar.</p>
+    </section>
+    <section>
+      <h2>O que melhorei</h2>
+      <ul>
+        <li>Validação e mensagens do login e do cadastro.</li>
+        <li>Identificação da conta antes de salvar uma doação.</li>
+        <li>Proteção contra envios repetidos e manutenção dos dados em caso de erro.</li>
+        <li>Inclusão de fotos dos itens, com prévia e redução do tamanho do arquivo.</li>
+        <li>Salvamento da foto e dos dados editáveis do perfil.</li>
+        <li>Histórico com fotos das novas doações da própria conta.</li>
+        <li>Organização da Home e navegação pelo teclado.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Tecnologias e testes</h2>
+      <p>Utilizei HTML, CSS, JavaScript e Firebase. Os testes automáticos conferem partes do código com respostas simuladas. O funcionamento completo depende também dos testes com a conta e o banco reais.</p>
+    </section>
+    <section>
+      <h2>Próximos ajustes</h2>
+      <p>Pretendo integrar os formulários que ainda não enviam dados, separar as solicitações por usuário e melhorar as permissões de acesso aos produtos.</p>
+    </section>
+    <section>
+      <h2>Saiba mais</h2>
+      <ul>
+        <li><a href="relatorio.html">Testes e melhorias</a></li>
+        <li><a href="manual.html">Instruções de execução</a></li>
+        <li><a href="https://github.com/matheusArthur/site-caridade">Repositório no GitHub</a></li>
+        <li><a href="https://creative-taffy-2ff166.netlify.app/html/index.html">Login na hospedagem Netlify</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer><p>Projeto Caridade — Matheus Arthur</p></footer>
+</body>
+</html>
