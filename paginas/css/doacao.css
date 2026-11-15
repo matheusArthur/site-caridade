@@ -421,3 +421,7 @@ select:focus {
     grid-template-columns: 1fr;
   }
 }
+#imagemPrevia { width: 100%; max-width: 400px; max-height: 300px; object-fit: contain; margin-top: 12px; border-radius: 8px; background: var(--soft); }
+#imagemPrevia[hidden], #removerImagem[hidden] { display: none; }
+#imagemAjuda, #imagemStatus { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+#removerImagem { margin-top: 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--white); color: var(--text); }

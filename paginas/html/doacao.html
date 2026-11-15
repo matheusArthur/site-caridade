@@ -9,7 +9,7 @@
 
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/menu.css">
-  <link rel="stylesheet" href="../css/doacao.css?v=8">
+  <link rel="stylesheet" href="../css/doacao.css?v=9">
 </head>
 
 <body>
@@ -70,8 +70,16 @@
         </div>
 
         <div class="field">
-          <label for="imagem">URL da imagem</label>
-          <input type="url" id="imagem" placeholder="Cole o link de uma imagem do item" required>
+          <label for="imagemArquivo">Foto do item</label>
+          <input type="file" id="imagemArquivo" accept="image/jpeg,image/png,image/webp" aria-describedby="imagemAjuda imagemStatus">
+          <p id="imagemAjuda">Selecione JPG, PNG ou WebP de até 10 MB. A foto será ajustada para até 800 pixels.</p>
+          <img id="imagemPrevia" alt="Prévia da foto do item" hidden>
+          <button type="button" id="removerImagem" hidden>Remover foto selecionada</button>
+          <p id="imagemStatus" role="status" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="imagem">Ou use uma URL da imagem</label>
+          <input type="url" id="imagem" placeholder="https://exemplo.com/foto.jpg">
         </div>
 
         <button class="btn btn-primary" type="submit">Cadastrar doação</button>
@@ -159,6 +167,8 @@
   </div>
 </footer>
 
+<script src="../js/compress-donation-image.js?v=1"></script>
+<script src="../js/donation-image.js?v=1"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
@@ -266,18 +276,38 @@ document.getElementById("formProduto").addEventListener("submit", async e => {
   submit.disabled = true;
   statusEl.textContent = "Salvando doação...";
   const field = id => document.getElementById(id).value.trim();
-  db.collection("produtos").add({
+  let imagem;
+  try {
+    imagem = await window.donationImage.getValue();
+  } catch (error) {
+    statusEl.textContent = error.message;
+    submit.disabled = false;
+    return;
+  }
+  if (firebase.auth().currentUser?.uid !== user.uid) {
+    statusEl.textContent = "Sua sessão mudou. Confira a conta e tente novamente.";
+    submit.disabled = false;
+    return;
+  }
+  const produto = {
     titulo: field("titulo"),
     descricao: field("descricao"),
     categoria: field("categoria").toLowerCase(),
-    imagem: field("imagem"),
+    imagem,
     regiao: field("regiao"),
     valor: field("valor") || "0,00",
     doadorUid: user.uid,
     criadoEm: new Date()
-  }).then(() => {
+  };
+  if (new TextEncoder().encode(JSON.stringify(produto)).length > 800000) {
+    statusEl.textContent = "Os dados do item ficaram grandes demais. Reduza a descrição ou escolha outra imagem.";
+    submit.disabled = false;
+    return;
+  }
+  db.collection("produtos").add(produto).then(() => {
     statusEl.textContent = "Doação cadastrada com sucesso.";
     document.getElementById("formProduto").reset();
+    window.donationImage.clear();
     carregarProdutos();
 
     setTimeout(() => {

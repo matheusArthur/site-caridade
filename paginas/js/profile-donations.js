@@ -38,8 +38,9 @@
         };
         try {
           if (!item.imagem || typeof item.imagem !== "string") throw new Error("Sem imagem");
+          const embedded = item.imagem.length <= 600000 && /^data:image\/jpeg;base64,[A-Za-z0-9+/]+={0,2}$/.test(item.imagem);
           const url = new URL(item.imagem, document.baseURI);
-          if (!["http:", "https:"].includes(url.protocol)) throw new Error("URL inválida");
+          if (!embedded && !["http:", "https:"].includes(url.protocol)) throw new Error("URL inválida");
           const img = document.createElement("img");
           img.alt = item.titulo || "Item doado por você";
           img.loading = "lazy";

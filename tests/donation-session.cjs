@@ -5,7 +5,7 @@ function setup(){
  const button={disabled:false};const status={textContent:''};let reset=false;
  const nodes={formProduto:{addEventListener:(e,fn)=>handler=fn,querySelector:()=>button,reset:()=>reset=true},status,produtos:{innerHTML:''}};
  for(const id of ['titulo','descricao','categoria','imagem','regiao','valor'])nodes[id]={value:id==='valor'?'':'teste'};
- vm.runInNewContext(script,{document:{getElementById:id=>nodes[id],querySelectorAll:()=>[]},firebase:{auth:()=>auth,firestore:()=>({collection:()=>({get:async()=>({empty:true}),add:async data=>writes.push(data)})})},window:{},Date,setTimeout(){}});
+ vm.runInNewContext(script,{document:{getElementById:id=>nodes[id],querySelectorAll:()=>[]},firebase:{auth:()=>auth,firestore:()=>({collection:()=>({get:async()=>({empty:true}),add:async data=>writes.push(data)})})},window:{donationImage:{getValue:async()=>"https://example.com/foto.jpg",clear(){}}},TextEncoder,Date,setTimeout(){}});
  return {button,status,writes,submit:()=>handler({preventDefault(){}}),restore(user){auth.currentUser=user;observer(user)},reset:()=>reset};
 }
 (async()=>{
