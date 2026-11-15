@@ -1,41 +1,34 @@
 # Foto de perfil pelo Firestore
 
-A integração local usa Firestore, sem Firebase Storage e sem ativação de plano pago. O uso segue as franquias e limites do projeto Firebase; não há promessa de uso ilimitado gratuito.
+Adicionei ao perfil a opção de salvar uma foto vinculada à conta do usuário. Assim, a imagem pode ser recuperada nos próximos acessos, inclusive em outro navegador.
 
-## Implementação
+Utilizei o Firestore, sem precisar ativar o Firebase Storage ou contratar um plano pago, respeitando os limites gratuitos do serviço.
 
-- Entrada: JPG, PNG ou WebP até 5 MB.
-- Compressão no navegador: JPEG, lado maior até 256 pixels, no máximo 200.000 caracteres em base64.
-- Documento: `profilePhotos/{UID}`, campos `photoData` e `updatedAt` (timestamp do servidor).
-- Carregamento após autenticar: leitura do documento da própria conta, sem usar chave global de localStorage nem Firebase Storage.
-- Sucesso só é informado após confirmação da gravação do Firestore.
-- Visual preservado. Fotos locais antigas devem ser selecionadas novamente uma vez.
+## Funcionamento
 
-## Regras: etapa pendente
+- Aceita imagens JPG, PNG e WebP de até 5 MB.
+- Reduz a foto para até 256 pixels, mantendo sua proporção.
+- Salva a imagem na conta do usuário.
+- Carrega a foto após o login.
+- Mostra a confirmação somente depois que o salvamento é concluído.
+- Mantém o visual do perfil e apresenta mensagens em caso de erro.
 
-Abra Firebase → Firestore Database → Regras. Antes de publicar, preserve uma cópia das regras existentes.
+As fotos salvas anteriormente apenas no navegador precisam ser selecionadas novamente.
 
-O arquivo `firestore-fotos.rules` é um TRECHO para adicionar dentro de `match /databases/{database}/documents { ... }`, ao lado das regras das demais coleções. Não substitua as regras inteiras por esse trecho: isso pode impedir o funcionamento das doações.
+## Organização e acesso
 
-As regras usam o UID para restringir acesso. Regras amplas existentes, como `match /{document=**}` com acesso liberado, também precisam ser avaliadas, porque permissões sobrepostas se somam. Envie as regras atuais para que seja possível preparar o conjunto final sem adivinhar permissões dos produtos.
+Cada foto é salva na coleção `profilePhotos`, em um documento identificado pelo código do usuário.
 
-Não é necessário criar manualmente a coleção nem documentos: o primeiro salvamento autorizado cria o documento da foto.
+Preparei regras para permitir que cada conta leia e altere somente a própria foto. Essas regras precisam estar publicadas no Firestore para controlar o acesso corretamente.
 
-Opcional: crie uma isenção de indexação de campo único para `photoData` na coleção `profilePhotos`, pois a imagem não é usada em filtros ou ordenação. A integração não depende dessa otimização.
+O documento é criado no primeiro salvamento, sem precisar cadastrá-lo manualmente.
 
-## Testar após publicar as regras
+## Testes realizados
 
-1. Entre na versão local atualizada com uma conta de teste.
-2. Abra Perfil, selecione a imagem e aguarde “Foto salva na sua conta”.
-3. Saia e entre novamente: a foto deve ser recuperada.
-4. Confira em outro navegador com a mesma conta.
-5. Entre com outra conta: ela não deve herdar a foto.
-6. No simulador de regras, confirme que uma conta diferente não pode ler nem escrever o documento da primeira conta.
+Os 45 testes dessa etapa passaram, incluindo verificações de foto, cadastro, login e Home. Os testes utilizaram respostas simuladas do Firebase.
 
-## Verificação realizada
+Para conferir o funcionamento real, o teste consiste em salvar uma foto, sair da conta e entrar novamente. Também é importante verificar se outra conta não recebe a mesma imagem.
 
-45 testes aprovados: 14 de foto, 15 gerais, 11 de autenticação e 5 da Home. Firestore e canvas simulados; regras publicadas e gravação real ainda não verificadas. Nenhuma publicação ou alteração remota de regra foi feita.
+## Limites de uso
 
-Referências: https://firebase.google.com/docs/firestore/quotas e https://firebase.google.com/docs/firestore/security/rules-conditions .
-
-O antigo arquivo `docs/storage-profile.rules` pertence à proposta anterior com Storage e não deve ser usado nesta implementação.
+As fotos ocupam espaço no Firestore e seguem os limites do projeto. A redução do tamanho das imagens ajuda a diminuir o armazenamento e a quantidade de dados transferidos.
