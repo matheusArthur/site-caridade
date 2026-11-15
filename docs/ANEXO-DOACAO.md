@@ -1,16 +1,13 @@
-# Foto anexada na doação
+# Foto nos itens de doação
 
-Na página Doar item, use “Foto do item” para escolher um arquivo. A prévia aparece após o preparo. A foto só é gravada quando a doação é cadastrada com sucesso.
+Adicionei ao site a opção de escolher uma foto do celular ou computador ao cadastrar uma doação. Antes de enviar, o usuário consegue visualizar a imagem.
 
-- JPG, PNG ou WebP, entrada de até 10 MB.
-- Compressão em JPEG até 800 pixels no lado maior, mantendo proporção e sem ampliar fotos pequenas.
-- Até 600.000 caracteres na imagem codificada; dados completos do item limitados a 800.000 bytes para manter margem abaixo do limite de documento do Firestore.
-- URL preservada como alternativa para itens novos e compatibilidade com antigos.
-- Foto anexada aparece nas listagens e detalhes, e no histórico da própria conta.
-- Falhas preservam os dados para nova tentativa. Imagem inválida ou grande demais não é enviada.
+- Aceita fotos JPG, PNG e WebP de até 10 MB.
+- Reduz a imagem para até 800 pixels, mantendo sua proporção e ocupando menos espaço.
+- Mantém a opção de usar um link de imagem.
+- Mostra a foto na lista de doações, nos detalhes do item e no histórico de quem doou.
+- Mantém os dados preenchidos caso aconteça algum erro, permitindo tentar novamente.
 
-Não foi ativado Firebase Storage ou plano pago. A imagem ocupa armazenamento e transferência do Firestore e está sujeita às franquias do projeto. Esta solução é destinada ao volume pequeno do projeto acadêmico.
+As imagens são salvas no Firestore, sem utilizar o Firebase Storage ou ativar um plano pago. O uso continua sujeito aos limites gratuitos do serviço.
 
-As regras atuais de produtos informadas pelo responsável permitem escrita desse campo; não foi necessária outra regra para o anexo. Essa permissão ampla permanece uma pendência de segurança separada.
-
-Implementação local, sem publicação. Testes automatizados usam imagens/canvas e Firebase simulados. O envio real deve ser confirmado pelo responsável com uma doação de teste. Atualize a página com Ctrl+F5 antes de testar.
+Também criei testes automáticos com respostas simuladas. As permissões de acesso aos produtos ainda precisam de melhorias para aumentar a segurança do projeto.
