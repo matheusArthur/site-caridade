@@ -1,34 +1,192 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Refinamento visual | Caridade</title><link rel="stylesheet" href="styles.css"></head><body><header><strong>CARIDADE / PROJETO WEB</strong><nav aria-label="Documentação"><a href="index.html">Projeto</a><a href="relatorio.html">Entrega 7</a><a href="manual.html">Manual</a></nav></header><main><p class="notice">Ajuste final solicitado: a Home agora reutiliza o padrão das páginas institucionais (banner com foto e sobreposição, Poppins, botões coral, fundo branco e rodapé compartilhado). A composição foi reduzida a duas seções, mantendo as opções de contribuição e os cartões com novas imagens. As etapas expansíveis e os elementos decorativos da versão anterior foram removidos.</p><h1>Refinamento visual — Home e imagens</h1>
-<p>Ferramenta: geração de imagens integrada (image_gen), sem API/CLI externa. As seis cenas são imagens ilustrativas geradas por IA, não registros de ações reais do projeto. Os arquivos finais estão em <code>paginas/img/</code>.</p>
-<h2>Alterações</h2>
-<ul><li>Home reformulada com composição editorial, nova foto principal, quatro opções interativas de contribuição, cartões visuais, etapas expansíveis e links de ação.</li></ul>
-<ul><li>Animações discretas respeitam a preferência por movimento reduzido. As opções de contribuição aceitam setas, Home e End no teclado.</li></ul>
-<ul><li>Sete banners específicos deixaram de usar i1.jpg. As dez páginas institucionais passaram a escolher imagens diferentes de cabeçalho.</li></ul>
-<ul><li>Novas fotos em contato, voluntariado, parcerias, transparência e perguntas frequentes. Imagem de impacto existente passou a ser utilizada.</li></ul>
-<ul><li>As funcionalidades de autenticação e gravação de doações foram preservadas. Nenhuma publicação foi realizada.</li></ul>
-<h2>Prompts finais e arquivos</h2>
-<h3>comunidade-jardim-v2.png</h3>
-<p><strong>Arquivo:</strong> <code>paginas/img/comunidade-jardim-v2.png</code></p>
-<p><strong>Prompt:</strong> Use case: photorealistic-natural. Fotografia editorial horizontal 3:2 para o destaque de um site brasileiro de solidariedade. Um pequeno grupo diverso de adultos voluntários em uma horta comunitária urbana brasileira, conversando e passando uma caixa de hortaliças frescas de uma pessoa para outra. Enquadramento espontâneo médio-aberto, pessoas principalmente no centro e à direita, rostos naturais e mãos anatomicamente corretas. Luz suave de fim de tarde, tons terracota, verde sálvia e creme, textura fotográfica realista, ambiente simples e cuidado. Alegria discreta, autonomia e cooperação. Sem texto, marcas, logotipos, números ou marca-d&#x27;água. Uma única foto, não colagem.</p>
-<h3>cozinha-solidaria-v2.png</h3>
-<p><strong>Arquivo:</strong> <code>paginas/img/cozinha-solidaria-v2.png</code></p>
-<p><strong>Prompt:</strong> Use case: photorealistic-natural. Fotografia editorial horizontal 3:2 para site de caridade brasileiro. Três adultos diversos preparando refeições em uma cozinha comunitária arejada, uma pessoa cortando legumes e outra colocando comida em recipientes reutilizáveis sobre bancada limpa. Composição espontânea documental, plano médio, luz natural lateral, tons quentes de terracota, creme, verdes naturais. Sensação de colaboração e dignidade, detalhes realistas, mãos anatomicamente corretas. Sem texto, logotipos, marcas ou marca-d&#x27;água. Uma única fotografia, não colagem.</p>
-<h3>roupas-organizadas-v2.png</h3>
-<p><strong>Arquivo:</strong> <code>paginas/img/roupas-organizadas-v2.png</code></p>
-<p><strong>Prompt:</strong> Use case: photorealistic-natural. Fotografia editorial horizontal 3:2 para site brasileiro de solidariedade. Voluntária adulta e voluntário adulto organizando casacos de várias cores em um cabideiro e dobrando roupas sobre uma mesa de madeira em centro comunitário. Cena claramente diferente de entrega de alimentos, foco nas roupas bem cuidadas e colaboração, pessoas naturais em plano médio. Luz de janela, tons terracota, creme e verde sálvia, fotografia documental realista e acolhedora. Sem texto legível, logotipos, marcas ou marca-d&#x27;água. Uma fotografia única, não colagem.</p>
-<h3>acolhimento-conversa-v2.png</h3>
-<p><strong>Arquivo:</strong> <code>paginas/img/acolhimento-conversa-v2.png</code></p>
-<p><strong>Prompt:</strong> Use case: photorealistic-natural. Fotografia editorial horizontal 3:2 para página de contato de projeto social brasileiro. Duas mulheres adultas de idades distintas conversando de igual para igual em uma mesa de centro comunitário luminoso, uma delas ouvindo com atenção, mãos relaxadas, um copo de água e planta ao lado. Cena de acolhimento respeitoso sem sofrimento encenado. Composição documental realista, ambiente simples com paredes creme, detalhes verde sálvia e terracota, luz natural suave, rostos e mãos naturais. Sem palavras legíveis, sem logotipos ou marca-d&#x27;água. Uma única foto.</p>
-<h3>parceria-coleta-v2.png</h3>
-<p><strong>Arquivo:</strong> <code>paginas/img/parceria-coleta-v2.png</code></p>
-<p><strong>Prompt:</strong> Use case: photorealistic-natural. Fotografia editorial horizontal 3:2 de solidariedade e parceria local no Brasil. Pequeno comerciante adulto entregando uma caixa de suprimentos sem rótulos a uma voluntária adulta diante de um comércio de bairro com plantas, uma bicicleta de carga ao fundo. Plano médio-aberto, gesto de cooperação natural, cidade brasileira contemporânea, luz de manhã, paleta creme, tijolo e verde sálvia, realismo fotográfico. Não mostrar letreiros legíveis nem marcas, sem logotipos e sem marca-d&#x27;água. Uma foto única, não colagem.</p>
-<h3>organizacao-transparencia-v2.png</h3>
-<p><strong>Arquivo:</strong> <code>paginas/img/organizacao-transparencia-v2.png</code></p>
-<p><strong>Prompt:</strong> Use case: photorealistic-natural. Fotografia editorial horizontal 3:2 para site de projeto social, tema organização e transparência. Vista em ângulo superior de mesa de madeira onde três adultos voluntários conferem caixas de doações pequenas, um caderno com linhas indistintas, lápis e etiquetas em branco. Mostrar parcialmente mãos naturais e braços, não depender de rostos. Composição clara, organizada e visualmente distinta, luz suave de janela, cores creme, verde sálvia e pequenos detalhes terracota. Fotografia realista, nenhum texto ou número legível, sem marcas, sem logotipos ou marca-d&#x27;água. Uma única fotografia.</p>
-<h2>Verificações executadas</h2>
-<ul><li>15 testes anteriores aprovados após a integração das imagens.</li></ul>
-<ul><li>5 testes adicionais da Home aprovados: troca de conteúdo, links, estados acessíveis, navegação por teclado e imagens referenciadas no CSS.</li></ul>
-<ul><li>Navegador: troca de opção por clique e tecla End, abertura de etapa expansível e inspeção visual em desktop.</li></ul>
-<ul><li>Viewport móvel de 390 × 844: conferência da composição e ausência de rolagem horizontal, com menu aberto e fechado.</li></ul>
-<ul><li>Banner e imagem de destaque distintos confirmados na página de parcerias.</li></ul>
-<ul><li>Nenhuma operação de banco ou publicação foi realizada.</li></ul></main><footer>Projeto acadêmico • Matheus Arthur • Avaliação de 10 de setembro de 2026<br>Publicação desta revisão adiada pelo responsável. Vídeo a cargo do responsável.</footer></body></html>
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home e imagens — Projeto Caridade</title>
+</head>
+<body>
+
+  <header>
+    <h1>Melhorias na Home e nas imagens</h1>
+    <p><strong>Autor:</strong> Matheus Arthur</p>
+
+    <nav aria-label="Documentação">
+      <a href="index.html">Projeto</a> |
+      <a href="relatorio.html">Melhorias</a> |
+      <a href="manual.html">Manual</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Objetivo das alterações</h2>
+      <p>
+        Reorganizei a página inicial para apresentar melhor o Projeto
+        Caridade e facilitar o acesso às formas de contribuição.
+        Procurei manter o padrão visual das outras páginas, sem
+        deixar a navegação carregada de informações.
+      </p>
+      <p>
+        Também distribuí imagens diferentes pelo site para representar
+        ações de solidariedade, acolhimento e colaboração.
+      </p>
+    </section>
+
+    <section>
+      <h2>Alterações na Home</h2>
+      <p>
+        Simplifiquei a organização da página inicial, mantendo as
+        opções de contribuição e os cartões com imagens. Retirei
+        etapas expansíveis e elementos decorativos para deixar
+        o conteúdo mais direto.
+      </p>
+
+      <ul>
+        <li>Atualizei a imagem principal da página.</li>
+        <li>Organizei as opções de alimentos, roupas, higiene e tempo.</li>
+        <li>Incluí a troca de imagem, texto e link conforme a opção escolhida.</li>
+        <li>Mantive os botões em coral, o fundo branco e o rodapé compartilhado.</li>
+        <li>Ajustei os espaços e a organização do conteúdo em telas menores.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Navegação e acessibilidade</h2>
+      <p>
+        Além da aparência, trabalhei na forma de usar as opções
+        da página. Os controles podem ser acessados pelo teclado,
+        sem depender apenas do mouse.
+      </p>
+
+      <ul>
+        <li>Uso das setas para alternar entre as formas de contribuição.</li>
+        <li>Teclas Home e End para acessar a primeira e a última opção.</li>
+        <li>Identificação da opção selecionada.</li>
+        <li>Respeito à preferência por menos movimento nas animações utilizadas.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Imagens utilizadas</h2>
+      <p>
+        Utilizei seis imagens ilustrativas geradas por inteligência
+        artificial. Busquei cenas relacionadas à proposta do site,
+        com ambientes simples e situações de cooperação.
+      </p>
+      <p>
+        Essas imagens não representam registros de ações reais do
+        projeto. Os arquivos estão na pasta <code>paginas/img/</code>.
+      </p>
+
+      <h3>Horta comunitária</h3>
+      <p>
+        A imagem mostra um grupo de pessoas colaborando em uma
+        horta e compartilhando uma caixa de hortaliças.
+        Ela representa o trabalho em comunidade e a ajuda mútua.
+      </p>
+      <p><strong>Arquivo:</strong> <code>comunidade-jardim-v2.png</code></p>
+
+      <h3>Cozinha solidária</h3>
+      <p>
+        A cena apresenta pessoas preparando refeições em uma
+        cozinha comunitária. Escolhi esse tema para representar
+        a contribuição de tempo e o trabalho voluntário.
+      </p>
+      <p><strong>Arquivo:</strong> <code>cozinha-solidaria-v2.png</code></p>
+
+      <h3>Organização de roupas</h3>
+      <p>
+        A imagem mostra voluntários separando e dobrando roupas.
+        O objetivo é representar o cuidado com os itens antes
+        de disponibilizá-los para doação.
+      </p>
+      <p><strong>Arquivo:</strong> <code>roupas-organizadas-v2.png</code></p>
+
+      <h3>Conversa e acolhimento</h3>
+      <p>
+        A cena representa uma conversa em um espaço comunitário,
+        destacando a atenção e o respeito entre as pessoas.
+        Utilizei esse tema para a área de contato.
+      </p>
+      <p><strong>Arquivo:</strong> <code>acolhimento-conversa-v2.png</code></p>
+
+      <h3>Parceria com o comércio local</h3>
+      <p>
+        A imagem apresenta a entrega de uma caixa de suprimentos
+        entre um comerciante e uma voluntária. Ela representa
+        a participação dos negócios locais nas iniciativas solidárias.
+      </p>
+      <p><strong>Arquivo:</strong> <code>parceria-coleta-v2.png</code></p>
+
+      <h3>Organização das doações</h3>
+      <p>
+        A cena mostra a conferência de caixas e materiais.
+        Escolhi essa imagem para representar o cuidado com
+        a organização e a transparência do projeto.
+      </p>
+      <p><strong>Arquivo:</strong> <code>organizacao-transparencia-v2.png</code></p>
+    </section>
+
+    <section>
+      <h2>Distribuição das imagens nas páginas</h2>
+      <p>
+        Substituí a repetição da mesma imagem em diferentes
+        cabeçalhos por cenas relacionadas ao conteúdo de cada página.
+        Também aproveitei uma imagem de impacto que já existia no projeto.
+      </p>
+
+      <ul>
+        <li>Contato e acolhimento.</li>
+        <li>Voluntariado e preparo de refeições.</li>
+        <li>Parcerias e colaboração com o comércio.</li>
+        <li>Transparência e organização das doações.</li>
+        <li>Outras páginas informativas, incluindo perguntas frequentes.</li>
+      </ul>
+
+      <p>
+        Mantive uma combinação de cores semelhante entre as imagens
+        para que as páginas continuassem com uma aparência consistente.
+      </p>
+    </section>
+
+    <section>
+      <h2>Verificações realizadas</h2>
+      <p>
+        Após a inclusão das imagens, os 15 testes gerais continuaram
+        aprovados. Também acrescentei cinco testes da Home, que passaram.
+      </p>
+
+      <ul>
+        <li>Troca de conteúdo nas opções de contribuição.</li>
+        <li>Atualização dos links de ação.</li>
+        <li>Identificação da opção selecionada.</li>
+        <li>Navegação pelo teclado.</li>
+        <li>Existência das imagens usadas nos estilos das páginas.</li>
+      </ul>
+
+      <p>
+        Também conferi a apresentação no computador e em uma tela
+        de 390 por 844 pixels, verificando a organização do conteúdo
+        e o comportamento do menu aberto e fechado.
+      </p>
+
+      <p>Para executar os testes da Home:</p>
+      <pre><code>node tests/home.cjs</code></pre>
+
+      <p>
+        Essas verificações se concentram na interface e nas referências
+        de arquivos. Elas não confirmam operações reais de login
+        ou salvamento no Firebase.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projeto Caridade — Matheus Arthur</p>
+  </footer>
+
+</body>
+</html>
+```
