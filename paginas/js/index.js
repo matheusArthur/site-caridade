@@ -73,12 +73,17 @@ function onChangePassword() {
   togglePasswordErrors();
 }
 
+let authBusy = false;
+
 function login() {
+  if (authBusy || !isEmailValid() || !isPasswordValid()) return Promise.resolve();
+  authBusy = true;
+  toggleButtonsDisable();
   showLoading();
 
-  firebasePronto
+  return firebasePronto
     .then(() => firebase.auth().signInWithEmailAndPassword(
-      form.email().value,
+      form.email().value.trim(),
       form.password().value
     ))
     .then(() => {
@@ -88,6 +93,10 @@ function login() {
     .catch(error => {
       hideLoading();
       alert(getErrorMessage(error));
+    })
+    .finally(() => {
+      authBusy = false;
+      toggleButtonsDisable();
     });
 }
 
@@ -96,40 +105,54 @@ function register() {
 }
 
 function recoverPassword() {
-  const email = form.email().value;
+  if (authBusy) return Promise.resolve();
+  const email = form.email().value.trim();
 
-  if (!email) {
-    alert("Digite seu email primeiro");
+  if (!validateEmail(email)) {
+    alert("Digite um e-mail válido primeiro.");
     return;
   }
 
+  authBusy = true;
+  toggleButtonsDisable();
   showLoading();
 
-  firebasePronto
+  return firebasePronto
     .then(() => firebase.auth().sendPasswordResetEmail(email))
     .then(() => {
       hideLoading();
-      alert("Email de recuperacao enviado!");
+      alert("Se houver uma conta para este e-mail, você receberá as instruções de recuperação. Confira também o spam.");
     })
     .catch(error => {
       hideLoading();
       alert(getErrorMessage(error));
+    })
+    .finally(() => {
+      authBusy = false;
+      toggleButtonsDisable();
     });
 }
 
 function getErrorMessage(error) {
-  if (error.code === "auth/user-not-found") return "Usuario nao encontrado";
-  if (error.code === "auth/wrong-password") return "Senha invalida";
-  if (error.code === "auth/invalid-email") return "Email invalido";
-  if (error.code === "auth/network-request-failed") return "Falha de conexao. Verifique sua internet.";
-  return error.message;
+  const messages = {
+    "auth/user-not-found": "E-mail ou senha incorretos.",
+    "auth/wrong-password": "E-mail ou senha incorretos.",
+    "auth/invalid-credential": "E-mail ou senha incorretos.",
+    "auth/invalid-login-credentials": "E-mail ou senha incorretos.",
+    "auth/invalid-email": "Digite um e-mail válido.",
+    "auth/too-many-requests": "Muitas tentativas. Aguarde um pouco e tente novamente.",
+    "auth/user-disabled": "Esta conta está desativada. Entre em contato com o projeto.",
+    "auth/network-request-failed": "Falha de conexão. Verifique sua internet.",
+    "auth/operation-not-allowed": "O acesso por e-mail e senha está indisponível. Contate o projeto."
+  };
+  return messages[error.code] || "Não foi possível concluir. Tente novamente em instantes.";
 }
 
 function toggleEmailErrors() {
-  const email = form.email().value;
+  const email = form.email().value.trim();
 
   form.emailRequiredError().style.display = email ? "none" : "block";
-  form.emailInvalidError().style.display = validateEmail(email) ? "none" : "block";
+  form.emailInvalidError().style.display = !email || validateEmail(email) ? "none" : "block";
 }
 
 function togglePasswordErrors() {
@@ -141,12 +164,12 @@ function toggleButtonsDisable() {
   const emailValid = isEmailValid();
   const passwordValid = isPasswordValid();
 
-  form.recoverPasswordButton().disabled = !emailValid;
-  form.loginButton().disabled = !emailValid || !passwordValid;
+  form.recoverPasswordButton().disabled = authBusy || !emailValid;
+  form.loginButton().disabled = authBusy || !emailValid || !passwordValid;
 }
 
 function isEmailValid() {
-  const email = form.email().value;
+  const email = form.email().value.trim();
   return email ? validateEmail(email) : false;
 }
 
@@ -163,3 +186,6 @@ const form = {
   passwordRequiredError: () => document.getElementById("password-required-error"),
   recoverPasswordButton: () => document.getElementById("recover-password-button"),
 };
+window.addEventListener("pageshow", toggleButtonsDisable);
+document.getElementById("email").addEventListener("change", onChangeEmail);
+document.getElementById("password").addEventListener("change", onChangePassword);

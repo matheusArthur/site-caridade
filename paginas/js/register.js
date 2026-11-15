@@ -1,3 +1,4 @@
+let registerBusy = false;
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         window.location.href = "../html/home.html";
@@ -5,10 +6,10 @@ firebase.auth().onAuthStateChanged(user => {
 })
 
 function onChangeEmail() {
-    const email = form.email().value;
+    const email = form.email().value.trim();
     form.emailRequiredError().style.display = email ? "none" : "block";
 
-    form.emailInvalidError().style.display = validateEmail(email) ? "none" : "block";
+    form.emailInvalidError().style.display = !email || validateEmail(email) ? "none" : "block";
 
     toggleRegisterButtonDisable();
 }
@@ -17,7 +18,7 @@ function onChangePassword() {
     const password = form.password().value;
     form.passwordRequiredError().style.display = password ? "none" : "block";
 
-    form.passwordMinLengthError().style.display = password.length >= 6 ? "none" : "block";
+    form.passwordMinLengthError().style.display = !password || password.length >= 6 ? "none" : "block";
 
     validatePasswordsMatch();
     toggleRegisterButtonDisable();
@@ -29,11 +30,14 @@ function onChangeConfirmPassword() {
 }
 
 function register() {
+    if (registerBusy || !isFormValid()) return Promise.resolve();
+    registerBusy = true;
+    toggleRegisterButtonDisable();
     showLoading();
 
-    const email = form.email().value;
+    const email = form.email().value.trim();
     const password = form.password().value;
-    firebase.auth().createUserWithEmailAndPassword(
+    return firebase.auth().createUserWithEmailAndPassword(
         email, password
     ).then(() => {
         hideLoading();
@@ -41,14 +45,20 @@ function register() {
     }).catch(error => {
         hideLoading();
         alert(getErrorMessage(error));
-    })
+    }).finally(() => {
+        registerBusy = false;
+        toggleRegisterButtonDisable();
+    });
 }
 
 function getErrorMessage(error) {
     if (error.code == "auth/email-already-in-use") {
         return "Email já está em uso";
     }
-    return error.message;
+    if (error.code === "auth/network-request-failed") return "Falha de conexão. Verifique sua internet.";
+    if (error.code === "auth/weak-password") return "A senha não atende à política de segurança do projeto.";
+    if (error.code === "auth/too-many-requests") return "Muitas tentativas. Aguarde e tente novamente.";
+    return "Não foi possível criar a conta. Confira os dados e tente novamente.";
 }
 
 function validatePasswordsMatch() {
@@ -60,11 +70,11 @@ function validatePasswordsMatch() {
 }
 
 function toggleRegisterButtonDisable() {
-    form.registerButton().disabled = !isFormValid();
+    form.registerButton().disabled = registerBusy || !isFormValid();
 }
 
 function isFormValid() {
-    const email = form.email().value;
+    const email = form.email().value.trim();
     if (!email || !validateEmail(email)) {
         return false;
     }
@@ -93,3 +103,4 @@ const form = {
     passwordRequiredError: () => document.getElementById('password-required-error'),
     registerButton: () => document.getElementById('register-button')
 }
+if (typeof window.addEventListener === "function") window.addEventListener("pageshow", toggleRegisterButtonDisable);

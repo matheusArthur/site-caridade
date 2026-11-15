@@ -1,0 +1,14 @@
+// TRECHO: integrar dentro de match /databases/{database}/documents
+// Preservar as regras atuais de produtos e das demais coleções.
+match /profilePhotos/{userId} {
+  allow get: if request.auth != null && request.auth.uid == userId;
+  allow create, update: if request.auth != null
+    && request.auth.uid == userId
+    && request.resource.data.keys().hasAll(['photoData', 'updatedAt'])
+    && request.resource.data.keys().hasOnly(['photoData', 'updatedAt'])
+    && request.resource.data.photoData is string
+    && request.resource.data.photoData.size() <= 200000
+    && request.resource.data.photoData.matches('data:image/jpeg;base64,[A-Za-z0-9+/]+={0,2}')
+    && request.resource.data.updatedAt == request.time;
+  allow delete: if request.auth != null && request.auth.uid == userId;
+}

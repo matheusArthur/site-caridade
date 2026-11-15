@@ -171,6 +171,10 @@
 <script>
 const db = firebase.firestore();
 let categoriaAtual = "todos";
+// O primeiro evento confirma que a sessão persistida terminou de carregar.
+const sessaoDoacaoPronta = new Promise(resolve => {
+  firebase.auth().onAuthStateChanged(() => resolve());
+});
 
 function abrirProduto(id) {
   window.location.href = `produtosDetalhe.html?id=${id}`;
@@ -243,13 +247,22 @@ function filtrar(cat, btn) {
   carregarProdutos();
 }
 
-document.getElementById("formProduto").addEventListener("submit", e => {
+document.getElementById("formProduto").addEventListener("submit", async e => {
   e.preventDefault();
 
   const formProduto = document.getElementById("formProduto");
   const statusEl = document.getElementById("status");
   const submit = formProduto.querySelector("button[type=submit]");
   if (submit.disabled) return;
+  submit.disabled = true;
+  statusEl.textContent = "Confirmando sua sessão...";
+  await sessaoDoacaoPronta;
+  const user = firebase.auth().currentUser;
+  if (!user) {
+    statusEl.textContent = "Não foi encontrada uma sessão ativa neste endereço. Entre na sua conta e tente novamente; seus dados foram mantidos.";
+    submit.disabled = false;
+    return;
+  }
   submit.disabled = true;
   statusEl.textContent = "Salvando doação...";
   const field = id => document.getElementById(id).value.trim();
@@ -260,6 +273,7 @@ document.getElementById("formProduto").addEventListener("submit", e => {
     imagem: field("imagem"),
     regiao: field("regiao"),
     valor: field("valor") || "0,00",
+    doadorUid: user.uid,
     criadoEm: new Date()
   }).then(() => {
     statusEl.textContent = "Doação cadastrada com sucesso.";

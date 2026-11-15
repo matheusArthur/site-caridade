@@ -117,3 +117,7 @@ Os arquivos, prompts e verificações estão em [Refinamento visual](docs/IMAGEN
 - [Publicação manual no Netlify](https://docs.netlify.com/deploy/create-deploys/)
 - [Configurar a origem do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 - [Autenticação por email e senha no Firebase](https://firebase.google.com/docs/auth/web/password-auth)
+
+## Revisão final — novembro de 2026
+
+Ajustes pontuais de autenticação, contraste e identificação da conta. Execute também `node tests/auth.cjs`. Confira [relatório e roteiro](docs/REVISAO-FINAL.md) e [página da entrega final](docs/entrega-final.html). Alterações locais ainda não publicadas; autenticação real e regras do Firebase pendentes de validação.

@@ -74,14 +74,15 @@ button {
   padding: 10px;
 }
 
-.loading {
+.auth-loading {
   position: fixed;
   inset: 0;
   z-index: 9999;
   background: rgba(0, 0, 0, 0.5);
 }
 
-.loading label {
+.auth-loading span {
+  color: #fff;
   font-size: 24px;
 }
 
@@ -109,4 +110,12 @@ button {
   border-radius: var(--radius);
   color: var(--white);
   background: #b42318;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--primary-dark);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
